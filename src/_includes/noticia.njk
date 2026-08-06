@@ -3,6 +3,11 @@ layout: base.njk
 bodyClass: page-noticia
 ---
 <main id="top">
+  {% if not publicado %}
+  <div style="background:var(--yellow-500); color:var(--blue-900); text-align:center; padding:10px 20px; font-weight:700; font-size:0.88rem;">
+    Borrador — esta noticia no aparece en el listado público de Noticias todavía.
+  </div>
+  {% endif %}
   <section class="page-hero">
     <div class="wrap">
       <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><a href="/noticias/">Noticias</a><span>/</span><span>{{ title }}</span></div>

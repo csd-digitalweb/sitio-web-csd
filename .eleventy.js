@@ -4,6 +4,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/styles.css");
   eleventyConfig.addPassthroughCopy("src/assets");
 
+  // Panel de administración de Decap CMS (Paso 4). El index.html ya lo
+  // procesa Eleventy como plantilla normal; config.yml no es un formato
+  // de plantilla reconocido, así que necesita copiarse aparte.
+  eleventyConfig.addPassthroughCopy({ "src/admin/config.yml": "admin/config.yml" });
+
   // Fecha legible en español para las noticias: "6 de agosto de 2026".
   const MESES = [
     "enero", "febrero", "marzo", "abril", "mayo", "junio",
@@ -13,6 +18,12 @@ module.exports = function (eleventyConfig) {
     const d = new Date(fecha);
     return `${d.getUTCDate()} de ${MESES[d.getUTCMonth()]} de ${d.getUTCFullYear()}`;
   });
+
+  // Filtra una colección dejando solo las entradas marcadas "Publicado"
+  // desde el panel — así el listado de Noticias nunca muestra borradores.
+  eleventyConfig.addFilter("publicados", (items) =>
+    (items || []).filter((item) => item.data && item.data.publicado)
+  );
 
   return {
     dir: {

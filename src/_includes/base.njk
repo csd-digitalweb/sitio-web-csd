@@ -99,5 +99,21 @@
     }
   })();
 </script>
+
+<!-- Netlify Identity: necesario en todas las páginas (no solo /admin/)
+     porque los enlaces de invitación/recuperación de contraseña abren
+     esta página con un token en la URL, y el widget es quien lo procesa. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", function (user) {
+      if (!user) {
+        window.netlifyIdentity.on("login", function () {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>

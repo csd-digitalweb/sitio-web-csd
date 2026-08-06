@@ -1,0 +1,73 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Dónde se guardan las imágenes que se suban desde el panel, y con qué
+# ruta quedan disponibles públicamente en el sitio ya construido.
+media_folder: "src/assets/noticias"
+public_folder: "/assets/noticias"
+
+# El panel funciona sobre este mismo repositorio: al publicar, Decap CMS
+# hace commit del archivo .md directamente a la rama "main" de GitHub, y
+# eso dispara un build nuevo en Netlify.
+publish_mode: simple
+
+collections:
+  - name: "noticias"
+    label: "Noticias"
+    label_singular: "Noticia"
+    description: "Noticias, egresado destacado, convivencia y eventos del colegio."
+    folder: "src/noticias"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{title}} — {{fecha}}"
+    sortable_fields: ["fecha", "title"]
+    fields:
+      - label: "Título"
+        name: "title"
+        widget: "string"
+        hint: "El titular de la noticia."
+
+      - label: "Fecha"
+        name: "fecha"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        default: "{{now}}"
+
+      - label: "Autor"
+        name: "autor"
+        widget: "string"
+        required: false
+        hint: "Opcional. Si se deja vacío, no aparece firma."
+
+      - label: "Categoría"
+        name: "categoria"
+        widget: "select"
+        options: ["Noticias", "Convivencia", "Eventos", "Egresado destacado"]
+        default: "Noticias"
+
+      - label: "Resumen"
+        name: "resumen"
+        widget: "text"
+        required: false
+        hint: "1-2 líneas. Se muestra en la tarjeta de vista previa del listado de Noticias."
+
+      - label: "Imagen de portada"
+        name: "portada"
+        widget: "image"
+        required: false
+        hint: "Se muestra arriba del artículo y, si existe, en la tarjeta destacada del listado."
+
+      - label: "Cuerpo"
+        name: "body"
+        widget: "markdown"
+
+      - label: "Publicado"
+        name: "publicado"
+        widget: "boolean"
+        default: false
+        hint: "Actívalo cuando quieras que la noticia aparezca en el sitio. Mientras esté apagado, queda guardada pero no sale en el listado de Noticias."

@@ -4,7 +4,7 @@ title: Noticias — Colegio CSD
 bodyClass: page-noticias
 permalink: /noticias/
 ---
-{% set posts = collections.noticias %}
+{% set posts = collections.noticias | publicados %}
 <main id="top">
   <!-- ================= PAGE HERO ================= -->
   <section class="page-hero">
