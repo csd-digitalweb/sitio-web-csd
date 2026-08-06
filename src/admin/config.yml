@@ -71,3 +71,56 @@ collections:
         widget: "boolean"
         default: false
         hint: "Actívalo cuando quieras que la noticia aparezca en el sitio. Mientras esté apagado, queda guardada pero no sale en el listado de Noticias."
+
+  - name: "galeria"
+    label: "Galería"
+    label_singular: "Álbum"
+    description: "Álbumes de fotos (y video, si hay) de eventos y actividades del colegio."
+    folder: "src/galeria"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    summary: "{{title}}"
+    media_folder: "/src/assets/galeria"
+    public_folder: "/assets/galeria"
+    fields:
+      - label: "Título del álbum"
+        name: "title"
+        widget: "string"
+        hint: "Por ejemplo: \"Izada de bandera — agosto 2026\"."
+
+      - label: "Fecha"
+        name: "fecha"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: false
+
+      - label: "Fotos"
+        name: "fotos"
+        widget: "list"
+        summary: "{{fields.src}}"
+        hint: "Agrega una entrada por cada foto. Puedes agregar tantas como quieras."
+        field:
+          label: "Foto"
+          name: "src"
+          widget: "image"
+
+      - label: "Link de video"
+        name: "video"
+        widget: "string"
+        required: false
+        hint: "Opcional. Pega el enlace completo de Facebook, Instagram, TikTok o YouTube."
+
+      - label: "Descripción corta"
+        name: "descripcion"
+        widget: "text"
+        required: false
+
+      - label: "Publicado"
+        name: "publicado"
+        widget: "boolean"
+        default: false
+        hint: "Actívalo cuando quieras que el álbum aparezca en el sitio. Mientras esté apagado, queda guardado pero no sale en el listado de Galería."

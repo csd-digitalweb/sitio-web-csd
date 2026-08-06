@@ -1,0 +1,94 @@
+---
+layout: base.njk
+title: Galería — Colegio CSD
+bodyClass: page-galeria
+permalink: /galeria/
+---
+{% set albums = collections.galeria | publicados | reverse %}
+<main id="top">
+  <!-- ================= PAGE HERO ================= -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><span>Galería</span></div>
+      <p class="eyebrow" style="margin-top:18px;">Galería</p>
+      <h1 class="reveal in">Momentos del colegio, en fotos.</h1>
+      <p class="lead reveal in">Álbumes de eventos, actividades y días importantes del CSD — con video cuando lo hay.</p>
+    </div>
+  </section>
+
+  <svg class="seam to-paper" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,26 C 360,-2 1080,54 1440,22 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  {% if albums.length %}
+  <!-- ================= ALBUMES ================= -->
+  <section class="band band-paper" id="albumes">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Álbumes</p>
+        <h2>Todos los álbumes</h2>
+      </div>
+      <div class="gallery-grid">
+        {% for album in albums %}
+        <a class="gallery-card reveal" href="{{ album.url }}">
+          <div class="cover">
+            {% if album.data.fotos and album.data.fotos.length %}
+            <img src="{{ album.data.fotos[0].src }}" alt="{{ album.data.title }}" loading="lazy">
+            {% endif %}
+            {% if album.data.video %}<span class="play-badge" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 2.5v11l10-5.5-10-5.5z" fill="currentColor"/></svg></span>{% endif %}
+          </div>
+          <div class="info">
+            {% if album.data.fecha %}<p class="eyebrow">{{ album.data.fecha | fechaLegible }}</p>{% endif %}
+            <h3>{{ album.data.title }}</h3>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% else %}
+  <!-- ================= PROXIMAMENTE ================= -->
+  <section class="band band-paper" id="proximamente">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Aún no hay álbumes publicados</p>
+        <h2>La galería está lista para empezar a llenarse</h2>
+        <p>Aquí van a aparecer las fotos y videos de eventos y actividades del colegio, apenas se publique el primer álbum.</p>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- ================= SIGUE EXPLORANDO ================= -->
+  <section class="band band-deep">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Sigue explorando</p>
+        <h2 style="font-size:clamp(1.8rem,2.8vw,2.3rem);">El resto de la historia, por partes</h2>
+      </div>
+      <div class="explore-grid">
+        <a class="explore-card reveal" href="/nosotros/">
+          <p class="eyebrow">Nosotros</p>
+          <h3>Quiénes somos</h3>
+          <p>La historia completa: fundación, sede, y hasta dónde llega el colegio.</p>
+        </a>
+        <a class="explore-card reveal" href="/formacion/">
+          <p class="eyebrow">Formación</p>
+          <h3>Valores y modelo pedagógico</h3>
+          <p>Cómo se traduce "Estudio, Amor y Paz" en el día a día del salón.</p>
+        </a>
+        <a class="explore-card reveal" href="/academico/">
+          <p class="eyebrow">Académico</p>
+          <h3>Física, química y filosofía desde primaria</h3>
+          <p>La oferta académica completa y los resultados en Pruebas Saber.</p>
+        </a>
+        <a class="explore-card reveal" href="/egresados/">
+          <p class="eyebrow">Egresados</p>
+          <h3>Hacia dónde llegan los que salen de aquí</h3>
+          <p>La sección mensual de egresado destacado y su historia.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>

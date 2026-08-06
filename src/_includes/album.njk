@@ -1,0 +1,51 @@
+---
+layout: base.njk
+bodyClass: page-album
+---
+<main id="top">
+  {% if not publicado %}
+  <div style="background:var(--yellow-500); color:var(--blue-900); text-align:center; padding:10px 20px; font-weight:700; font-size:0.88rem;">
+    Borrador — este álbum no aparece en el listado público de Galería todavía.
+  </div>
+  {% endif %}
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><a href="/galeria/">Galería</a><span>/</span><span>{{ title }}</span></div>
+      {% if fecha %}<p class="eyebrow" style="margin-top:18px;">{{ fecha | fechaLegible }}</p>{% endif %}
+      <h1 class="reveal in" style="margin-top:{% if fecha %}10px{% else %}18px{% endif %};">{{ title }}</h1>
+      {% if descripcion %}<p class="lead reveal in">{{ descripcion }}</p>{% endif %}
+    </div>
+  </section>
+
+  <svg class="seam to-paper" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,26 C 360,-2 1080,54 1440,22 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <section class="band band-paper">
+    <div class="wrap">
+      {% if fotos and fotos.length %}
+      <div class="photo-grid reveal in">
+        {% for foto in fotos %}
+        <div class="photo"><img src="{{ foto.src }}" alt="{{ title }} — foto {{ loop.index }}" loading="lazy"></div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if video %}
+      <div class="video-cta reveal in">
+        <a class="btn btn-primary" href="{{ video }}" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 2.5v11l10-5.5-10-5.5z" fill="currentColor"/></svg>
+          Ver el video
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="band band-deep">
+    <div class="wrap" style="text-align:center;">
+      <a class="btn btn-outline" href="/galeria/">← Volver a Galería</a>
+    </div>
+  </section>
+</main>

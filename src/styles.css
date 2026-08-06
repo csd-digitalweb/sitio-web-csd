@@ -376,6 +376,33 @@ section.band{ padding:76px 0; }
 }
 .post-body img{ border-radius:10px; margin:1.6em 0; }
 
+/* ---------- Galería: listado de álbumes ---------- */
+.gallery-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.gallery-card{
+  display:block; text-decoration:none; border-radius:10px; overflow:hidden;
+  background:var(--surface); border:1px solid var(--line); box-shadow:var(--shadow);
+  transition:transform .15s ease, border-color .15s ease;
+}
+.gallery-card:hover{ transform:translateY(-3px); border-color:var(--yellow-500); }
+.gallery-card .cover{ position:relative; aspect-ratio:4/3; background:var(--paper-deep); }
+.gallery-card .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+.gallery-card .play-badge{
+  position:absolute; right:10px; bottom:10px; width:28px; height:28px; border-radius:50%;
+  background:var(--yellow-500); color:var(--blue-900);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 6px 14px -4px rgba(0,0,0,0.45);
+}
+.gallery-card .info{ padding:16px 18px; }
+.gallery-card .info .eyebrow{ font-size:0.66rem; }
+.gallery-card h3{ margin-top:6px; font-size:1.02rem; font-family:'Karla',sans-serif; font-weight:800; color:var(--ink); }
+
+/* ---------- Galería: álbum individual ---------- */
+.photo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.photo-grid .photo{ aspect-ratio:4/3; border-radius:10px; overflow:hidden; background:var(--paper-deep); }
+.photo-grid .photo img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease; }
+.photo-grid .photo:hover img{ transform:scale(1.05); }
+.video-cta{ margin-top:32px; text-align:center; }
+
 /* ---------- Archivo (placeholder de Egresados) ---------- */
 .archive-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
 .archive-card{
@@ -474,6 +501,8 @@ footer a:hover{ color:var(--yellow-500); }
   .featured-post{ grid-template-columns:1fr; }
   .post-grid{ grid-template-columns:1fr; }
   .archive-grid{ grid-template-columns:1fr; }
+  .gallery-grid{ grid-template-columns:1fr 1fr; }
+  .photo-grid{ grid-template-columns:1fr 1fr; }
   .explore-grid{ grid-template-columns:1fr 1fr; }
   .foot-grid{ grid-template-columns:1fr 1fr; }
   .band-blue .branch-row:nth-child(n){ margin-left:0; }
@@ -481,4 +510,6 @@ footer a:hover{ color:var(--yellow-500); }
 @media (max-width: 560px){
   .explore-grid{ grid-template-columns:1fr; }
   .contact-grid{ grid-template-columns:1fr; }
+  .gallery-grid{ grid-template-columns:1fr; }
+  .photo-grid{ grid-template-columns:1fr; }
 }
