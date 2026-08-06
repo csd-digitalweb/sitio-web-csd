@@ -1,0 +1,15 @@
+# Dependencias y build (para cuando conectemos Eleventy en el Paso 2)
+node_modules/
+_site/
+.cache/
+
+# Netlify
+.netlify/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Variables de entorno / secretos
+.env
+.env.local

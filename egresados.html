@@ -1,0 +1,464 @@
+<meta charset="utf-8">
+<title>Egresados — Colegio CSD</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  :root{
+    --paper:#F6F1E2;
+    --paper-deep:#EBE1C7;
+    --ink:#1C1B33;
+    --ink-soft:#4A4867;
+    --blue-900:#23256B;
+    --blue-700:#33369C;
+    --blue-500:#4B4FC4;
+    --yellow-500:#FFC91B;
+    --yellow-300:#FFE9A3;
+    --line: rgba(28,27,51,0.14);
+    --line-on-blue: rgba(255,255,255,0.18);
+    --surface: #FFFDF6;
+    --shadow: 0 18px 40px -22px rgba(28,27,51,0.35);
+    --radius: 6px;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"]{
+    --paper:#14163A;
+    --paper-deep:#1B1E4A;
+    --ink:#F2EEDD;
+    --ink-soft:#C7C3E6;
+    --blue-900:#0E0F2E;
+    --blue-700:#1B1D57;
+    --blue-500:#2D30A0;
+    --yellow-500:#FFCF33;
+    --yellow-300:#7A6A2A;
+    --line: rgba(242,238,221,0.14);
+    --line-on-blue: rgba(255,255,255,0.14);
+    --surface:#1B1E45;
+    --shadow: 0 18px 44px -20px rgba(0,0,0,0.6);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#14163A;
+      --paper-deep:#1B1E4A;
+      --ink:#F2EEDD;
+      --ink-soft:#C7C3E6;
+      --blue-900:#0E0F2E;
+      --blue-700:#1B1D57;
+      --blue-500:#2D30A0;
+      --yellow-500:#FFCF33;
+      --yellow-300:#7A6A2A;
+      --line: rgba(242,238,221,0.14);
+      --line-on-blue: rgba(255,255,255,0.14);
+      --surface:#1B1E45;
+      --shadow: 0 18px 44px -20px rgba(0,0,0,0.6);
+      color-scheme: dark;
+    }
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Karla', system-ui, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 clamp(20px,4vw,48px);
+  }
+  h1,h2,h3{
+    font-family:'Alegreya', Georgia, serif;
+    font-weight:800;
+    line-height:1.08;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  h3{ font-weight:700; }
+  .eyebrow{
+    font-family:'Karla', sans-serif;
+    font-weight:700;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--blue-700);
+  }
+  :root[data-theme="dark"] .eyebrow{ color:var(--yellow-500); }
+
+  p{ color:var(--ink-soft); margin:0; }
+
+  /* ---------- Nav ---------- */
+  header.site{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; gap:24px;
+    padding:10px clamp(20px,4vw,48px);
+    max-width:1180px; margin:0 auto;
+  }
+  .brand{ display:flex; align-items:center; gap:16px; margin-right:auto; text-decoration:none; }
+  .brand img{ height:96px; width:auto; }
+  .brand .wordmark{ display:flex; flex-direction:column; line-height:1.15; }
+  .brand .wordmark strong{ font-family:'Alegreya',serif; font-size:1.35rem; font-weight:800; color:var(--ink); }
+  .brand .wordmark span{ font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft); }
+
+  nav.links{ display:flex; gap:28px; }
+  nav.links a{
+    text-decoration:none; font-weight:600; font-size:0.92rem; color:var(--ink-soft);
+    padding:6px 2px; border-bottom:2px solid transparent;
+  }
+  nav.links a:hover{ color:var(--ink); border-color:var(--yellow-500); }
+  nav.links a.active{ color:var(--ink); font-weight:800; border-color:var(--yellow-500); }
+
+  .cta-group{ display:flex; gap:10px; align-items:center; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:'Karla', sans-serif; font-weight:700; font-size:0.85rem;
+    padding:11px 20px; border-radius:var(--radius);
+    text-decoration:none; white-space:nowrap;
+    border:1.5px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn:focus-visible{ outline:3px solid var(--blue-500); outline-offset:2px; }
+  .btn-primary{ background:var(--yellow-500); color:var(--blue-900); }
+  .btn-primary:hover{ box-shadow:0 10px 24px -10px rgba(255,201,27,0.7); }
+  .btn-outline{ background:transparent; color:var(--ink); border-color:var(--line); }
+  .btn-outline:hover{ border-color:var(--blue-700); color:var(--blue-700); }
+  :root[data-theme="dark"] .btn-outline:hover{ color:var(--yellow-500); border-color:var(--yellow-500); }
+
+  .menu-toggle{ display:none; background:none; border:1px solid var(--line); border-radius:var(--radius); padding:8px 10px; }
+  .menu-toggle span, .menu-toggle span::before, .menu-toggle span::after{
+    content:''; display:block; width:20px; height:2px; background:var(--ink); position:relative; margin:5px 0;
+  }
+
+  /* ---------- Seam divider ---------- */
+  .seam{ display:block; width:100%; height:56px; }
+  .seam path{ fill:var(--paper); }
+  .seam.to-blue path{ fill:var(--blue-900); }
+  .seam.to-paper path{ fill:var(--paper); }
+  .seam.to-paperdeep path{ fill:var(--paper-deep); }
+  .seam-ring{ stroke:var(--yellow-500); stroke-width:1.4; fill:none; opacity:0.55; }
+
+  /* ---------- Page hero ---------- */
+  .page-hero{ padding:56px 0 64px; }
+  .page-hero .wrap{ max-width:840px; }
+  .page-hero h1{ font-size:clamp(2.1rem,3.8vw,3rem); margin-top:14px; }
+  .page-hero p.lead{ margin-top:20px; font-size:1.08rem; max-width:62ch; }
+  .page-hero .crumb{ display:flex; align-items:center; gap:8px; font-size:0.86rem; color:var(--ink-soft); }
+  .page-hero .crumb a{ text-decoration:none; color:var(--ink-soft); }
+  .page-hero .crumb a:hover{ color:var(--blue-700); }
+  .page-hero .ringline{ margin-top:28px; width:120px; height:auto; opacity:0.8; }
+
+  /* ---------- Section shell ---------- */
+  section.band{ padding:76px 0; }
+  .band-paper{ background:var(--paper); }
+  .band-deep{ background:var(--paper-deep); }
+  .band-blue{ background:var(--blue-900); color:#F2EEDD; }
+  .band-blue p{ color:#CFCCE8; }
+  .band-blue h1, .band-blue h2, .band-blue h3{ color:#fff; }
+  .band-blue .eyebrow{ color:var(--yellow-500); }
+
+  .section-head{ max-width:60ch; margin-bottom:44px; }
+  .section-head h2{ font-size:clamp(2.2rem,3.8vw,3.1rem); margin-top:12px; font-weight:800; letter-spacing:-0.01em; }
+  .section-head p{ margin-top:14px; font-size:1.02rem; }
+
+  /* ---------- Egresado destacado del mes ---------- */
+  .copa-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center; }
+  .avatar-ring{ position:relative; width:180px; height:180px; margin:0 auto; }
+  .avatar-ring svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .avatar-ring .core{
+    position:absolute; inset:26px; border-radius:50%;
+    background:linear-gradient(160deg, var(--yellow-300), var(--yellow-500));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Alegreya',serif; font-weight:800; font-size:1.6rem; color:var(--blue-900);
+  }
+  .featured-card{
+    background:rgba(255,255,255,0.04); border:1px solid var(--line-on-blue); border-radius:10px;
+    padding:26px; position:relative;
+  }
+  .featured-card .tab{
+    position:absolute; top:-13px; left:24px; background:var(--yellow-500); color:var(--blue-900);
+    font-size:0.68rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase;
+    padding:5px 10px; border-radius:4px;
+  }
+  .featured-card h3{ margin-top:8px; font-size:1.25rem; }
+  .featured-card .who{ color:var(--yellow-500); font-size:0.84rem; font-weight:700; margin-top:4px; }
+  .featured-card p{ margin-top:14px; }
+
+  /* ---------- Archivo (placeholder grid) ---------- */
+  .archive-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .archive-card{
+    background:var(--surface); border:1px dashed var(--line); border-radius:10px;
+    padding:24px; text-align:center; color:var(--ink-soft);
+  }
+  .archive-card .month{
+    font-family:'Alegreya',serif; font-weight:800; font-size:1rem; color:var(--blue-700); margin-bottom:8px; display:block;
+  }
+  .archive-card p{ font-size:0.86rem; }
+
+  /* ---------- Sigue explorando ---------- */
+  .explore-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .explore-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:10px;
+    padding:24px 22px; text-decoration:none; display:block;
+    box-shadow:var(--shadow); transition:transform .15s ease, border-color .15s ease;
+  }
+  .explore-card:hover{ transform:translateY(-3px); border-color:var(--yellow-500); }
+  .explore-card .eyebrow{ font-size:0.66rem; }
+  .explore-card h3{ margin-top:8px; font-size:1.05rem; font-family:'Karla',sans-serif; font-weight:800; color:var(--ink); }
+  .explore-card p{ margin-top:8px; font-size:0.86rem; }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--blue-900); color:#CFCCE8; padding:56px 0 28px; border-top:1px solid var(--line-on-blue); }
+  .foot-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:40px; padding-bottom:36px; border-bottom:1px solid var(--line-on-blue); }
+  .foot-brand{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .foot-brand img{ height:36px; }
+  .foot-brand strong{ font-family:'Alegreya',serif; color:#fff; font-size:1.1rem; }
+  footer h4{ color:#fff; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 14px; }
+  footer ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  footer a{ text-decoration:none; color:#CFCCE8; font-size:0.9rem; }
+  footer a:hover{ color:var(--yellow-500); }
+  .foot-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:22px; font-size:0.8rem; flex-wrap:wrap; gap:10px; }
+
+  /* ---------- Reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  @media (max-width: 900px){
+    nav.links{ display:none; }
+    .menu-toggle{ display:block; }
+    .brand img{ height:64px; }
+    .copa-grid{ grid-template-columns:1fr; }
+    .archive-grid{ grid-template-columns:1fr; }
+    .explore-grid{ grid-template-columns:1fr 1fr; }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 560px){
+    .explore-grid{ grid-template-columns:1fr; }
+  }
+</style>
+
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="index.html">
+      <img src="data:image/png;base64,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" alt="CSD" />
+      <span class="wordmark"><strong>Colegio CSD</strong><span>Estudio · Amor · Paz</span></span>
+    </a>
+    <nav class="links">
+      <a href="nosotros.html">Nosotros</a>
+      <a href="formacion.html">Formación</a>
+      <a href="academico.html">Académico</a>
+      <a href="egresados.html" class="active">Egresados</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+    <div class="cta-group">
+      <a class="btn btn-outline" href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener">Portal académico</a>
+      <a class="btn btn-primary" href="#inscripciones">Inscríbete aquí</a>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ================= PAGE HERO ================= -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb reveal in"><a href="index.html">Inicio</a><span>/</span><span>Egresados</span></div>
+      <p class="eyebrow" style="margin-top:18px;">Egresados</p>
+      <h1 class="reveal in">Hacia dónde llegan los que salen del CSD.</h1>
+      <p class="lead reveal in">Cada mes, el director elige a un egresado del colegio y cuenta su historia: quién fue aquí, y hacia dónde lo llevó lo que se llevó de aquí. Esta página reúne esa serie.</p>
+      <svg class="ringline reveal in" viewBox="0 0 120 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="16" fill="none" stroke="var(--yellow-500)" stroke-width="1.5" opacity="0.7"/>
+        <circle cx="20" cy="20" r="9" fill="none" stroke="var(--blue-700)" stroke-width="1.5" opacity="0.7"/>
+        <line x1="44" y1="20" x2="116" y2="20" stroke="var(--line)" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </section>
+
+  <svg class="seam to-blue" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,26 C 360,-2 1080,54 1440,22 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <!-- ================= EGRESADO DESTACADO ================= -->
+  <section class="band band-blue" id="destacado">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Egresado destacado · sección mensual</p>
+        <h2>La entrega de este mes</h2>
+      </div>
+      <div class="copa-grid">
+        <div class="avatar-ring reveal" aria-hidden="true">
+          <svg viewBox="0 0 180 180">
+            <circle cx="90" cy="90" r="86" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.35" stroke-width="1.5"/>
+            <circle cx="90" cy="90" r="70" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.55" stroke-width="1.5"/>
+          </svg>
+          <div class="core">CSD</div>
+        </div>
+        <div class="featured-card reveal">
+          <span class="tab">Vista previa · agosto</span>
+          <h3>Egresado destacado</h3>
+          <div class="who">Promoción por confirmar</div>
+          <p>Cada mes el director elige y entrevista a un egresado del colegio para contar hacia dónde lo llevó su paso por el CSD. Esta tarjeta es la plantilla del formato: el contenido real está pendiente de la primera entrevista.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="seam to-paper" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,30 C 380,-4 1060,58 1440,18 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,30 C 380,-4 1060,58 1440,18" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <!-- ================= ARCHIVO ================= -->
+  <section class="band band-paper" id="archivo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Cada mes, uno nuevo</p>
+        <h2>El archivo va a crecer aquí</h2>
+        <p>A medida que se publiquen, las entrevistas anteriores quedarán reunidas en esta sección.</p>
+      </div>
+      <div class="archive-grid">
+        <div class="archive-card reveal">
+          <span class="month">Próximamente</span>
+          <p>La primera entrega del mes aparecerá aquí en cuanto esté lista.</p>
+        </div>
+        <div class="archive-card reveal">
+          <span class="month">Próximamente</span>
+          <p>Un nuevo egresado, un nuevo mes.</p>
+        </div>
+        <div class="archive-card reveal">
+          <span class="month">Próximamente</span>
+          <p>El archivo completo vivirá en esta cuadrícula.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROYECCION ================= -->
+  <section class="band band-deep" id="proyeccion">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">No es solo un dato aislado</p>
+        <h2>El colegio también proyecta a quienes enseñan</h2>
+        <p>La misma idea de proyección que se cuenta aquí con los estudiantes aplica también a los maestros jóvenes que se forman en el CSD y, con el tiempo, siguen su camino. Esa historia está en <a href="formacion.html" style="color:var(--blue-700); font-weight:700; text-decoration:underline; text-underline-offset:3px;">Formación</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SIGUE EXPLORANDO ================= -->
+  <section class="band band-paper">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Sigue explorando</p>
+        <h2 style="font-size:clamp(1.8rem,2.8vw,2.3rem);">El resto de la historia, por partes</h2>
+      </div>
+      <div class="explore-grid">
+        <a class="explore-card reveal" href="nosotros.html">
+          <p class="eyebrow">Nosotros</p>
+          <h3>Quiénes somos</h3>
+          <p>La historia completa: fundación, sede, y hasta dónde llega el colegio.</p>
+        </a>
+        <a class="explore-card reveal" href="formacion.html">
+          <p class="eyebrow">Formación</p>
+          <h3>Valores y modelo pedagógico</h3>
+          <p>Cómo se traduce "Estudio, Amor y Paz" en el día a día del salón.</p>
+        </a>
+        <a class="explore-card reveal" href="academico.html">
+          <p class="eyebrow">Académico</p>
+          <h3>Física, química y filosofía desde primaria</h3>
+          <p>La oferta académica completa y los resultados en Pruebas Saber.</p>
+        </a>
+        <a class="explore-card reveal" href="blog.html">
+          <p class="eyebrow">Blog</p>
+          <h3>Noticias del colegio</h3>
+          <p>Novedades académicas, convivencia y eventos, mes a mes.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="data:image/png;base64,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" alt="CSD" />
+          <strong>Colegio CSD</strong>
+        </div>
+                <p style="color:#B9B6DC; font-size:0.88rem; max-width:32ch;">Cra. 6E No. 27A - D3 · Barrio La Cumbre, Floridablanca, Santander.</p>
+        <p style="color:#8D89B8; font-size:0.74rem; max-width:34ch; margin-top:8px;">Resolución de aprobación No. 05875 (junio de 2002) · DANE 368276001474</p>
+      </div>
+      <div>
+        <h4>Colegio</h4>
+        <ul>
+          <li><a href="nosotros.html">Nuestra historia</a></li>
+          <li><a href="formacion.html">Formación y valores</a></li>
+          <li><a href="academico.html">Oferta académica</a></li>
+          <li><a href="egresados.html">Egresados</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Familias</h4>
+        <ul>
+          <li><a href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener">Portal académico</a></li>
+          <li><a href="#inscripciones">Inscripciones</a></li>
+          <li><a href="blog.html">Noticias</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/colsemillero" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="https://www.tiktok.com/@colegiosemillerodosmil" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Colegio CSD — La Cumbre, Floridablanca.</span>
+      <span>Mockup de página interior · contenido y enlaces por confirmar</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal:not(.in)');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, {threshold:0.15});
+      els.forEach(function(el){ io.observe(el); });
+    } else {
+      els.forEach(function(el){ el.classList.add('in'); });
+    }
+
+    var toggle = document.querySelector('.menu-toggle');
+    var links = document.querySelector('nav.links');
+    if(toggle && links){
+      toggle.addEventListener('click', function(){
+        var open = links.style.display === 'flex';
+        links.style.display = open ? 'none' : 'flex';
+        links.style.cssText += open ? '' : 'position:absolute; top:100%; left:0; right:0; background:var(--paper); flex-direction:column; padding:16px 24px; border-bottom:1px solid var(--line); gap:16px;';
+      });
+    }
+  })();
+</script>
