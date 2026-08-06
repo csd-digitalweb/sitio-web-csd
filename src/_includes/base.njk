@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ pageTitle or title }}</title>
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body class="{{ bodyClass }}">
+<header class="site">
+  <div class="nav">
+    <a class="brand" href="/">
+      <img src="/assets/logo.png" alt="CSD" />
+      <span class="wordmark"><strong>Colegio CSD</strong><span>Estudio · Amor · Paz</span></span>
+    </a>
+    <nav class="links">
+      {%- for item in nav %}
+      <a href="{{ item.href }}"{% if page.url.startsWith(item.href) %} class="active"{% endif %}>{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
+    <div class="cta-group">
+      <a class="btn btn-outline" href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener">Portal académico</a>
+      <a class="btn btn-primary" href="#inscripciones">Inscríbete aquí</a>
+    </div>
+    <button class="menu-toggle" aria-label="Abrir menú"><span></span></button>
+  </div>
+</header>
+
+{{ content | safe }}
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <img src="/assets/logo.png" alt="CSD" />
+          <strong>Colegio CSD</strong>
+        </div>
+        <p style="color:#B9B6DC; font-size:0.88rem; max-width:32ch;">Cra. 6E No. 27A - D3 · Barrio La Cumbre, Floridablanca, Santander.</p>
+        <p style="color:#8D89B8; font-size:0.74rem; max-width:34ch; margin-top:8px;">Resolución de aprobación No. 05875 (junio de 2002) · DANE 368276001474</p>
+      </div>
+      <div>
+        <h4>Colegio</h4>
+        <ul>
+          <li><a href="/nosotros/">Nuestra historia</a></li>
+          <li><a href="/formacion/">Formación y valores</a></li>
+          <li><a href="/academico/">Oferta académica</a></li>
+          <li><a href="/egresados/">Egresados</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Familias</h4>
+        <ul>
+          <li><a href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener">Portal académico</a></li>
+          <li><a href="#inscripciones">Inscripciones</a></li>
+          <li><a href="/noticias/">Noticias</a></li>
+          <li><a href="/contacto/">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/colsemillero" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="https://www.tiktok.com/@colegiosemillerodosmil" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Colegio CSD — La Cumbre, Floridablanca.</span>
+      <span>Mockup de sitio · contenido y enlaces por confirmar</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal:not(.in)');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, {threshold:0.15});
+      els.forEach(function(el){ io.observe(el); });
+    } else {
+      els.forEach(function(el){ el.classList.add('in'); });
+    }
+
+    var toggle = document.querySelector('.menu-toggle');
+    var links = document.querySelector('nav.links');
+    if(toggle && links){
+      toggle.addEventListener('click', function(){
+        var open = links.style.display === 'flex';
+        links.style.display = open ? 'none' : 'flex';
+        links.style.cssText += open ? '' : 'position:absolute; top:100%; left:0; right:0; background:var(--paper); flex-direction:column; padding:16px 24px; border-bottom:1px solid var(--line); gap:16px;';
+      });
+    }
+  })();
+</script>
+</body>
+</html>

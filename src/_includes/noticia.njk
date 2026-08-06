@@ -1,0 +1,35 @@
+---
+layout: base.njk
+bodyClass: page-noticia
+---
+<main id="top">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><a href="/noticias/">Noticias</a><span>/</span><span>{{ title }}</span></div>
+      <p class="eyebrow" style="margin-top:18px;">{{ categoria or "Noticias" }} · {{ fecha | fechaLegible }}{% if autor %} · {{ autor }}{% endif %}</p>
+      <h1 class="reveal in">{{ title }}</h1>
+    </div>
+  </section>
+
+  <svg class="seam to-paper" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,26 C 360,-2 1080,54 1440,22 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <section class="band band-paper">
+    <div class="wrap">
+      {% if portada %}
+      <img class="noticia-portada" src="{{ portada }}" alt="{{ title }}">
+      {% endif %}
+      <div class="post-body reveal in">
+        {{ content | safe }}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-deep">
+    <div class="wrap" style="text-align:center;">
+      <a class="btn btn-outline" href="/noticias/">← Volver a Noticias</a>
+    </div>
+  </section>
+</main>

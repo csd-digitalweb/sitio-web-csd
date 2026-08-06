@@ -1,0 +1,134 @@
+---
+layout: base.njk
+title: Contacto — Colegio CSD
+bodyClass: page-contacto
+---
+<main id="top">
+  <!-- ================= PAGE HERO ================= -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><span>Contacto</span></div>
+      <p class="eyebrow" style="margin-top:18px;">Contacto</p>
+      <h1 class="reveal in">Escríbenos, o ven directo a La Cumbre.</h1>
+      <p class="lead reveal in">Para trámites de matrícula y consulta de notas, el camino más rápido es el Portal académico. Para todo lo demás, esta página reúne cómo encontrarnos.</p>
+    </div>
+  </section>
+
+  <svg class="seam to-deep" viewBox="0 0 1440 56" preserveAspectRatio="none" style="display:block;">
+    <path d="M0,26 C 360,-2 1080,54 1440,22 L1440,56 L0,56 Z" fill="var(--paper-deep)"/>
+    <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <!-- ================= TARJETAS ================= -->
+  <section class="band band-deep" id="datos">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <svg class="mark-icon" viewBox="0 0 30 30"><path d="M15 3c-5 0-9 4-9 9 0 7 9 15 9 15s9-8 9-15c0-5-4-9-9-9z" fill="none" stroke="var(--blue-700)" stroke-width="2"/><circle cx="15" cy="12" r="3" fill="var(--yellow-500)"/></svg>
+          <h3>Dirección</h3>
+          <p>Carrera 6E No. 27A - D3<br/>Barrio La Cumbre, Floridablanca, Santander.</p>
+          <span class="pending">Mapa interactivo, pendiente de integrar</span>
+        </div>
+        <div class="contact-card reveal">
+          <svg class="mark-icon" viewBox="0 0 30 30"><rect x="4" y="6" width="22" height="18" rx="3" fill="none" stroke="var(--blue-700)" stroke-width="2"/><path d="M5 8 L15 16 L25 8" fill="none" stroke="var(--yellow-500)" stroke-width="2"/></svg>
+          <h3>Secretaría</h3>
+          <p>secretaria1csd@gmail.com<br/>Tel. / WhatsApp: 315 290 4403</p>
+          <a class="pending" style="opacity:1; font-style:normal; font-weight:700; color:var(--blue-700);" href="https://wa.me/573152904403" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+        </div>
+        <div class="contact-card reveal">
+          <svg class="mark-icon" viewBox="0 0 30 30"><rect x="4" y="6" width="22" height="18" rx="3" fill="none" stroke="var(--blue-700)" stroke-width="2"/><path d="M5 8 L15 16 L25 8" fill="none" stroke="var(--yellow-500)" stroke-width="2"/></svg>
+          <h3>Tesorería</h3>
+          <p>csdpagos@gmail.com<br/>Tel. / WhatsApp: 321 890 3190</p>
+          <a class="pending" style="opacity:1; font-style:normal; font-weight:700; color:var(--blue-700);" href="https://wa.me/573218903190" target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+        </div>
+        <div class="contact-card reveal">
+          <svg class="mark-icon" viewBox="0 0 30 30"><circle cx="15" cy="15" r="11" fill="none" stroke="var(--blue-700)" stroke-width="2"/><path d="M15 9 V15 L19 18" fill="none" stroke="var(--yellow-500)" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>Horario de atención</h3>
+          <p>Días y horas de atención en secretaría se publicarán aquí.</p>
+          <span class="pending">Por confirmar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= UBICACION + FORMULARIO ================= -->
+  <section class="band band-paper" id="ubicacion">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Cómo llegar y escribir</p>
+        <h2>Encuéntranos en La Cumbre</h2>
+      </div>
+      <div class="location-grid">
+        <div class="location-visual reveal" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="86" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.4" stroke-width="1.5"/>
+            <circle cx="100" cy="100" r="62" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.5" stroke-width="1.5"/>
+            <path d="M100 60c-14 0-25 11-25 25 0 19 25 45 25 45s25-26 25-45c0-14-11-25-25-25z" fill="var(--yellow-500)"/>
+            <circle cx="100" cy="85" r="8" fill="var(--blue-900)"/>
+          </svg>
+          <div class="caption">Carrera 6E No. 27A - D3, Barrio La Cumbre, Floridablanca, Santander. El mapa interactivo se integrará más adelante.</div>
+        </div>
+        <form class="form-card reveal" onsubmit="return false;">
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" placeholder="Tu nombre completo" />
+          </div>
+          <div class="field">
+            <label for="correo">Correo electrónico</label>
+            <input id="correo" type="email" placeholder="tucorreo@ejemplo.com" />
+          </div>
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" placeholder="Cuéntanos en qué te podemos ayudar"></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit" style="width:100%;">Enviar mensaje</button>
+          <p class="form-note">Este formulario es una maqueta visual: el envío real se conectará antes del lanzamiento del sitio.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA PORTAL / INSCRIPCIONES ================= -->
+  <section class="band band-blue">
+    <div class="wrap" style="text-align:center; max-width:640px;">
+      <p class="eyebrow reveal">¿Buscas notas, tareas o matrícula?</p>
+      <h2 class="reveal" style="margin-top:10px; font-size:clamp(1.6rem,3vw,2.1rem);">Eso se resuelve en el portal, no aquí.</h2>
+      <div class="reveal" style="justify-content:center; margin-top:26px; display:flex; gap:14px; flex-wrap:wrap;">
+        <a class="btn btn-primary" href="#inscripciones">Inscríbete aquí</a>
+        <a class="btn btn-outline" href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener" style="color:#fff; border-color:var(--line-on-blue);">Ir al portal académico</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SIGUE EXPLORANDO ================= -->
+  <section class="band band-deep">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Sigue explorando</p>
+        <h2 style="font-size:clamp(1.8rem,2.8vw,2.3rem);">El resto de la historia, por partes</h2>
+      </div>
+      <div class="explore-grid">
+        <a class="explore-card reveal" href="/nosotros/">
+          <p class="eyebrow">Nosotros</p>
+          <h3>Quiénes somos</h3>
+          <p>La historia completa: fundación, sede, y hasta dónde llega el colegio.</p>
+        </a>
+        <a class="explore-card reveal" href="/formacion/">
+          <p class="eyebrow">Formación</p>
+          <h3>Valores y modelo pedagógico</h3>
+          <p>Cómo se traduce "Estudio, Amor y Paz" en el día a día del salón.</p>
+        </a>
+        <a class="explore-card reveal" href="/academico/">
+          <p class="eyebrow">Académico</p>
+          <h3>Física, química y filosofía desde primaria</h3>
+          <p>La oferta académica completa y los resultados en Pruebas Saber.</p>
+        </a>
+        <a class="explore-card reveal" href="/egresados/">
+          <p class="eyebrow">Egresados</p>
+          <h3>Hacia dónde llegan los que salen de aquí</h3>
+          <p>La sección mensual de egresado destacado y su historia.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>

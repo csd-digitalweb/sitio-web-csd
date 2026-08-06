@@ -1,0 +1,179 @@
+---
+layout: base.njk
+title: Noticias — Colegio CSD
+bodyClass: page-noticias
+permalink: /noticias/
+---
+{% set posts = collections.noticias %}
+<main id="top">
+  <!-- ================= PAGE HERO ================= -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><span>Noticias</span></div>
+      <p class="eyebrow" style="margin-top:18px;">Noticias</p>
+      <h1 class="reveal in">Lo que pasa en el CSD, mes a mes.</h1>
+      <p class="lead reveal in">Novedades académicas, convivencia y eventos del colegio — con una entrega fija cada mes dedicada a un egresado destacado.</p>
+      <div class="chips reveal in">
+        <span class="chip is-fixed">Egresado destacado</span>
+        <span class="chip">Noticias</span>
+        <span class="chip">Convivencia</span>
+        <span class="chip">Eventos</span>
+      </div>
+    </div>
+  </section>
+
+  <svg class="seam to-blue" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,26 C 360,-2 1080,54 1440,22 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  {% if posts.length %}
+  <!-- ================= ÚLTIMA ENTRADA ================= -->
+  <section class="band band-blue" id="destacado">
+    <div class="wrap">
+      {% set ultima = posts[posts.length - 1] %}
+      <div class="section-head reveal">
+        <p class="eyebrow">{{ ultima.data.categoria or "Noticias" }} · {{ ultima.data.fecha | fechaLegible }}</p>
+        <h2>{{ ultima.data.title }}</h2>
+      </div>
+      <a class="featured-post reveal" href="{{ ultima.url }}" style="text-decoration:none; display:grid;">
+        <div class="visual" aria-hidden="true">
+          {% if ultima.data.portada %}
+          <img src="{{ ultima.data.portada }}" alt="" style="width:100%; height:100%; object-fit:cover;">
+          {% else %}
+          <svg viewBox="0 0 180 180">
+            <circle cx="90" cy="90" r="80" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.5" stroke-width="1.5"/>
+            <circle cx="90" cy="90" r="58" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.4" stroke-width="1.5"/>
+            <circle cx="90" cy="90" r="36" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.3" stroke-width="1.5"/>
+          </svg>
+          {% endif %}
+        </div>
+        <div class="content">
+          <span class="tag">{{ ultima.data.categoria or "Noticias" }}</span>
+          <h3>{{ ultima.data.title }}</h3>
+          {% if ultima.data.resumen %}<p>{{ ultima.data.resumen }}</p>{% endif %}
+          <div class="meta">Leer la noticia completa →</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <svg class="seam to-paper" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,30 C 380,-4 1060,58 1440,18 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,30 C 380,-4 1060,58 1440,18" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <!-- ================= ARCHIVO ================= -->
+  <section class="band band-paper" id="archivo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Archivo</p>
+        <h2>Todas las entradas</h2>
+      </div>
+      <div class="post-grid">
+        {% for post in posts | reverse %}
+        <a class="post-card reveal" href="{{ post.url }}" style="text-decoration:none;">
+          <span class="tag">{{ post.data.categoria or "Noticias" }}</span>
+          <h3>{{ post.data.title }}</h3>
+          {% if post.data.resumen %}<p>{{ post.data.resumen }}</p>{% endif %}
+          <span class="soon">{{ post.data.fecha | fechaLegible }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% else %}
+  <!-- ================= DESTACADO (vista previa, sin publicaciones aún) ================= -->
+  <section class="band band-blue" id="destacado">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Vista previa</p>
+        <h2>Así se verá la entrada destacada</h2>
+      </div>
+      <div class="featured-post reveal">
+        <div class="visual" aria-hidden="true">
+          <svg viewBox="0 0 180 180">
+            <circle cx="90" cy="90" r="80" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.5" stroke-width="1.5"/>
+            <circle cx="90" cy="90" r="58" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.4" stroke-width="1.5"/>
+            <circle cx="90" cy="90" r="36" fill="none" stroke="var(--yellow-500)" stroke-opacity="0.3" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="content">
+          <span class="tag">Egresado destacado</span>
+          <h3>La primera entrevista del mes, aquí</h3>
+          <p>Este espacio va a reunir, cada mes, la historia de un egresado del colegio: quién fue en el CSD y hacia dónde lo llevó. Por ahora es la plantilla del formato — el contenido real llega con la primera publicación.</p>
+          <div class="meta">Vista previa · pendiente de publicación</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="seam to-paper" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,30 C 380,-4 1060,58 1440,18 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,30 C 380,-4 1060,58 1440,18" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <!-- ================= PROXIMAMENTE ================= -->
+  <section class="band band-paper" id="proximamente">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Aún no hay entradas publicadas</p>
+        <h2>El blog está listo para empezar a llenarse</h2>
+        <p>Esta cuadrícula muestra cómo se van a organizar las noticias una vez el colegio empiece a publicar.</p>
+      </div>
+      <div class="post-grid">
+        <div class="post-card reveal">
+          <span class="tag">Noticias</span>
+          <h3>Novedades académicas</h3>
+          <p>Actualizaciones sobre el plan de estudios, eventos institucionales y logros del colegio.</p>
+          <span class="soon">Próximamente</span>
+        </div>
+        <div class="post-card reveal">
+          <span class="tag">Convivencia</span>
+          <h3>Vida en el colegio</h3>
+          <p>Lo que pasa entre estudiantes de distintos grados, día a día, dentro y fuera del salón.</p>
+          <span class="soon">Próximamente</span>
+        </div>
+        <div class="post-card reveal">
+          <span class="tag">Eventos</span>
+          <h3>Fechas y actividades</h3>
+          <p>Izadas de bandera, entregas de boletines, actividades culturales y fechas importantes del calendario.</p>
+          <span class="soon">Próximamente</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- ================= SIGUE EXPLORANDO ================= -->
+  <section class="band band-deep">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Sigue explorando</p>
+        <h2 style="font-size:clamp(1.8rem,2.8vw,2.3rem);">El resto de la historia, por partes</h2>
+      </div>
+      <div class="explore-grid">
+        <a class="explore-card reveal" href="/nosotros/">
+          <p class="eyebrow">Nosotros</p>
+          <h3>Quiénes somos</h3>
+          <p>La historia completa: fundación, sede, y hasta dónde llega el colegio.</p>
+        </a>
+        <a class="explore-card reveal" href="/formacion/">
+          <p class="eyebrow">Formación</p>
+          <h3>Valores y modelo pedagógico</h3>
+          <p>Cómo se traduce "Estudio, Amor y Paz" en el día a día del salón.</p>
+        </a>
+        <a class="explore-card reveal" href="/academico/">
+          <p class="eyebrow">Académico</p>
+          <h3>Física, química y filosofía desde primaria</h3>
+          <p>La oferta académica completa y los resultados en Pruebas Saber.</p>
+        </a>
+        <a class="explore-card reveal" href="/egresados/">
+          <p class="eyebrow">Egresados</p>
+          <h3>Hacia dónde llegan los que salen de aquí</h3>
+          <p>La sección mensual de egresado destacado y su historia.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>

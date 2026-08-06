@@ -1,0 +1,14 @@
+{
+  "name": "sitio-web-csd",
+  "version": "1.0.0",
+  "description": "Sitio web del Colegio CSD (La Cumbre, Floridablanca) — construido con Eleventy.",
+  "private": true,
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "debug": "DEBUG=Eleventy* eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
