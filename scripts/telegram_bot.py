@@ -12,14 +12,15 @@ from publisher import publish_to_web
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
 ALLOWED_USERS_RAW = os.getenv("ALLOWED_USERS", "")
-ALLOWED_USERS = [u.strip().lower().lstrip('@') for u in ALLOWED_USERS_RAW.split(',') if u.strip()]
+ALLOWED_PHONES_RAW = os.getenv("ALLOWED_PHONES", "")
 DIRECTOR_CHAT_ID = os.getenv("DIRECTOR_CHAT_ID", "")
+
+ALLOWED_USERS = [u.strip().lower().lstrip('@') for u in ALLOWED_USERS_RAW.split(',') if u.strip()]
+ALLOWED_PHONES = [p.strip().replace("+", "").replace(" ", "").replace("-", "") for p in ALLOWED_PHONES_RAW.split(',') if p.strip()]
+
 API_URL = f"https://api.telegram.org/bot{TOKEN}" if TOKEN else ""
 
 def call_telegram_api(method, data=None):
-    """
-    Realiza peticiones a la API de Telegram usando curl.exe para máxima compatibilidad y estabilidad en Windows.
-    """
     if not TOKEN:
         return None
     url = f"{API_URL}/{method}"
@@ -35,13 +36,24 @@ def call_telegram_api(method, data=None):
         print(f"Error en llamada a Telegram API ({method}): {e}")
     return None
 
-def is_user_authorized(from_user):
-    if not ALLOWED_USERS:
-        # Si no hay lista restrictiva configurada, autorizar inicialmente
+def is_user_authorized(from_user, phone_number=""):
+    if not ALLOWED_USERS and not ALLOWED_PHONES:
+        # Si aún no se configuran números ni usuarios, se permite el inicio inicial
         return True
+
     user_id = str(from_user.get("id", ""))
     username = from_user.get("username", "").lower()
-    return (user_id in ALLOWED_USERS or username in ALLOWED_USERS)
+
+    if user_id in ALLOWED_USERS or username in ALLOWED_USERS:
+        return True
+
+    if phone_number:
+        clean_phone = phone_number.replace("+", "").replace(" ", "").replace("-", "")
+        for allowed in ALLOWED_PHONES:
+            if clean_phone.endswith(allowed) or allowed.endswith(clean_phone):
+                return True
+
+    return False
 
 def get_updates(offset=None):
     payload = {"timeout": 30}
@@ -66,6 +78,24 @@ def edit_message_text(chat_id, message_id, text, reply_markup=None):
     if reply_markup:
         data["reply_markup"] = reply_markup
     return call_telegram_api("editMessageText", data)
+
+def request_phone_authorization(chat_id):
+    keyboard = {
+        "keyboard": [
+            [
+                {"text": "📱 Verificar mi número de celular para ingresar", "request_contact": True}
+            ]
+        ],
+        "resize_keyboard": True,
+        "one_time_keyboard": True
+    }
+    send_message(
+        chat_id,
+        "🔒 *Sistema de Seguridad Institucional Colegio CSD*\n\n"
+        "Este bot es exclusivo para profesores y directivos autorizados.\n"
+        "Toca el botón azul de abajo **'📱 Verificar mi número de celular'** para autenticar tu ingreso automáticamente.",
+        reply_markup=keyboard
+    )
 
 def handle_text_message(chat_id, from_user, text):
     lines = text.strip().split('\n')
@@ -171,28 +201,44 @@ def run_bot():
             chat_id = message.get("chat", {}).get("id")
             from_user = message.get("from", {})
             text = message.get("text", "")
+            contact = message.get("contact", {})
 
             if not chat_id:
                 continue
 
-            if not is_user_authorized(from_user):
-                send_message(
-                    chat_id,
-                    "⛔ *Acceso Restringido*\n\n"
-                    "Este bot es exclusivo para el equipo pedagógico y directivo del Colegio CSD.\n"
-                    "Tu usuario de Telegram no está en la lista de personal autorizado."
-                )
+            # Verificación por contacto/teléfono compartido
+            if contact:
+                phone_num = contact.get("phone_number", "")
+                if is_user_authorized(from_user, phone_number=phone_num):
+                    send_message(
+                        chat_id,
+                        f"✅ *¡Teléfono Verificado Exitosamente!*\n\n"
+                        f"Hola *{from_user.get('first_name', '')}*. Tu número de celular (`{phone_num}`) "
+                        f"ha sido autorizado para publicar en el Colegio CSD.\n\n"
+                        f"Ya puedes enviarme noticias o fotos cuando quieras."
+                    )
+                else:
+                    send_message(
+                        chat_id,
+                        f"⛔ *Acceso Denegado*\n\n"
+                        f"El número `{phone_num}` no figura en la lista de celulares autorizados del colegio."
+                    )
                 continue
 
-            if text.startswith("/start"):
+            if not is_user_authorized(from_user):
+                request_phone_authorization(chat_id)
+                continue
+
+            if text.startswith("/start") or text.startswith("/id"):
                 send_message(
                     chat_id,
-                    "👋 *¡Hola! Soy el Bot Community Manager del Colegio CSD.*\n\n"
-                    "Para enviar una **noticia o artículo de interés** para la página web `csd.edu.co`:\n"
-                    "Escríbeme el título en la primera línea y luego los detalles o borrador.\n\n"
-                    " Ejemplo:\n"
-                    "`Izada de Bandera del 7 de Agosto`\n"
-                    "`Hoy todos los cursos de primaria participaron con muestras de danza y música.`"
+                    f"👋 *¡Hola {from_user.get('first_name', '')}! Soy el Bot del Colegio CSD.*\n\n"
+                    f"📱 *Tu ID Único de Celular:* `{from_user.get('id')}`\n\n"
+                    f"Para enviar una **noticia o artículo de interés** para la página `csd.edu.co`:\n"
+                    f"Escríbeme el título en la primera línea y luego los detalles o borrador.\n\n"
+                    f" Ejemplo:\n"
+                    f"`Izada de Bandera del 7 de Agosto`\n"
+                    f"`Hoy todos los cursos de primaria participaron con muestras de danza y música.`"
                 )
             elif text:
                 send_message(chat_id, "✍️ Procesando tu noticia y creando el borrador institucional...")
