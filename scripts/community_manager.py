@@ -90,5 +90,20 @@ fotos:
 
     return file_path, filename
 
+def approve_content_file(folder_name, filename):
+    """
+    Cambia el estado de publicado: false a publicado: true en un archivo de noticias o galería.
+    Sin límite de tiempo.
+    """
+    file_path = os.path.join(BASE_DIR, "src", folder_name, filename)
+    if os.path.exists(file_path):
+        with open(file_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        content = content.replace("publicado: false", "publicado: true")
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return True
+    return False
+
 if __name__ == "__main__":
     print("Motor del Community Manager listo.")
