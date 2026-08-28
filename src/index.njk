@@ -5,29 +5,82 @@ bodyClass: page-index
 permalink: /
 ---
 <main id="top">
-  <!-- ================= HERO ================= -->
+  <!-- ================= HERO SHOWCASE ================= -->
   <section class="hero">
     <div class="wrap">
-      <div class="reveal in">
+      <div class="hero-text reveal in">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Ciclo Completo · Preescolar a Once</span>
+        </div>
         <p class="eyebrow">Barrio La Cumbre · Floridablanca, Santander</p>
         <h1>El único colegio de <em>ciclo completo</em> en La Cumbre.</h1>
-        <p class="lead">De preescolar a once, en la misma sede, con más de 35 años formando estudiantes — y también maestros jóvenes. Salones pequeños, cercanía real y exigencia académica desde los primeros grados: física, química y filosofía, cuando la mayoría los deja para bachillerato.</p>
+        <p class="lead">De preescolar a once en la misma sede, con más de 35 años formando con cercanía real, salones pequeños y exigencia académica temprana: física, química y filosofía desde los primeros grados.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">Inscríbete aquí</a>
-          <a class="btn btn-outline" href="#raiz">Conoce el colegio</a>
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">
+            <span>Inscríbete aquí</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a class="btn btn-outline" href="#niveles">Conoce los niveles</a>
         </div>
       </div>
-      <div class="building reveal in" aria-hidden="true">
-        <div class="glow"></div>
-        <div class="floor"></div>
-        <div class="floor"></div>
-        <div class="floor"></div>
-        <svg class="rings" viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="46" fill="none" stroke="#FFC91B" stroke-opacity="0.5" stroke-width="1.2"/>
-          <circle cx="50" cy="50" r="34" fill="none" stroke="#FFC91B" stroke-opacity="0.4" stroke-width="1.2"/>
-          <circle cx="50" cy="50" r="22" fill="none" stroke="#FFC91B" stroke-opacity="0.3" stroke-width="1.2"/>
-        </svg>
-        <div class="caption">Nuestra sede: un edificio de tres pisos que crece hacia arriba, no hacia los lados. (Fotografía real de la sede, pendiente de sesión.)</div>
+
+      <!-- Vitrina Interactiva en la Portada -->
+      <div class="hero-showcase reveal in" id="hero-showcase">
+        <div class="showcase-card">
+          <div class="showcase-nav" role="tablist" aria-label="Aspectos destacados">
+            <button class="showcase-tab active" role="tab" aria-selected="true" aria-controls="showcase-panel-1" id="tab-cumbre">
+              <span class="tab-icon">🏫</span>
+              <span>Sede La Cumbre</span>
+            </button>
+            <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="showcase-panel-2" id="tab-ciencia">
+              <span class="tab-icon">🔬</span>
+              <span>Ciencia y Filosofía</span>
+            </button>
+            <button class="showcase-tab" role="tab" aria-selected="false" aria-controls="showcase-panel-3" id="tab-cercania">
+              <span class="tab-icon">🤝</span>
+              <span>Convivencia</span>
+            </button>
+          </div>
+
+          <div class="showcase-body">
+            <!-- Pestaña 1: Sede La Cumbre -->
+            <div class="showcase-panel active" id="showcase-panel-1" role="tabpanel" aria-labelledby="tab-cumbre">
+              <div class="showcase-tag">Sede Propia e Histórica</div>
+              <h3>Edificio de 3 pisos con 2 patios</h3>
+              <p>Estructura que crece hacia arriba para mantener a todos los grados conectados. Salones cercanos, ambientes protegidos y espacios de juego seguros.</p>
+              <div class="showcase-badges">
+                <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 3 niveles integrados</span>
+                <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> 2 patios recreativos</span>
+                <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Entorno seguro</span>
+              </div>
+            </div>
+
+            <!-- Pestaña 2: Ciencia y Filosofía -->
+            <div class="showcase-panel" id="showcase-panel-2" role="tabpanel" aria-labelledby="tab-ciencia" hidden>
+              <div class="showcase-tag">Diferencial Académico</div>
+              <h3>Física, química y filosofía desde 1º de primaria</h3>
+              <p>Despertamos la curiosidad científica, el rigor analítico y el pensamiento reflexivo desde temprana edad con experimentos prácticos y debates guiados.</p>
+              <div class="showcase-badges">
+                <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Método vivencial</span>
+                <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Filosofía para niños</span>
+                <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Saber 11 destacado</span>
+              </div>
+            </div>
+
+            <!-- Pestaña 3: Convivencia y Cercanía -->
+            <div class="showcase-panel" id="showcase-panel-3" role="tabpanel" aria-labelledby="tab-cercania" hidden>
+              <div class="showcase-tag">Ambiente Familiar</div>
+              <h3>Trato individualizado y 35+ años de trayectoria</h3>
+              <p>Salones pequeños donde cada estudiante es conocido por su nombre. Prevención activa del matoneo y comunicación permanente con las familias.</p>
+              <div class="showcase-badges">
+                <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Salones pequeños</span>
+                <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Cero masificación</span>
+                <span class="badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Estudio · Amor · Paz</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -63,6 +116,207 @@ permalink: /
     <path d="M0,30 C 380,-4 1060,58 1440,18 L1440,56 L0,56 Z"/>
     <path class="seam-ring" d="M0,30 C 380,-4 1060,58 1440,18" vector-effect="non-scaling-stroke"/>
   </svg>
+
+  <!-- ================= SELECTOR DE NIVELES ================= -->
+  <section class="band band-paper" id="niveles">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Ciclo Completo en La Cumbre</p>
+        <h2>Explora nuestros niveles educativos</h2>
+        <p>Acompañamos el crecimiento de tus hijos paso a paso, desde sus primeros descubrimientos hasta su graduación como bachilleres.</p>
+      </div>
+
+      <div class="grade-selector reveal">
+        <div class="grade-tabs" role="tablist" aria-label="Niveles educativos">
+          <button class="grade-tab-btn active" role="tab" aria-selected="true" aria-controls="grade-panel-preescolar" id="btn-preescolar">
+            <span class="level-icon">🌱</span>
+            <div class="tab-meta">
+              <span class="tab-title">Preescolar</span>
+              <span class="tab-sub">3 a 5 años</span>
+            </div>
+          </button>
+          <button class="grade-tab-btn" role="tab" aria-selected="false" aria-controls="grade-panel-primaria" id="btn-primaria">
+            <span class="level-icon">📚</span>
+            <div class="tab-meta">
+              <span class="tab-title">Primaria</span>
+              <span class="tab-sub">1º a 5º grado</span>
+            </div>
+          </button>
+          <button class="grade-tab-btn" role="tab" aria-selected="false" aria-controls="grade-panel-bachillerato" id="btn-bachillerato">
+            <span class="level-icon">🎓</span>
+            <div class="tab-meta">
+              <span class="tab-title">Bachillerato</span>
+              <span class="tab-sub">6º a 11º grado</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Panel Preescolar -->
+        <div class="grade-panel active" id="grade-panel-preescolar" role="tabpanel" aria-labelledby="btn-preescolar">
+          <div class="grade-content">
+            <div class="grade-info">
+              <span class="grade-tag">Primeros Pasos y Exploración</span>
+              <h3>Preescolar: Amor, curiosidad y autonomía</h3>
+              <p>Un entorno cálido, seguro y lúdico donde los más pequeños desarrollan habilidades socioemocionales, motricidad fina y gruesa, e iniciación a la lectoescritura y el bilingüismo.</p>
+              <div class="grade-specs-grid">
+                <div class="spec-card">
+                  <span class="spec-label">Edades</span>
+                  <strong class="spec-value">3 a 5 años</strong>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Tamaño de Salón</span>
+                  <strong class="spec-value">Cupos reducidos</strong>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Horario</span>
+                  <strong class="spec-value">7:00 a.m. – 12:00 m.</strong>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Enfoque Clave</span>
+                  <strong class="spec-value">Valores y motricidad</strong>
+                </div>
+              </div>
+            </div>
+            <div class="grade-features">
+              <h4>Materias y diferenciales:</h4>
+              <ul class="feature-list">
+                <li><span>✓</span> Estimulación de lenguaje y pensamiento lógico-matemático.</li>
+                <li><span>✓</span> Iniciación temprana al inglés mediante cantos y juegos.</li>
+                <li><span>✓</span> Talleres de expresión artística, música y psicomotricidad.</li>
+                <li><span>✓</span> Formación en valores, empatía y convivencia armónica.</li>
+              </ul>
+              <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">Inscribir en Preescolar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Primaria -->
+        <div class="grade-panel" id="grade-panel-primaria" role="tabpanel" aria-labelledby="btn-primaria" hidden>
+          <div class="grade-content">
+            <div class="grade-info">
+              <span class="grade-tag">Fundamentos y Curiosidad Científica</span>
+              <h3>Primaria (1º a 5º): Exigencia temprana y valores</h3>
+              <p>Fortalecemos la base académica introduciendo física, química y filosofía desde primero, fomentando la comprensión lectora profunda, matemáticas analíticas y razonamiento reflexivo.</p>
+              <div class="grade-specs-grid">
+                <div class="spec-card">
+                  <span class="spec-label">Edades</span>
+                  <strong class="spec-value">6 a 10 años</strong>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Tamaño de Salón</span>
+                  <strong class="spec-value">Máx. 18-20 estudiantes</strong>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Horario</span>
+                  <strong class="spec-value">6:30 a.m. – 12:30 p.m.</strong>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Enfoque Clave</span>
+                  <strong class="spec-value">Ciencias y Filosofía</strong>
+                </div>
+              </div>
+            </div>
+            <div class="grade-features">
+              <h4>Materias y diferenciales:</h4>
+              <ul class="feature-list">
+                <li><span>✓</span> Física y química vivencial con experimentos reales.</li>
+                <li><span>✓</span> Filosofía para niños (lógica, ética y argumentación).</li>
+                <li><span>✓</span> Plan lector enriquecido y matemáticas prácticas.</li>
+                <li><span>✓</span> Acompañamiento docente cercano sin masificación.</li>
+              </ul>
+              <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">Inscribir en Primaria</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Bachillerato -->
+        <div class="grade-panel" id="grade-panel-bachillerato" role="tabpanel" aria-labelledby="btn-bachillerato" hidden>
+          <div class="grade-content">
+            <div class="grade-info">
+              <span class="grade-tag">Liderazgo y Proyección Universitaria</span>
+              <h3>Bachillerato (6º a 11º): Rigor, ética y preparación Saber 11</h3>
+              <p>Consolidamos el perfil de bachilleres íntegros, autónomos y con excelente proyección universitaria, respaldados por una formación sólida en ciencias y humanidades.</p>
+              <div class="grade-specs-grid">
+                <div class="spec-card">
+                  <span class="spec-label">Edades</span>
+                  <strong class="spec-value">11 a 17 años</strong>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Tamaño de Salón</span>
+                  <strong class="spec-value">Atención individual</strong>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Horario</span>
+                  <strong class="spec-value">6:30 a.m. – 1:00 p.m.</strong>
+                </div>
+                <div class="spec-card">
+                  <span class="spec-label">Enfoque Clave</span>
+                  <strong class="spec-value">Excelencia Saber 11</strong>
+                </div>
+              </div>
+            </div>
+            <div class="grade-features">
+              <h4>Materias y diferenciales:</h4>
+              <ul class="feature-list">
+                <li><span>✓</span> Profundización en ciencias (Física, Química, Cálculo).</li>
+                <li><span>✓</span> Entrenamiento continuo y simulacros Saber 11.</li>
+                <li><span>✓</span> Filosofía avanzada, bioética y debate argumentado.</li>
+                <li><span>✓</span> Orientación vocacional y proyectos con impacto social.</li>
+              </ul>
+              <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">Inscribir en Bachillerato</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RUTA DE ADMISIÓN ================= -->
+  <section class="band band-deep" id="admisiones">
+    <div class="wrap">
+      <div class="section-head reveal" style="text-align:center; max-width:680px; margin-left:auto; margin-right:auto;">
+        <p class="eyebrow">Admisiones Abiertas</p>
+        <h2>Tu ingreso al CSD en 3 simples pasos</h2>
+        <p>Un proceso transparente, cálido y ágil para que tu familia forme parte de nuestra comunidad educativa.</p>
+      </div>
+
+      <div class="admission-steps reveal">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <div class="step-header">
+            <span class="step-time">⏱ 2 minutos</span>
+            <h3>Formulario en línea</h3>
+          </div>
+          <p>Diligencia la solicitud digital con los datos básicos del aspirante y tu familia desde cualquier dispositivo.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <div class="step-header">
+            <span class="step-time">📍 Presencial</span>
+            <h3>Visita y entrevista</h3>
+          </div>
+          <p>Conoce nuestras instalaciones en La Cumbre, conversa con el equipo pedagógico y resuelve todas tus dudas.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <div class="step-header">
+            <span class="step-time">🎉 ¡Bienvenida!</span>
+            <h3>Matrícula oficial</h3>
+          </div>
+          <p>Formaliza la entrega de documentos requeridos, asegura tu cupo y comienza el año escolar en la familia CSD.</p>
+        </div>
+      </div>
+
+      <div class="admission-cta reveal" style="text-align:center; margin-top:36px;">
+        <a class="btn btn-primary btn-lg" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">
+          <span>Iniciar solicitud de inscripción</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- ================= RAIZ ================= -->
   <section class="band band-paper" id="raiz">
@@ -158,6 +412,127 @@ permalink: /
     <path class="seam-ring" d="M0,26 C 340,-6 1100,56 1440,20" vector-effect="non-scaling-stroke"/>
   </svg>
 
+  <!-- ================= TESTIMONIOS ================= -->
+  <section class="band band-paper" id="testimonios">
+    <div class="wrap">
+      <div class="section-head reveal" style="text-align:center; max-width:640px; margin-left:auto; margin-right:auto;">
+        <p class="eyebrow">Voces de Nuestra Comunidad</p>
+        <h2>Lo que dicen quienes viven la experiencia CSD</h2>
+        <p>Familias y egresados que confían en nuestro modelo pedagógico cercano, riguroso y con valores.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Testimonio 1 -->
+        <div class="testimonial-card reveal">
+          <div class="stars" aria-label="5 estrellas">★★★★★</div>
+          <blockquote class="quote">
+            "La mejor decisión para nuestros hijos. La exigencia académica con física y química desde primaria les dio una ventaja increíble, pero sobre todo el trato humano y los valores que les inculcan cada día."
+          </blockquote>
+          <div class="author-box">
+            <div class="author-avatar">GR</div>
+            <div class="author-details">
+              <strong>Familia Gómez Rueda</strong>
+              <span>Padres de familia · Primaria y Bachillerato</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonio 2 -->
+        <div class="testimonial-card reveal">
+          <div class="stars" aria-label="5 estrellas">★★★★★</div>
+          <blockquote class="quote">
+            "Graduarme del CSD me abrió las puertas a la universidad con excelentes bases en ciencias y pensamiento crítico. En el colegio nunca fuimos un número más, los profesores realmente creían en nosotros."
+          </blockquote>
+          <div class="author-box">
+            <div class="author-avatar">SM</div>
+            <div class="author-details">
+              <strong>Ing. Sebastián Mantilla</strong>
+              <span>Egresado Promoción 2021 · Ingeniero UIS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonio 3 -->
+        <div class="testimonial-card reveal">
+          <div class="stars" aria-label="5 estrellas">★★★★★</div>
+          <blockquote class="quote">
+            "Buscábamos un colegio seguro, sin masificación y con verdadera cercanía. En el CSD encontramos una segunda familia donde nuestra hija se siente feliz, motivada y acompañada en cada etapa."
+          </blockquote>
+          <div class="author-box">
+            <div class="author-avatar">HV</div>
+            <div class="author-details">
+              <strong>Familia Hernández Villamizar</strong>
+              <span>Padres de familia · Preescolar y Primaria</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PREGUNTAS FRECUENTES (FAQ) ================= -->
+  <section class="band band-deep" id="faq">
+    <div class="wrap" style="max-width:840px;">
+      <div class="section-head reveal" style="text-align:center;">
+        <p class="eyebrow">Resolvemos tus Inquietudes</p>
+        <h2>Preguntas Frecuentes</h2>
+        <p>Todo lo que necesitas saber sobre admisiones, metodología y vida escolar en el Colegio CSD.</p>
+      </div>
+
+      <div class="faq-accordion reveal">
+        <details class="faq-item" open>
+          <summary class="faq-question">
+            <span>¿Cómo es el proceso de admisión si venimos de otra ciudad u otro colegio?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-answer">
+            <p>El proceso es ágil y continuo. Solo debes diligenciar nuestro formulario web con los datos del aspirante y adjuntar certificados de grados anteriores. Coordinamos una entrevista pedagógica y valoración diagnóstica para asegurar una nivelación oportuna y una cálida bienvenida.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>¿A partir de qué grado los estudiantes ven física, química y filosofía?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-answer">
+            <p>Desde 1º de primaria introducimos nociones fundamentales de física y química mediante experimentos prácticos y método científico vivencial, así como talleres de filosofía para niños enfocados en ética, lógica, argumentación y pensamiento reflexivo.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>¿Cómo garantizan salones pequeños y atención personalizada?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-answer">
+            <p>Mantenemos una política estricta de cupos reducidos por aula (promedio de 15 a 20 estudiantes). Esto permite que los docentes identifiquen oportunamente el ritmo de aprendizaje de cada niño, brinden retroalimentación continua y aseguren un ambiente libre de matoneo.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>¿Cuáles son los horarios de clases para cada ciclo?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-answer">
+            <p>Nuestros horarios en jornada regular son: <strong>Preescolar:</strong> 7:00 a.m. a 12:00 m.; <strong>Primaria:</strong> 6:30 a.m. a 12:30 p.m.; y <strong>Bachillerato:</strong> 6:30 a.m. a 1:00 p.m. Contamos con asesorías pedagógicas y refuerzos concertados.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>¿Cómo realizo el seguimiento académico de mi hijo?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </summary>
+          <div class="faq-answer">
+            <p>Los padres y acudientes cuentan con acceso al portal <a href="https://educolombia.org/" target="_blank" rel="noopener" class="inline-link-dark">Educolombia</a> para consultar en tiempo real calificaciones parciales, registro de asistencia, observaciones de convivencia y descargar boletines periódicos.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= NOTICIAS teaser ================= -->
   <section class="band band-paper" id="blog">
     <div class="wrap">
@@ -200,7 +575,10 @@ permalink: /
       <p class="eyebrow reveal">Preescolar a once, en la misma sede</p>
       <h2 class="reveal" style="margin-top:12px; font-size:clamp(2rem,3.6vw,2.6rem); font-weight:800;">El único colegio de ciclo completo en La Cumbre te está esperando.</h2>
       <div class="actions reveal" style="justify-content:center; margin-top:26px; display:flex; gap:14px; flex-wrap:wrap;">
-        <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">Inscríbete aquí</a>
+        <a class="btn btn-primary btn-lg" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">
+          <span>Inscríbete aquí</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
         <a class="btn btn-outline" href="https://educolombia.org/" target="_blank" rel="noopener">Ir al portal académico</a>
       </div>
     </div>

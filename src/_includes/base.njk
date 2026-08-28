@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ pageTitle or title }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="icon" type="image/png" href="/assets/logo.png">
 <link rel="stylesheet" href="/fonts.css">
 <link rel="stylesheet" href="/styles.css">
 </head>
@@ -14,7 +18,7 @@
       <img src="/assets/logo.png" alt="CSD" />
       <span class="wordmark"><strong>Colegio CSD</strong><span>Estudio · Amor · Paz</span></span>
     </a>
-    <nav class="links">
+    <nav class="links" aria-label="Navegación principal">
       {%- for item in nav %}
       <a href="{{ item.href }}"{% if page.url.startsWith(item.href) %} class="active"{% endif %}>{{ item.label }}</a>
       {%- endfor %}
@@ -23,9 +27,37 @@
       <a class="btn btn-outline" href="https://educolombia.org/" target="_blank" rel="noopener">Portal académico</a>
       <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">Inscríbete aquí</a>
     </div>
-    <button class="menu-toggle" aria-label="Abrir menú"><span></span></button>
+    <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </div>
 </header>
+
+<!-- Menú Móvil Moderno (Drawer & Backdrop) -->
+<div class="mobile-backdrop" id="mobile-backdrop" aria-hidden="true"></div>
+<div class="mobile-drawer" id="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <div class="mobile-drawer-inner">
+    <nav class="mobile-links" aria-label="Navegación móvil">
+      {%- for item in nav %}
+      <a href="{{ item.href }}"{% if page.url.startsWith(item.href) %} class="active"{% endif %}>{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
+    <div class="mobile-cta-group">
+      <a class="btn btn-outline" href="https://educolombia.org/" target="_blank" rel="noopener">Portal académico</a>
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">Inscríbete aquí</a>
+    </div>
+    <div class="mobile-drawer-foot">
+      <p class="motto">Colegio CSD · Estudio · Amor · Paz</p>
+      <div class="mobile-socials">
+        <a href="https://www.instagram.com/colsemillero" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/semillerodosmil/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.tiktok.com/@colegiosemillerodosmil" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {{ content | safe }}
 
@@ -77,6 +109,7 @@
 
 <script>
   (function(){
+    // Reveal on scroll
     var els = document.querySelectorAll('.reveal:not(.in)');
     if('IntersectionObserver' in window){
       var io = new IntersectionObserver(function(entries){
@@ -89,32 +122,139 @@
       els.forEach(function(el){ el.classList.add('in'); });
     }
 
+    // Menú Móvil: interactividad, animación y bloqueo de scroll
     var toggle = document.querySelector('.menu-toggle');
-    var links = document.querySelector('nav.links');
-    if(toggle && links){
-      toggle.addEventListener('click', function(){
-        var open = links.style.display === 'flex';
-        links.style.display = open ? 'none' : 'flex';
-        links.style.cssText += open ? '' : 'position:absolute; top:100%; left:0; right:0; background:var(--paper); flex-direction:column; padding:16px 24px; border-bottom:1px solid var(--line); gap:16px;';
+    var drawer = document.getElementById('mobile-nav');
+    var backdrop = document.getElementById('mobile-backdrop');
+    var body = document.body;
+
+    function openMenu() {
+      body.classList.add('menu-open');
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Cerrar menú');
+      }
+      if (drawer) drawer.setAttribute('aria-hidden', 'false');
+      if (backdrop) backdrop.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeMenu() {
+      body.classList.remove('menu-open');
+      if (toggle) {
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Abrir menú');
+      }
+      if (drawer) drawer.setAttribute('aria-hidden', 'true');
+      if (backdrop) backdrop.setAttribute('aria-hidden', 'true');
+    }
+
+    if (toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = body.classList.contains('menu-open');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       });
     }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeMenu);
+    }
+
+    if (drawer) {
+      // Cerrar al hacer clic en cualquier enlace dentro del menú
+      var drawerLinks = drawer.querySelectorAll('a');
+      drawerLinks.forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+      });
+    }
+
+    // Cerrar con la tecla Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && body.classList.contains('menu-open')) {
+        closeMenu();
+      }
+    });
+
+    // Control interactivo para componentes con pestañas (Hero Showcase y Niveles Educativos)
+    function initTabs(containerSelector, tabSelector, panelSelector) {
+      var containers = document.querySelectorAll(containerSelector);
+      containers.forEach(function(container) {
+        var tabs = container.querySelectorAll(tabSelector);
+        var panels = container.querySelectorAll(panelSelector);
+        if (!tabs.length || !panels.length) return;
+
+        tabs.forEach(function(tab, index) {
+          tab.addEventListener('click', function() {
+            tabs.forEach(function(t) {
+              t.classList.remove('active');
+              t.setAttribute('aria-selected', 'false');
+            });
+            panels.forEach(function(p) {
+              p.classList.remove('active');
+              p.setAttribute('hidden', '');
+            });
+
+            tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
+
+            var targetId = tab.getAttribute('aria-controls') || (panels[index] ? panels[index].id : null);
+            var targetPanel = targetId ? document.getElementById(targetId) : panels[index];
+            if (targetPanel) {
+              targetPanel.classList.add('active');
+              targetPanel.removeAttribute('hidden');
+            }
+          });
+        });
+      });
+    }
+
+    initTabs('.hero-showcase', '.showcase-tab', '.showcase-panel');
+    initTabs('.grade-selector', '.grade-tab-btn', '.grade-panel');
   })();
 </script>
 
-<!-- Netlify Identity: necesario en todas las páginas (no solo /admin/)
-     porque los enlaces de invitación/recuperación de contraseña abren
-     esta página con un token en la URL, y el widget es quien lo procesa. -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<!-- Botón Flotante de WhatsApp -->
+<a href="https://wa.me/573152904403?text=Hola%20Colegio%20CSD,%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20inscripciones" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <span class="whatsapp-tooltip">¿Tienes dudas? Escríbenos</span>
+  <svg class="whatsapp-icon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.667-.699c.974.544 1.766.814 2.793.814 3.179 0 5.766-2.587 5.766-5.766 0-3.18-2.587-5.766-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.745 0-3.385-.45-4.814-1.238l-4.786 1.253 1.278-4.664c-.927-1.52-1.478-3.303-1.478-5.351 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
+  </svg>
+</a>
+
+<!-- Netlify Identity: carga condicional optimizada.
+     Solo descarga el widget (~100KB) si se accede a /admin/ o si la URL
+     contiene un token de invitación/recuperación en el hash (#_token=, #recovery_token=, #invite_token=). -->
 <script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", function (user) {
-      if (!user) {
-        window.netlifyIdentity.on("login", function () {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
+  (function() {
+    var hash = window.location.hash || '';
+    var path = window.location.pathname || '';
+    var isAuthRoute = path.indexOf('/admin') === 0;
+    var hasAuthToken = hash.indexOf('_token=') !== -1 ||
+                       hash.indexOf('recovery_token=') !== -1 ||
+                       hash.indexOf('invite_token=') !== -1;
+
+    if (isAuthRoute || hasAuthToken) {
+      var script = document.createElement('script');
+      script.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+      script.async = true;
+      script.onload = function() {
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on('init', function(user) {
+            if (!user) {
+              window.netlifyIdentity.on('login', function() {
+                document.location.href = '/admin/';
+              });
+            }
+          });
+        }
+      };
+      document.head.appendChild(script);
+    }
+  })();
 </script>
 </body>
 </html>

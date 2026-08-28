@@ -3,6 +3,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/fonts.css");
   eleventyConfig.addPassthroughCopy("src/styles.css");
   eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy({ "src/assets/logo.png": "favicon.ico" });
 
   // Panel de administración de Decap CMS (Paso 4). El index.html ya lo
   // procesa Eleventy como plantilla normal; config.yml no es un formato
