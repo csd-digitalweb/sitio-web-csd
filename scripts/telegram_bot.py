@@ -1,7 +1,8 @@
 import os
 import sys
 import time
-import requests
+import json
+import subprocess
 from dotenv import load_dotenv
 
 load_dotenv(r"C:\Users\julio\dev\sitio-web-csd\.env")
@@ -15,25 +16,40 @@ ALLOWED_USERS = [u.strip().lower().lstrip('@') for u in ALLOWED_USERS_RAW.split(
 DIRECTOR_CHAT_ID = os.getenv("DIRECTOR_CHAT_ID", "")
 API_URL = f"https://api.telegram.org/bot{TOKEN}" if TOKEN else ""
 
+def call_telegram_api(method, data=None):
+    """
+    Realiza peticiones a la API de Telegram usando curl.exe para máxima compatibilidad y estabilidad en Windows.
+    """
+    if not TOKEN:
+        return None
+    url = f"{API_URL}/{method}"
+    cmd = ["curl.exe", "-s", "-X", "POST", url, "-H", "Content-Type: application/json"]
+    if data:
+        cmd.extend(["-d", json.dumps(data)])
+
+    try:
+        res = subprocess.run(cmd, capture_output=True, text=True, timeout=35)
+        if res.returncode == 0 and res.stdout:
+            return json.loads(res.stdout)
+    except Exception as e:
+        print(f"Error en llamada a Telegram API ({method}): {e}")
+    return None
+
 def is_user_authorized(from_user):
     if not ALLOWED_USERS:
+        # Si no hay lista restrictiva configurada, autorizar inicialmente
         return True
     user_id = str(from_user.get("id", ""))
     username = from_user.get("username", "").lower()
     return (user_id in ALLOWED_USERS or username in ALLOWED_USERS)
 
 def get_updates(offset=None):
-    if not TOKEN:
-        return []
-    url = f"{API_URL}/getUpdates?timeout=30"
+    payload = {"timeout": 30}
     if offset:
-        url += f"&offset={offset}"
-    try:
-        r = requests.get(url, timeout=35)
-        if r.status_code == 200:
-            return r.json().get("result", [])
-    except Exception as e:
-        print(f"Error al consultar actualizaciones de Telegram: {e}")
+        payload["offset"] = offset
+    res = call_telegram_api("getUpdates", payload)
+    if res and res.get("ok"):
+        return res.get("result", [])
     return []
 
 def send_message(chat_id, text, reply_markup=None):
@@ -43,21 +59,13 @@ def send_message(chat_id, text, reply_markup=None):
     data = {"chat_id": chat_id, "text": text, "parse_mode": "Markdown"}
     if reply_markup:
         data["reply_markup"] = reply_markup
-    try:
-        requests.post(f"{API_URL}/sendMessage", json=data)
-    except Exception as e:
-        print(f"Error al enviar mensaje a Telegram: {e}")
+    return call_telegram_api("sendMessage", data)
 
 def edit_message_text(chat_id, message_id, text, reply_markup=None):
-    if not TOKEN:
-        return
     data = {"chat_id": chat_id, "message_id": message_id, "text": text, "parse_mode": "Markdown"}
     if reply_markup:
         data["reply_markup"] = reply_markup
-    try:
-        requests.post(f"{API_URL}/editMessageText", json=data)
-    except Exception as e:
-        print(f"Error al editar mensaje en Telegram: {e}")
+    return call_telegram_api("editMessageText", data)
 
 def handle_text_message(chat_id, from_user, text):
     lines = text.strip().split('\n')
@@ -67,7 +75,6 @@ def handle_text_message(chat_id, from_user, text):
     raw_idea = "\n".join(lines[1:]) if len(lines) > 1 else lines[0]
     author_name = from_user.get("first_name", "Equipo CSD")
 
-    # Si hay DIRECTOR_CHAT_ID se crea en borrador (published=False) para pedir aprobación sin límite de tiempo
     require_approval = bool(DIRECTOR_CHAT_ID)
     published_initial = not require_approval
 
@@ -76,7 +83,6 @@ def handle_text_message(chat_id, from_user, text):
     )
 
     if require_approval:
-        # Enviar notificación a la Dirección con botón de aprobación SIN límite de tiempo
         inline_keyboard = {
             "inline_keyboard": [
                 [
@@ -95,9 +101,7 @@ def handle_text_message(chat_id, from_user, text):
             reply_markup=inline_keyboard
         )
         send_message(chat_id, f"📝 Noticia redactada y enviada a la Dirección para su aprobación final.")
-
     else:
-        # Publicar inmediatamente
         success, msg = publish_to_web(f"Nueva noticia: {title}")
         if success:
             send_message(
@@ -119,7 +123,7 @@ def handle_callback_query(callback):
     data = callback.get("data", "")
 
     if not is_user_authorized(from_user):
-        requests.post(f"{API_URL}/answerCallbackQuery", json={"callback_query_id": callback_id, "text": "⛔ No autorizado", "show_alert": True})
+        call_telegram_api("answerCallbackQuery", {"callback_query_id": callback_id, "text": "⛔ No autorizado", "show_alert": True})
         return
 
     if data.startswith("pub_"):
@@ -146,10 +150,10 @@ def handle_callback_query(callback):
 
 def run_bot():
     print("=" * 60)
-    print("🤖 BOT COMMUNITY MANAGER DEL COLEGIO CSD ACTIVO")
+    print(" [BOT] COMMUNITY MANAGER DEL COLEGIO CSD ACTIVO (@CSDnoticiasbot)")
     print("=" * 60)
     if not TOKEN:
-        print("⚠️ No se ha configurado TELEGRAM_BOT_TOKEN en el archivo .env.")
+        print("[!] No se ha configurado TELEGRAM_BOT_TOKEN en el archivo .env.")
         return
 
     print("Escuchando mensajes de Telegram en segundo plano...")
