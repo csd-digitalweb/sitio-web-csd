@@ -238,36 +238,16 @@ header.site {
 .brand {
   display: flex;
   align-items: center;
-  gap: 16px;
   margin-right: auto;
   text-decoration: none;
 }
 .brand img {
-  height: 90px;
+  height: 56px;
   width: auto;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 .brand:hover img {
-  transform: scale(1.02);
-}
-.brand .wordmark {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-.brand .wordmark strong {
-  font-family: var(--font-title);
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-}
-.brand .wordmark span {
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  font-weight: 600;
+  transform: scale(1.03);
 }
 
 nav.links { display: flex; gap: 24px; }
@@ -2448,7 +2428,7 @@ footer a:hover { color: var(--yellow-500); }
   .menu-toggle { display: flex; }
   .mobile-backdrop { display: block; }
   .mobile-drawer { display: flex; }
-  .brand img { height: 68px; }
+  .brand img { height: 46px; }
 
   .hero { padding: 40px 0 24px; }
   .hero .wrap {
