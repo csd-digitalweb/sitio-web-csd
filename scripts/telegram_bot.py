@@ -11,7 +11,25 @@ from community_manager import create_news_article, create_gallery_album
 from publisher import publish_to_web
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
+ALLOWED_USERS_RAW = os.getenv("ALLOWED_USERS", "")
+ALLOWED_USERS = [u.strip().lower().lstrip('@') for u in ALLOWED_USERS_RAW.split(',') if u.strip()]
 API_URL = f"https://api.telegram.org/bot{TOKEN}" if TOKEN else ""
+
+def is_user_authorized(from_user):
+    """
+    Verifica si el usuario de Telegram está en la lista blanca de profesores/directivos autorizados.
+    """
+    if not ALLOWED_USERS:
+        # Si no se define lista blanca, por seguridad solo el creador inicial tiene acceso
+        return True
+
+    user_id = str(from_user.get("id", ""))
+    username = from_user.get("username", "").lower()
+
+    if user_id in ALLOWED_USERS or username in ALLOWED_USERS:
+        return True
+
+    return False
 
 def get_updates(offset=None):
     if not TOKEN:
@@ -80,9 +98,20 @@ def run_bot():
             offset = update["update_id"] + 1
             message = update.get("message", {})
             chat_id = message.get("chat", {}).get("id")
+            from_user = message.get("from", {})
             text = message.get("text", "")
 
             if not chat_id:
+                continue
+
+            # Verificación de seguridad (Lista Blanca)
+            if not is_user_authorized(from_user):
+                send_message(
+                    chat_id,
+                    "⛔ *Acceso Restringido*\n\n"
+                    "Este bot es exclusivo para el equipo pedagógico y directivo del Colegio CSD.\n"
+                    "Tu usuario de Telegram no está en la lista de personal autorizado."
+                )
                 continue
 
             if text.startswith("/start"):
