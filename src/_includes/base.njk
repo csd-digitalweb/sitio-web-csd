@@ -15,17 +15,17 @@
 <header class="site">
   <div class="nav">
     <a class="brand" href="/">
-      <img src="/assets/logo.png" alt="CSD" />
+      <img src="/assets/logo.png" alt="Colegio CSD" />
       <span class="wordmark"><strong>Colegio CSD</strong><span>Estudio · Amor · Paz</span></span>
     </a>
     <nav class="links" aria-label="Navegación principal">
       {%- for item in nav %}
-      <a href="{{ item.href }}"{% if page.url.startsWith(item.href) %} class="active"{% endif %}>{{ item.label }}</a>
+      <a href="{{ item.href }}"{% if page.url == item.href %} class="active"{% endif %}>{{ item.label }}</a>
       {%- endfor %}
     </nav>
     <div class="cta-group">
-      <a class="btn btn-outline" href="https://educolombia.org/" target="_blank" rel="noopener">Portal académico</a>
-      <a class="btn btn-primary" href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">Inscríbete aquí</a>
+      <a class="btn btn-outline" href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener">Portal académico</a>
+      <a class="btn btn-primary" href="/admisiones/">Inscríbete aquí</a>
     </div>
     <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
       <span class="bar"></span>
@@ -61,6 +61,11 @@
 
 {{ content | safe }}
 
+<!-- Botón Flotante de WhatsApp -->
+<a href="https://wa.me/573000000000?text=Hola%2C%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20inscripciones%20y%20cupos%20en%20el%20Colegio%20CSD" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.031 2c-5.514 0-9.985 4.471-9.985 9.985 0 1.83.498 3.551 1.363 5.048L2 22l5.122-1.343a9.923 9.923 0 0 0 4.909 1.282c5.514 0 9.985-4.471 9.985-9.985 0-5.514-4.471-9.984-9.985-9.984zm0 18.171c-1.637 0-3.185-.45-4.502-1.238l-.323-.192-3.329.873.888-3.242-.211-.336a8.16 8.16 0 0 1-1.258-4.351c0-4.515 3.673-8.188 8.188-8.188 4.515 0 8.188 3.673 8.188 8.188 0 4.515-3.673 8.188-8.188 8.188z"/></svg>
+</a>
+
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -78,16 +83,16 @@
           <li><a href="/nosotros/">Nuestra historia</a></li>
           <li><a href="/formacion/">Formación y valores</a></li>
           <li><a href="/academico/">Oferta académica</a></li>
+          <li><a href="/admisiones/">Admisiones e Inscripciones</a></li>
           <li><a href="/egresados/">Egresados</a></li>
         </ul>
       </div>
       <div>
         <h4>Familias</h4>
         <ul>
-          <li><a href="https://educolombia.org/" target="_blank" rel="noopener">Portal académico</a></li>
-          <li><a href="https://docs.google.com/forms/d/1RXnVRMI4bEe3Nwr-_ZjSaZouZsCBEUIcWdJcglgVPb8/viewform" target="_blank" rel="noopener">Inscripciones</a></li>
+          <li><a href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener">Portal académico</a></li>
+          <li><a href="/admisiones/">Inscripciones</a></li>
           <li><a href="/noticias/">Noticias</a></li>
-          <li><a href="/galeria/">Galería</a></li>
           <li><a href="/contacto/">Contacto</a></li>
         </ul>
       </div>
@@ -95,14 +100,14 @@
         <h4>Síguenos</h4>
         <ul>
           <li><a href="https://www.instagram.com/colsemillero" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://www.facebook.com/semillerodosmil/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="#">Facebook</a></li>
           <li><a href="https://www.tiktok.com/@colegiosemillerodosmil" target="_blank" rel="noopener">TikTok</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Colegio CSD — La Cumbre, Floridablanca.</span>
-      <span>Mockup de sitio · contenido y enlaces por confirmar</span>
+      <span>Sitio Web Oficial · Todos los derechos reservados</span>
     </div>
   </div>
 </footer>
