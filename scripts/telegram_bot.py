@@ -7,7 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv(r"C:\Users\julio\dev\sitio-web-csd\.env")
 
-from community_manager import create_news_article, create_gallery_album, approve_content_file
+from community_manager import create_news_article, create_gallery_album, approve_content_file, BASE_DIR
+from photo_optimizer import optimize_image
 from publisher import publish_to_web
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
@@ -19,6 +20,7 @@ ALLOWED_USERS = [u.strip().lower().lstrip('@') for u in ALLOWED_USERS_RAW.split(
 ALLOWED_PHONES = [p.strip().replace("+", "").replace(" ", "").replace("-", "") for p in ALLOWED_PHONES_RAW.split(',') if p.strip()]
 
 API_URL = f"https://api.telegram.org/bot{TOKEN}" if TOKEN else ""
+FILE_URL = f"https://api.telegram.org/file/bot{TOKEN}" if TOKEN else ""
 
 def call_telegram_api(method, data=None):
     if not TOKEN:
@@ -36,9 +38,20 @@ def call_telegram_api(method, data=None):
         print(f"Error en llamada a Telegram API ({method}): {e}")
     return None
 
+def download_telegram_file(file_id, output_path):
+    res = call_telegram_api("getFile", {"file_id": file_id})
+    if res and res.get("ok"):
+        file_path_remote = res.get("result", {}).get("file_path")
+        if file_path_remote:
+            dl_url = f"{FILE_URL}/{file_path_remote}"
+            cmd = ["curl.exe", "-s", "-o", output_path, dl_url]
+            res_dl = subprocess.run(cmd, capture_output=True, timeout=30)
+            if res_dl.returncode == 0 and os.path.exists(output_path):
+                return output_path
+    return None
+
 def is_user_authorized(from_user, phone_number=""):
     if not ALLOWED_USERS and not ALLOWED_PHONES:
-        # Si aún no se configuran números ni usuarios, se permite el inicio inicial
         return True
 
     user_id = str(from_user.get("id", ""))
@@ -97,7 +110,7 @@ def request_phone_authorization(chat_id):
         reply_markup=keyboard
     )
 
-def handle_text_message(chat_id, from_user, text):
+def handle_text_message(chat_id, from_user, text, portada_rel_path=""):
     lines = text.strip().split('\n')
     title = lines[0].replace("/noticia", "").strip()
     if not title:
@@ -109,7 +122,7 @@ def handle_text_message(chat_id, from_user, text):
     published_initial = not require_approval
 
     file_path, filename = create_news_article(
-        title, raw_idea, category="Noticias", author=author_name, published=published_initial
+        title, raw_idea, category="Noticias", author=author_name, portada=portada_rel_path, published=published_initial
     )
 
     if require_approval:
@@ -130,16 +143,16 @@ def handle_text_message(chat_id, from_user, text):
             f"Puedes hacer clic en el botón de aprobación en **cualquier momento** (sin límite de tiempo).",
             reply_markup=inline_keyboard
         )
-        send_message(chat_id, f"📝 Noticia redactada y enviada a la Dirección para su aprobación final.")
+        send_message(chat_id, f"📝 Noticia redactada con ortografía y estilo periodístico. Enviada a la Dirección para su aprobación final.")
     else:
         success, msg = publish_to_web(f"Nueva noticia: {title}")
         if success:
             send_message(
                 chat_id,
-                f"🎉 *¡Noticia Publicada Exitosamente en csd.edu.co!*\n\n"
+                f"🎉 *¡Noticia Redactada y Publicada Exitosamente en csd.edu.co!*\n\n"
                 f"📌 *Título:* {title}\n"
                 f"📄 *Archivo:* `{filename}`\n\n"
-                f"🌐 La página web se ha actualizado en tiempo real."
+                f"🌐 La página web se ha actualizado en tiempo real con corrección ortográfica y redacción institucional."
             )
         else:
             send_message(chat_id, f"⚠️ El artículo se guardó pero hubo un problema al publicar: {msg}")
@@ -201,12 +214,13 @@ def run_bot():
             chat_id = message.get("chat", {}).get("id")
             from_user = message.get("from", {})
             text = message.get("text", "")
+            caption = message.get("caption", "")
+            photos = message.get("photo", [])
             contact = message.get("contact", {})
 
             if not chat_id:
                 continue
 
-            # Verificación por contacto/teléfono compartido
             if contact:
                 phone_num = contact.get("phone_number", "")
                 if is_user_authorized(from_user, phone_number=phone_num):
@@ -229,20 +243,36 @@ def run_bot():
                 request_phone_authorization(chat_id)
                 continue
 
-            if text.startswith("/start") or text.startswith("/id"):
+            # Procesar mensaje con foto adjunta
+            portada_rel_path = ""
+            if photos:
+                largest_photo = photos[-1]
+                file_id = largest_photo.get("file_id")
+                tmp_dir = os.path.join(BASE_DIR, "scratch", "tmp_downloads")
+                os.makedirs(tmp_dir, exist_ok=True)
+                tmp_photo_path = os.path.join(tmp_dir, f"photo_{int(time.time())}.jpg")
+
+                if download_telegram_file(file_id, tmp_photo_path):
+                    output_dir = os.path.join(BASE_DIR, "src", "assets", "noticias")
+                    opt_file = optimize_image(tmp_photo_path, output_dir)
+                    portada_rel_path = f"/assets/noticias/{os.path.basename(opt_file)}"
+
+            final_text = caption if caption else text
+
+            if final_text.startswith("/start") or final_text.startswith("/id"):
                 send_message(
                     chat_id,
                     f"👋 *¡Hola {from_user.get('first_name', '')}! Soy el Bot del Colegio CSD.*\n\n"
                     f"📱 *Tu ID Único de Celular:* `{from_user.get('id')}`\n\n"
                     f"Para enviar una **noticia o artículo de interés** para la página `csd.edu.co`:\n"
-                    f"Escríbeme el título en la primera línea y luego los detalles o borrador.\n\n"
+                    f"Escríbeme el título en la primera línea y luego los detalles o borrador (¡puedes adjuntar foto!).\n\n"
                     f" Ejemplo:\n"
                     f"`Izada de Bandera del 7 de Agosto`\n"
                     f"`Hoy todos los cursos de primaria participaron con muestras de danza y música.`"
                 )
-            elif text:
-                send_message(chat_id, "✍️ Procesando tu noticia y creando el borrador institucional...")
-                handle_text_message(chat_id, from_user, text)
+            elif final_text:
+                send_message(chat_id, "✍️ Procesando tu noticia, aplicando corrección ortográfica y generando el artículo con gancho...")
+                handle_text_message(chat_id, from_user, final_text, portada_rel_path=portada_rel_path)
 
         time.sleep(2)
 
