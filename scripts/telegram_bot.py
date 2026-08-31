@@ -118,44 +118,36 @@ def handle_text_message(chat_id, from_user, text, portada_rel_path=""):
     raw_idea = "\n".join(lines[1:]) if len(lines) > 1 else lines[0]
     author_name = from_user.get("first_name", "Equipo CSD")
 
-    require_approval = bool(DIRECTOR_CHAT_ID)
-    published_initial = not require_approval
+    # SIEMPRE requiere aprobación previa de la Dirección antes de salir en vivo (published=False por defecto)
+    published_initial = False
 
     file_path, filename = create_news_article(
         title, raw_idea, category="Noticias", author=author_name, portada=portada_rel_path, published=published_initial
     )
 
-    if require_approval:
-        inline_keyboard = {
-            "inline_keyboard": [
-                [
-                    {"text": "✅ Aprobar y Publicar en csd.edu.co", "callback_data": f"pub_noticias_{filename}"},
-                    {"text": "❌ Descartar", "callback_data": f"del_noticias_{filename}"}
-                ]
+    inline_keyboard = {
+        "inline_keyboard": [
+            [
+                {"text": "✅ Aprobar y Publicar en csd.edu.co", "callback_data": f"pub_noticias_{filename}"},
+                {"text": "❌ Descartar", "callback_data": f"del_noticias_{filename}"}
             ]
-        }
-        send_message(
-            DIRECTOR_CHAT_ID,
-            f"📥 *NUEVA NOTICIA ENVIADA POR EL PROFESOR*\n\n"
-            f"👤 *Autor:* {author_name}\n"
-            f"📌 *Título:* {title}\n"
-            f"📄 *Archivo:* `{filename}`\n\n"
-            f"Puedes hacer clic en el botón de aprobación en **cualquier momento** (sin límite de tiempo).",
-            reply_markup=inline_keyboard
-        )
-        send_message(chat_id, f"📝 Noticia redactada con ortografía y estilo periodístico. Enviada a la Dirección para su aprobación final.")
-    else:
-        success, msg = publish_to_web(f"Nueva noticia: {title}")
-        if success:
-            send_message(
-                chat_id,
-                f"🎉 *¡Noticia Redactada y Publicada Exitosamente en csd.edu.co!*\n\n"
-                f"📌 *Título:* {title}\n"
-                f"📄 *Archivo:* `{filename}`\n\n"
-                f"🌐 La página web se ha actualizado en tiempo real con corrección ortográfica y redacción institucional."
-            )
-        else:
-            send_message(chat_id, f"⚠️ El artículo se guardó pero hubo un problema al publicar: {msg}")
+        ]
+    }
+
+    approval_text = (
+        f"📥 *NUEVA NOTICIA PENDIENTE DE APROBACIÓN*\n\n"
+        f"👤 *Autor:* {author_name}\n"
+        f"📌 *Título:* {title}\n"
+        f"📄 *Archivo:* `{filename}`\n\n"
+        f"⚠️ *Atención:* Esta noticia NO saldrá en la página web hasta que hagas clic en el botón de aprobación de abajo (sin límite de tiempo)."
+    )
+
+    # Si hay DIRECTOR_CHAT_ID definido, enviar a la Dirección. De lo contrario, enviar la tarjeta de aprobación al chat del usuario.
+    target_chat = DIRECTOR_CHAT_ID if DIRECTOR_CHAT_ID else chat_id
+    send_message(target_chat, approval_text, reply_markup=inline_keyboard)
+
+    if DIRECTOR_CHAT_ID and str(chat_id) != str(DIRECTOR_CHAT_ID):
+        send_message(chat_id, f"📝 Noticia redactada y enviada a la Dirección para su aprobación final.")
 
 def handle_callback_query(callback):
     callback_id = callback.get("id")
