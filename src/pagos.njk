@@ -1,0 +1,136 @@
+---
+layout: base.njk
+title: Pagos PSE — Colegio CSD
+bodyClass: page-pagos
+permalink: /pagos/
+---
+<main id="top">
+  <!-- ================= PAGE HERO ================= -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><span>Pagos PSE</span></div>
+      <p class="eyebrow" style="margin-top:18px;">Pagos Seguros en Línea</p>
+      <h1 class="reveal in">Portal de Pagos PSE del Colegio CSD.</h1>
+      <p class="lead reveal in">Realiza el pago de pensiones mensuales, matrículas y certificados académicos de forma rápida, cómoda y 100% segura a través de tu cuenta bancaria.</p>
+    </div>
+  </section>
+
+  <svg class="seam to-paper" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,26 C 360,-2 1080,54 1440,22 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <!-- ================= PASARELA DE PAGOS PSE ================= -->
+  <section class="band band-paper" id="portal-pse">
+    <div class="wrap">
+      <div class="pse-container reveal">
+
+        <div class="pse-card-main">
+          <div class="pse-badge">
+            <span class="pse-logo-badge">PSE</span>
+            <span>Pagos Seguros en Línea</span>
+          </div>
+
+          <h2>Realizar Pago con PSE</h2>
+          <p>Selecciona el concepto de pago e ingresa los datos del estudiante para proceder a la plataforma bancaria segura.</p>
+
+          <form class="pse-form" onsubmit="event.preventDefault(); alert('Conexión PSE en proceso: Tan pronto el banco asigne el enlace oficial definitivo, serás redirigido directamente al portal PSE de tu banco.');">
+            <div class="form-group">
+              <label for="pse-concepto">Concepto de Pago *</label>
+              <select id="pse-concepto" required>
+                <option value="pension">🎒 Pensión Mensual</option>
+                <option value="matricula">📝 Matrícula / Pre-matrícula</option>
+                <option value="certificado">📜 Certificado / Constancia Académica</option>
+                <option value="otro">💳 Otro concepto institucional</option>
+              </select>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="estudiante-nombre">Nombre Completo del Estudiante *</label>
+                <input type="text" id="estudiante-nombre" placeholder="Ej. Juan Andrés Gómez" required />
+              </div>
+              <div class="form-group">
+                <label for="estudiante-grado">Grado *</label>
+                <select id="estudiante-grado" required>
+                  <option value="">Selecciona el grado</option>
+                  <option value="preescolar">Preescolar (Jardín / Transición)</option>
+                  <option value="primaria">Primaria (1º a 5º)</option>
+                  <option value="bachillerato">Bachillerato (6º a 11º)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="acudiente-doc">Documento del Acudiente / Pagador *</label>
+                <input type="text" id="acudiente-doc" placeholder="Ej. 1098765432" required />
+              </div>
+              <div class="form-group">
+                <label for="molar-valor">Valor a Pagar ($ COP) *</label>
+                <input type="number" id="molar-valor" placeholder="Ej. 250000" required />
+              </div>
+            </div>
+
+            <div class="pse-notice">
+              🔒 **Pago Seguro:** Serás redirigido a la pasarela bancaria oficial PSE. Tus datos están protegidos bajo cifrado de alta seguridad.
+            </div>
+
+            <button type="submit" class="btn btn-pse-pay">
+              <span class="pse-icon-btn">PSE</span> Pagar con PSE en Línea →
+            </button>
+          </form>
+        </div>
+
+        <!-- Columna de Información y Soporte -->
+        <div class="pse-sidebar">
+          <div class="sidebar-card">
+            <h3>💳 Medios de Pago Aceptados</h3>
+            <p>A través del botón PSE puedes pagar desde cualquier banco o entidad en Colombia:</p>
+            <ul class="bank-list">
+              <li>🏦 Bancolombia, Nequi y Daviplata</li>
+              <li>🏦 Banco de Bogotá, Davivienda y BBVA</li>
+              <li>🏦 Colpatria, Banco Agrario, Itaú y todos los bancos PSE</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card highlight">
+            <h3>💬 ¿Dudas con la tesorería o tu pago?</h3>
+            <p>Si necesitas confirmar el saldo de tu pensión o solicitar asistencia con tu comprobante, escríbenos directamente a la Secretaría / Tesorería.</p>
+            <a class="btn btn-primary" href="https://wa.me/573152904403?text=Hola%20Colegio%20CSD,%20quisiera%20solicitar%20asistencia%20con%20el%20pago%20de%20pensi%C3%B3n/PSE" target="_blank" rel="noopener" style="width:100%; justify-content:center; margin-top:14px;">
+              Escribir a Tesorería en WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SIGUE EXPLORANDO ================= -->
+  <section class="band band-deep">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Enlaces Útiles</p>
+        <h2>Todo para la familia CSD</h2>
+      </div>
+      <div class="explore-grid">
+        <a class="explore-card reveal" href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener">
+          <p class="eyebrow">Plataforma</p>
+          <h3>Portal Académico Educolombia</h3>
+          <p>Consulta de boletines, notas y seguimiento de tus hijos.</p>
+        </a>
+        <a class="explore-card reveal" href="/admisiones/">
+          <p class="eyebrow">Admisiones</p>
+          <h3>Proceso de Inscripción</h3>
+          <p>Requisitos y formulario en línea para nuevos estudiantes.</p>
+        </a>
+        <a class="explore-card reveal" href="/contacto/">
+          <p class="eyebrow">Atención</p>
+          <h3>Ubicación y Canales</h3>
+          <p>Sede La Cumbre, números de atención y horarios de oficina.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>

@@ -2443,7 +2443,218 @@ footer a:hover { color: var(--yellow-500); }
   .testimonials-grid { grid-template-columns: 1fr 1fr; }
 }
 
+/* ---------- Botón e Insignia PSE (.btn-pse-nav, .pse-container) ---------- */
+.btn-pse-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: color-mix(in srgb, var(--blue-700) 10%, var(--surface));
+  color: var(--blue-700);
+  border: 1.5px solid color-mix(in srgb, var(--blue-700) 30%, transparent);
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 0.86rem;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-pse-nav:hover {
+  background: var(--blue-700);
+  color: #FFFFFF;
+  border-color: var(--blue-700);
+  box-shadow: 0 4px 14px rgba(35, 37, 107, 0.25);
+}
+
+:root[data-theme="dark"] .btn-pse-nav {
+  background: color-mix(in srgb, var(--yellow-500) 15%, var(--surface));
+  color: var(--yellow-500);
+  border-color: color-mix(in srgb, var(--yellow-500) 40%, transparent);
+}
+:root[data-theme="dark"] .btn-pse-nav:hover {
+  background: var(--yellow-500);
+  color: var(--blue-900);
+}
+
+.pse-badge-sm {
+  background: #003865;
+  color: #FFFFFF;
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 0.68rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Portal de Pagos PSE (/pagos/) ---------- */
+.pse-container {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.pse-card-main {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pse-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: color-mix(in srgb, var(--blue-700) 8%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--blue-700) 20%, transparent);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--blue-700);
+  width: fit-content;
+}
+
+.pse-logo-badge {
+  background: #003865;
+  color: #FFF;
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 0.85rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.pse-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.94rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--blue-700);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--blue-700) 15%, transparent);
+}
+
+.pse-notice {
+  background: color-mix(in srgb, var(--blue-700) 6%, var(--paper));
+  border: 1px solid color-mix(in srgb, var(--blue-700) 18%, transparent);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+}
+
+.btn-pse-pay {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #003865;
+  color: #FFFFFF;
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 16px 28px;
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 56, 101, 0.35);
+  transition: all 0.22s ease;
+  margin-top: 6px;
+}
+
+.btn-pse-pay:hover {
+  background: #002646;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 56, 101, 0.45);
+}
+
+.pse-icon-btn {
+  background: #FFF;
+  color: #003865;
+  font-weight: 900;
+  font-size: 0.8rem;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.pse-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 26px 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.bank-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
 @media (max-width: 900px) {
+  .pse-container { grid-template-columns: 1fr; }
+  .form-grid-2 { grid-template-columns: 1fr; }
+}
   nav.links { display: none; }
   header.site .cta-group { display: none; }
   .menu-toggle { display: flex; }

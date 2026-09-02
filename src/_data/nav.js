@@ -5,5 +5,6 @@ module.exports = [
   { label: "Admisiones", href: "/admisiones/" },
   { label: "Egresados", href: "/egresados/" },
   { label: "Noticias", href: "/noticias/" },
+  { label: "Pagos PSE", href: "/pagos/" },
   { label: "Contacto", href: "/contacto/" },
 ];
