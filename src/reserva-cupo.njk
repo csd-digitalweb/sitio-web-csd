@@ -1,0 +1,158 @@
+---
+layout: base.njk
+title: Reserva de Cupo Estudiantes Antiguos — Colegio CSD
+bodyClass: page-reserva-cupo
+permalink: /reserva-cupo/
+---
+<main id="top">
+  <!-- ================= PAGE HERO ================= -->
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><span>Reserva de Cupo</span></div>
+      <p class="eyebrow" style="margin-top:18px;">Estudiantes Antiguos</p>
+      <h1 class="reveal in">Reserva de Cupo Escolar — Colegio CSD.</h1>
+      <p class="lead reveal in">Confirmación de continuidad académica para el próximo año escolar. Ayúdanos a planificar los grupos, salones y recursos pedagógicos garantizando el cupo de tu hijo a tiempo.</p>
+    </div>
+  </section>
+
+  <svg class="seam to-paper" viewBox="0 0 1440 56" preserveAspectRatio="none">
+    <path d="M0,26 C 360,-2 1080,54 1440,22 L1440,56 L0,56 Z"/>
+    <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
+  </svg>
+
+  <!-- ================= FORMULARIO DE RESERVA DE CUPO ================= -->
+  <section class="band band-paper" id="formulario-cupo">
+    <div class="wrap">
+      <div class="reserva-grid reveal">
+        
+        <div class="reserva-card-main">
+          <div class="reserva-tag">
+            <span>✨ Proceso de Continuidad Institucional</span>
+          </div>
+
+          <h2>Formulario de Reserva de Cupo</h2>
+          <p>Diligencia los datos a continuación para confirmar la continuidad de tu hijo(a) en el Colegio CSD. Esta información se registrará directamente en la Tesorería y Secretaría académica.</p>
+
+          <form class="reserva-form" id="form-cupos" onsubmit="handleReservaCupo(event)">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="res-estudiante-nombre">Nombre Completo del Estudiante *</label>
+                <input type="text" id="res-estudiante-nombre" placeholder="Ej. Mariana Gómez Rueda" required />
+              </div>
+              <div class="form-group">
+                <label for="res-grado-actual">Grado Actual *</label>
+                <select id="res-grado-actual" required>
+                  <option value="">Selecciona el grado actual</option>
+                  <option value="Jardín">Jardín</option>
+                  <option value="Transición">Transición</option>
+                  <option value="1º Primaria">1º Primaria</option>
+                  <option value="2º Primaria">2º Primaria</option>
+                  <option value="3º Primaria">3º Primaria</option>
+                  <option value="4º Primaria">4º Primaria</option>
+                  <option value="5º Primaria">5º Primaria</option>
+                  <option value="6º Bachillerato">6º Bachillerato</option>
+                  <option value="7º Bachillerato">7º Bachillerato</option>
+                  <option value="8º Bachillerato">8º Bachillerato</option>
+                  <option value="9º Bachillerato">9º Bachillerato</option>
+                  <option value="10º Bachillerato">10º Bachillerato</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="res-acudiente-nombre">Nombre del Padre / Madre / Acudiente *</label>
+                <input type="text" id="res-acudiente-nombre" placeholder="Ej. Carlos Eduardo Gómez" required />
+              </div>
+              <div class="form-group">
+                <label for="res-acudiente-tel">Teléfono / WhatsApp de Contacto *</label>
+                <input type="tel" id="res-acudiente-tel" placeholder="Ej. 3152904403" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="res-confirmacion">¿Confirma la continuidad del estudiante en el colegio para el próximo año? *</label>
+              <select id="res-confirmacion" required>
+                <option value="SÍ, Confirmo Reserva de Cupo">✅ SÍ, Confirmo reserva de cupo para el próximo año</option>
+                <option value="NO Continuará">❌ NO continuará el próximo año escolar</option>
+                <option value="EN DUDA / Pendiente de decisión">❓ En duda / Pendiente de decisión familiar</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="res-observaciones">Observaciones o Comentarios adicionales</label>
+              <textarea id="res-observaciones" rows="3" placeholder="Opcional. Indica cualquier solicitud o detalle para Tesorería/Secretaría."></textarea>
+            </div>
+
+            <div class="reserva-notice">
+              📧 **Registro Directo:** Tu respuesta quedará respaldada y vinculada a la cuenta oficial del colegio (`csddigitalweb@gmail.com`).
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="padding: 16px 28px; font-size: 1.05rem; justify-content:center;">
+              Confirmar y Enviar Reserva de Cupo →
+            </button>
+          </form>
+
+          <div id="reserva-success-msg" style="display:none; background: #ECFDF5; border: 1.5px solid #10B981; border-radius: var(--radius); padding: 20px; color: #065F46; text-align: center; margin-top: 16px;">
+            <h3 style="color:#065F46; margin:0 0 8px 0;">🎉 ¡Reserva de Cupo Registrada Exitosamente!</h3>
+            <p style="color:#047857; margin:0;">Hemos recibido la confirmación. La Secretaría y Tesorería del Colegio CSD han registrado tus datos correctamente.</p>
+          </div>
+        </div>
+
+        <!-- Sidebar de Información -->
+        <div class="reserva-sidebar">
+          <div class="sidebar-card">
+            <h3>📅 Importancia de la Reserva a Tiempo</h3>
+            <p>Mantener grupos pequeños con atención personalizada requiere planificar con precisión los cupos de cada aula en la Sede La Cumbre.</p>
+            <ul class="check-list" style="margin-top:12px; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.9rem;">
+              <li>✅ Garantizas el lugar de tu hijo en su grupo habitual.</li>
+              <li>✅ Facilitas la organización del material pedagógico.</li>
+              <li>✅ Recibes prioridad en la entrega de circulares.</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card highlight">
+            <h3>💬 ¿Dudas con tu proceso?</h3>
+            <p>Si tienes alguna consulta sobre la continuidad o los costos para el próximo año, escríbenos directamente por WhatsApp.</p>
+            <a class="btn btn-outline" href="https://wa.me/573152904403?text=Hola%20Colegio%20CSD,%20quisiera%20consultar%20sobre%20la%20reserva%20de%20cupo%20de%20mi%20hijo" target="_blank" rel="noopener" style="width:100%; justify-content:center; margin-top:14px;">
+              Contactar a Secretaría en WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+function handleReservaCupo(e) {
+  e.preventDefault();
+  const nombre = document.getElementById('res-estudiante-nombre').value;
+  const grado = document.getElementById('res-grado-actual').value;
+  const acudiente = document.getElementById('res-acudiente-nombre').value;
+  const tel = document.getElementById('res-acudiente-tel').value;
+  const confirmacion = document.getElementById('res-confirmacion').value;
+  const obs = document.getElementById('res-observaciones').value;
+
+  const data = {
+    fecha: new Date().toISOString(),
+    estudiante: nombre,
+    grado: grado,
+    acudiente: acudiente,
+    telefono: tel,
+    confirmacion: confirmacion,
+    observaciones: obs
+  };
+
+  // Guardar en almacenamiento local/servidor y notificar al sistema de reportes
+  try {
+    let reservas = JSON.parse(localStorage.getItem('csd_reservas_cupo') || '[]');
+    reservas.push(data);
+    localStorage.setItem('csd_reservas_cupo', JSON.stringify(reservas));
+  } catch(err){}
+
+  document.getElementById('form-cupos').style.display = 'none';
+  document.getElementById('reserva-success-msg').style.display = 'block';
+}
+</script>

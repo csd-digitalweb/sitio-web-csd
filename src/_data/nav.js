@@ -6,5 +6,6 @@ module.exports = [
   { label: "Egresados", href: "/egresados/" },
   { label: "Noticias", href: "/noticias/" },
   { label: "Pagos PSE", href: "/pagos/" },
+  { label: "Reserva de Cupo", href: "/reserva-cupo/" },
   { label: "Contacto", href: "/contacto/" },
 ];
