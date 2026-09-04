@@ -272,20 +272,21 @@ header.site {
   color: #FFFFFF;
   font-family: var(--font-title);
   font-weight: 800;
-  font-size: 0.84rem;
+  font-size: 0.86rem;
   border-radius: var(--radius-pill);
   text-decoration: none;
   border: 1.5px solid var(--yellow-500);
-  box-shadow: 0 4px 14px rgba(35, 37, 107, 0.25);
+  box-shadow: 0 4px 16px rgba(255, 201, 27, 0.4);
   position: relative;
   transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s ease, background 0.22s ease;
   user-select: none;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-plataforma-interactive:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 22px rgba(255, 201, 27, 0.4);
+  box-shadow: 0 8px 24px rgba(255, 201, 27, 0.55);
   background: linear-gradient(135deg, var(--blue-700), #1d206f);
   color: #FFFFFF;
 }
