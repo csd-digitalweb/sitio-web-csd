@@ -14,16 +14,14 @@
 <body class="{{ bodyClass }}">
 <header class="site">
   <div class="nav">
-    <div class="brand-header-group">
-      <a class="brand" href="/" aria-label="Colegio CSD - Inicio">
-        <img src="/assets/logo.png" alt="Colegio CSD — Estudio, Amor y Paz" />
-      </a>
-      <a class="btn-plataforma-interactive" href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener" aria-label="Ir a la Plataforma Educativa Educolombia">
-        <span class="plat-pulse" aria-hidden="true"></span>
-        <span class="plat-icon">🎓</span>
-        <span class="plat-text">Plataforma Educativa</span>
-      </a>
-    </div>
+    <a class="brand" href="/" aria-label="Colegio CSD - Inicio">
+      <img src="/assets/logo.png" alt="Colegio CSD — Estudio, Amor y Paz" />
+    </a>
+    <a class="btn-plataforma-header" href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener" aria-label="Ingresar a la Plataforma Educativa (Notas y Boletines)">
+      <span class="plat-pulse" aria-hidden="true"></span>
+      <span class="plat-icon">🎓</span>
+      <span class="plat-text">Plataforma Educativa</span>
+    </a>
     <nav class="links" aria-label="Navegación principal">
       {%- for item in nav %}
       <a href="{{ item.href }}"{% if page.url == item.href %} class="active"{% endif %}>{{ item.label }}</a>
@@ -31,7 +29,6 @@
     </nav>
     <div class="cta-group">
       <a class="btn btn-pse-nav" href="/pagos/"><span class="pse-badge-sm">PSE</span> Pagos PSE</a>
-      <a class="btn btn-outline" href="https://educolombia.org/colegio/semillero/2010/homePage" target="_blank" rel="noopener">Portal académico</a>
       <a class="btn btn-primary" href="/admisiones/">Inscríbete aquí</a>
     </div>
     <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">

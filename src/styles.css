@@ -235,14 +235,6 @@ header.site {
   margin: 0 auto;
 }
 
-.brand-header-group {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-right: auto;
-  flex-shrink: 0;
-}
-
 .brand {
   display: flex;
   align-items: center;
@@ -263,35 +255,36 @@ header.site {
   transform: scale(1.03);
 }
 
-.btn-plataforma-interactive {
-  display: inline-flex;
+.btn-plataforma-header {
+  display: inline-flex !important;
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
-  color: #FFFFFF;
+  background: linear-gradient(135deg, #003865, #002244);
+  color: #FFFFFF !important;
   font-family: var(--font-title);
   font-weight: 800;
   font-size: 0.86rem;
   border-radius: var(--radius-pill);
-  text-decoration: none;
+  text-decoration: none !important;
   border: 1.5px solid var(--yellow-500);
-  box-shadow: 0 4px 16px rgba(255, 201, 27, 0.4);
-  position: relative;
+  box-shadow: 0 4px 16px rgba(255, 201, 27, 0.45);
   transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s ease, background 0.22s ease;
   user-select: none;
   white-space: nowrap;
   flex-shrink: 0;
+  margin-right: auto;
+  z-index: 10;
 }
 
-.btn-plataforma-interactive:hover {
+.btn-plataforma-header:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 24px rgba(255, 201, 27, 0.55);
-  background: linear-gradient(135deg, var(--blue-700), #1d206f);
-  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(255, 201, 27, 0.65);
+  background: linear-gradient(135deg, #004d8c, #002e5c);
+  color: #FFFFFF !important;
 }
 
-.btn-plataforma-interactive:active {
+.btn-plataforma-header:active {
   transform: translateY(1px) scale(0.98);
 }
 
@@ -2865,13 +2858,13 @@ footer a:hover { color: var(--yellow-500); }
 @media (max-width: 900px) {
   .pse-container { grid-template-columns: 1fr; }
   .form-grid-2 { grid-template-columns: 1fr; }
-}
   nav.links { display: none; }
   header.site .cta-group { display: none; }
   .menu-toggle { display: flex; }
   .mobile-backdrop { display: block; }
   .mobile-drawer { display: flex; }
   .brand img { height: 50px; min-width: 75px; }
+  .btn-plataforma-header { padding: 6px 12px; font-size: 0.78rem; }
 
   .hero { padding: 40px 0 24px; }
   .hero .wrap {
