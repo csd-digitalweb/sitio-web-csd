@@ -32,7 +32,7 @@ jobs:
           cache: 'npm'
 
       - name: Instalar dependencias
-        run: npm ci
+        run: npm install
 
       - name: Compilar sitio con Eleventy
         run: npm run build
