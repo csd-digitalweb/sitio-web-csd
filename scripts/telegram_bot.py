@@ -19,6 +19,26 @@ DIRECTOR_CHAT_ID = os.getenv("DIRECTOR_CHAT_ID", "")
 ALLOWED_USERS = [u.strip().lower().lstrip('@') for u in ALLOWED_USERS_RAW.split(',') if u.strip()]
 ALLOWED_PHONES = [p.strip().replace("+", "").replace(" ", "").replace("-", "") for p in ALLOWED_PHONES_RAW.split(',') if p.strip()]
 
+VERIFIED_USERS_FILE = os.path.join(BASE_DIR, "scripts", "verified_users.json")
+
+def load_verified_users():
+    if os.path.exists(VERIFIED_USERS_FILE):
+        try:
+            with open(VERIFIED_USERS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return []
+
+def save_verified_user(user_id):
+    users = load_verified_users()
+    user_id_str = str(user_id)
+    if user_id_str not in users:
+        users.append(user_id_str)
+        os.makedirs(os.path.dirname(VERIFIED_USERS_FILE), exist_ok=True)
+        with open(VERIFIED_USERS_FILE, "w", encoding="utf-8") as f:
+            json.dump(users, f, indent=2)
+
 API_URL = f"https://api.telegram.org/bot{TOKEN}" if TOKEN else ""
 FILE_URL = f"https://api.telegram.org/file/bot{TOKEN}" if TOKEN else ""
 
@@ -57,13 +77,16 @@ def is_user_authorized(from_user, phone_number=""):
     user_id = str(from_user.get("id", ""))
     username = from_user.get("username", "").lower()
 
-    if user_id in ALLOWED_USERS or username in ALLOWED_USERS:
+    verified_users = load_verified_users()
+
+    if user_id in ALLOWED_USERS or username in ALLOWED_USERS or user_id in verified_users:
         return True
 
     if phone_number:
         clean_phone = phone_number.replace("+", "").replace(" ", "").replace("-", "")
         for allowed in ALLOWED_PHONES:
             if clean_phone.endswith(allowed) or allowed.endswith(clean_phone):
+                save_verified_user(user_id)
                 return True
 
     return False
@@ -118,7 +141,6 @@ def handle_text_message(chat_id, from_user, text, portada_rel_path=""):
     raw_idea = "\n".join(lines[1:]) if len(lines) > 1 else lines[0]
     author_name = from_user.get("first_name", "Equipo CSD")
 
-    # SIEMPRE requiere aprobación previa de la Dirección antes de salir en vivo (published=False por defecto)
     published_initial = False
 
     file_path, filename = create_news_article(
@@ -142,7 +164,6 @@ def handle_text_message(chat_id, from_user, text, portada_rel_path=""):
         f"⚠️ *Atención:* Esta noticia NO saldrá en la página web hasta que hagas clic en el botón de aprobación de abajo (sin límite de tiempo)."
     )
 
-    # Si hay DIRECTOR_CHAT_ID definido, enviar a la Dirección. De lo contrario, enviar la tarjeta de aprobación al chat del usuario.
     target_chat = DIRECTOR_CHAT_ID if DIRECTOR_CHAT_ID else chat_id
     send_message(target_chat, approval_text, reply_markup=inline_keyboard)
 
@@ -216,12 +237,14 @@ def run_bot():
             if contact:
                 phone_num = contact.get("phone_number", "")
                 if is_user_authorized(from_user, phone_number=phone_num):
+                    save_verified_user(from_user.get("id"))
                     send_message(
                         chat_id,
                         f"✅ *¡Teléfono Verificado Exitosamente!*\n\n"
                         f"Hola *{from_user.get('first_name', '')}*. Tu número de celular (`{phone_num}`) "
-                        f"ha sido autorizado para publicar en el Colegio CSD.\n\n"
-                        f"Ya puedes enviarme noticias o fotos cuando quieras."
+                        f"ha sido verificado y tu usuario ha quedado autorizado permanentemente en el Colegio CSD.\n\n"
+                        f"Ya puedes enviarme noticias o fotos cuando quieras.",
+                        reply_markup={"remove_keyboard": True}
                     )
                 else:
                     send_message(
@@ -235,7 +258,6 @@ def run_bot():
                 request_phone_authorization(chat_id)
                 continue
 
-            # Procesar mensaje con foto adjunta
             portada_rel_path = ""
             if photos:
                 largest_photo = photos[-1]
@@ -260,10 +282,11 @@ def run_bot():
                     f"Escríbeme el título en la primera línea y luego los detalles o borrador (¡puedes adjuntar foto!).\n\n"
                     f" Ejemplo:\n"
                     f"`Izada de Bandera del 7 de Agosto`\n"
-                    f"`Hoy todos los cursos de primaria participaron con muestras de danza y música.`"
+                    f"`Hoy todos los cursos de primaria participaron con muestras de danza y música.`",
+                    reply_markup={"remove_keyboard": True}
                 )
             elif final_text:
-                send_message(chat_id, "✍️ Procesando tu noticia, aplicando corrección ortográfica y generando el artículo con gancho...")
+                send_message(chat_id, "✍️ Procesando tu noticia y creando el borrador institucional...")
                 handle_text_message(chat_id, from_user, final_text, portada_rel_path=portada_rel_path)
 
         time.sleep(2)
