@@ -134,17 +134,16 @@ def request_phone_authorization(chat_id):
     )
 
 def handle_text_message(chat_id, from_user, text, portada_rel_path=""):
-    lines = text.strip().split('\n')
-    title = lines[0].replace("/noticia", "").strip()
-    if not title:
-        title = "Noticia Institucional CSD"
-    raw_idea = "\n".join(lines[1:]) if len(lines) > 1 else lines[0]
-    author_name = from_user.get("first_name", "Equipo CSD")
+    lines = [l.strip() for l in text.strip().split('\n') if l.strip()]
+    
+    first_line = lines[0].replace("/noticia", "").strip() if lines else "Noticia Institucional CSD"
+    raw_idea = "\n".join(lines[1:]) if len(lines) > 1 else text.strip()
 
+    author_name = from_user.get("first_name", "Equipo CSD")
     published_initial = False
 
     file_path, filename = create_news_article(
-        title, raw_idea, category="Noticias", author=author_name, portada=portada_rel_path, published=published_initial
+        first_line, raw_idea, category="Noticias", author=author_name, portada=portada_rel_path, published=published_initial
     )
 
     inline_keyboard = {
@@ -159,16 +158,15 @@ def handle_text_message(chat_id, from_user, text, portada_rel_path=""):
     approval_text = (
         f"📥 *NUEVA NOTICIA PENDIENTE DE APROBACIÓN*\n\n"
         f"👤 *Autor:* {author_name}\n"
-        f"📌 *Título:* {title}\n"
-        f"📄 *Archivo:* `{filename}`\n\n"
-        f"⚠️ *Atención:* Esta noticia NO saldrá en la página web hasta que hagas clic en el botón de aprobación de abajo (sin límite de tiempo)."
+        f"📄 *Archivo generado:* `{filename}`\n\n"
+        f"⚠️ *Atención:* Esta noticia NO saldrá en la página web hasta que hagas clic en el botón de aprobación de abajo."
     )
 
     target_chat = DIRECTOR_CHAT_ID if DIRECTOR_CHAT_ID else chat_id
     send_message(target_chat, approval_text, reply_markup=inline_keyboard)
 
     if DIRECTOR_CHAT_ID and str(chat_id) != str(DIRECTOR_CHAT_ID):
-        send_message(chat_id, f"📝 Noticia redactada y enviada a la Dirección para su aprobación final.")
+        send_message(chat_id, f"📝 Noticia redactada institucionalmente y enviada a la Dirección para su aprobación final.")
 
 def handle_callback_query(callback):
     callback_id = callback.get("id")
@@ -279,14 +277,28 @@ def run_bot():
                     f"👋 *¡Hola {from_user.get('first_name', '')}! Soy el Bot del Colegio CSD.*\n\n"
                     f"📱 *Tu ID Único de Celular:* `{from_user.get('id')}`\n\n"
                     f"Para enviar una **noticia o artículo de interés** para la página `csd.edu.co`:\n"
-                    f"Escríbeme el título en la primera línea y luego los detalles o borrador (¡puedes adjuntar foto!).\n\n"
+                    f"Escríbeme una breve reseña o borrador de la actividad (¡puedes adjuntar foto!).\n\n"
                     f" Ejemplo:\n"
-                    f"`Izada de Bandera del 7 de Agosto`\n"
-                    f"`Hoy todos los cursos de primaria participaron con muestras de danza y música.`",
+                    f"`Hoy todos los cursos de primaria participaron en el taller de ajedrez y lógica.`",
                     reply_markup={"remove_keyboard": True}
                 )
-            elif final_text:
-                send_message(chat_id, "✍️ Procesando tu noticia y creando el borrador institucional...")
+                continue
+
+            # Filtrar saludos cortos o mensajes de prueba simples
+            cleaned_check = final_text.strip().lower()
+            if not photos and (len(cleaned_check) < 15 or cleaned_check in ["hola", "buenos dias", "buenas tardes", "buenas noches", "buena idea", "hola a todos", "probando", "test"]):
+                send_message(
+                    chat_id,
+                    f"👋 *¡Hola {from_user.get('first_name', '')}!*\n\n"
+                    f"Para publicar un artículo en la página web `csd.edu.co`, envíame un mensaje con la información o reseña de la actividad (o adjunta las fotos del evento)."
+                )
+                continue
+
+            if not final_text and photos:
+                final_text = "Registro Fotográfico de Actividades y Aprendizaje en el Colegio CSD"
+
+            if final_text:
+                send_message(chat_id, "✍️ Redactando la noticia institucional con título periodístico y optimizando contenido...")
                 handle_text_message(chat_id, from_user, final_text, portada_rel_path=portada_rel_path)
 
         time.sleep(2)

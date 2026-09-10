@@ -36,7 +36,6 @@ def clean_text_orthography(text):
     for pattern, replacement in CORRECTIONS.items():
         cleaned = re.sub(pattern, replacement, cleaned, flags=re.IGNORECASE)
 
-    # Asegurar mayúscula inicial
     if cleaned and len(cleaned) > 0:
         cleaned = cleaned[0].upper() + cleaned[1:]
 
@@ -54,43 +53,80 @@ def slugify(text):
     text = re.sub(r'[\s-]+', '-', text).strip('-')
     return text[:50]
 
+def extract_smart_title_and_idea(raw_text):
+    """
+    Analiza el texto enviado por el usuario para extraer o generar un título periodístico atractivo.
+    """
+    text = raw_text.strip()
+    lines = [l.strip() for l in text.split('\n') if l.strip()]
+    if not lines:
+        return "Noticia Institucional CSD", "Información destacada de nuestra comunidad educativa."
+
+    first_line = lines[0].replace("/noticia", "").strip()
+
+    # Si la primera línea es corta (< 65 caracteres) y no es un párrafo completo largo
+    if len(first_line) <= 65 and not (first_line.endswith('.') and len(first_line) > 40):
+        title = first_line
+        raw_idea = "\n\n".join(lines[1:]) if len(lines) > 1 else first_line
+    else:
+        # Generar un título atractivo analizando palabras clave en todo el texto
+        lower_text = text.lower()
+        if "matematica" in lower_text or "pensar" in lower_text or "ejercicio" in lower_text:
+            title = "Desarrollo del Pensamiento Lógico y Matemático en el Colegio CSD"
+        elif "motricidad" in lower_text or "preescolar" in lower_text or "fina" in lower_text:
+            title = "Fortalecimiento de la Motricidad Fina y Creatividad en Preescolar"
+        elif "uis" in lower_text or "universidad" in lower_text or "oferta" in lower_text:
+            title = "Estudiantes CSD Conocen la Oferta Académica de la UIS"
+        elif "etica" in lower_text or "valores" in lower_text or "aula" in lower_text:
+            title = "Formación en Ética y Valores en las Aulas del Colegio CSD"
+        elif "futbol" in lower_text or "deporte" in lower_text or "interclases" in lower_text:
+            title = "Jornada Deportiva e Interclases en el Colegio CSD"
+        elif "izada" in lower_text or "bandera" in lower_text or "patria" in lower_text:
+            title = "Izada de Bandera y Celebración de Valores Patrios CSD"
+        else:
+            words = re.findall(r'\b\w+\b', first_line)
+            title = " ".join(words[:7]).capitalize()
+            if not title:
+                title = "Actividad Institucional Colegio CSD"
+
+        raw_idea = text
+
+    return clean_text_orthography(title), clean_text_orthography(raw_idea)
+
 def enhance_article_text(title, raw_idea):
     """
     Transforma un borrador o mensaje informal en un artículo periodístico profundo,
     con gancho, estructura institucional y redacción profesional.
     """
-    title_clean = clean_text_orthography(title)
-    idea_clean = clean_text_orthography(raw_idea)
+    title_clean, idea_clean = extract_smart_title_and_idea(f"{title}\n{raw_idea}")
 
-    # Construcción de un artículo periodístico estructurado con gancho
     p1_hook = (
-        f"Con gran entusiasmo y un ambiente lleno de alegría, nuestra comunidad educativa del "
-        f"**Colegio CSD (Sede La Cumbre)** vivió una jornada destacada en el desarrollo del evento: "
-        f"**{title_clean}**."
+        f"Con gran orgullo y entusiasmo, la comunidad educativa del **Colegio CSD (Sede La Cumbre)** "
+        f"destaca el desarrollo y aprendizaje alcanzado en la jornada de **{title_clean}**."
     )
 
     p2_body = (
-        f"Durante la jornada, nuestros estudiantes demostraron su compromiso, talento y espíritu de superación. "
-        f"{idea_clean} La participación activa de los alumnos y el acompañamiento docente reafirmaron el valor "
-        f"del aprendizaje vivencial y el trabajo en equipo dentro y fuera del aula de clase."
+        f"Nuestros estudiantes participan activamente en experiencias pedagógicas que fortalecen sus habilidades "
+        f"y competencias integrales. {idea_clean} La constante guía de nuestro cuerpo docente promueve el análisis, "
+        f"la curiosidad y el deseo constante de superación en cada salón de clases."
     )
 
     p3_values = (
-        f"En el **Colegio CSD**, cada actividad deportiva, cultural y académica se enmarca en nuestras tres "
-        f"columnas fundamentales: **Estudio, Amor y Paz**. Fomentamos un entorno de convivencia sana, respeto mutuo "
-        f"y desarrollo integral para preparar a nuestros jóvenes como líderes con principios sólidos."
+        f"En el **Colegio CSD**, respaldamos cada actividad bajo nuestros tres pilares institucionales: "
+        f"**Estudio, Amor y Paz**, brindando salones pequeños, atención personalizada y formación académica exigente "
+        f"desde los primeros años."
     )
 
     p4_closing = (
-        f"Felicitamos a todos los participantes por su excelente entrega y agradecemos de corazón a las familias "
-        f"por su constante confianza y respaldo a cada una de las iniciativas de nuestro colegio."
+        f"Felicitamos a todos los estudiantes y docentes por su dedicación y reafirmamos nuestro compromiso "
+        f"de seguir construyendo juntos una educación con excelencia y calidez humana."
     )
 
     cuerpo_completo = f"{p1_hook}\n\n{p2_body}\n\n{p3_values}\n\n{p4_closing}"
 
     resumen = (
-        f"Una jornada inolvidable de integración y aprendizaje vivió nuestra comunidad escolar en el "
-        f"Colegio CSD durante el evento de {title_clean.lower()}."
+        f"Nuestra comunidad escolar del Colegio CSD resalta la importancia y los logros alcanzados "
+        f"durante la jornada de {title_clean.lower()}."
     )
 
     return title_clean, resumen, cuerpo_completo
@@ -104,9 +140,13 @@ def create_news_article(title, raw_idea, category="Noticias", author="Equipo Ped
     filename = f"{date_str}-{slug}.md"
     file_path = os.path.join(BASE_DIR, "src", "noticias", filename)
 
-    # Si no tiene portada asignada, usar la portada por defecto institucional
     if not portada:
         portada = DEFAULT_PORTADA
+
+    # Si hay una imagen de portada adjunta, la incluimos al inicio del cuerpo del artículo
+    cuerpo_con_foto = cuerpo
+    if portada and portada != DEFAULT_PORTADA:
+        cuerpo_con_foto = f"![{title_clean}]({portada})\n\n{cuerpo}"
 
     content = f"""---
 title: "{title_clean}"
@@ -118,7 +158,7 @@ portada: "{portada}"
 publicado: {str(published).lower()}
 ---
 
-{cuerpo}
+{cuerpo_con_foto}
 """
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(content)
