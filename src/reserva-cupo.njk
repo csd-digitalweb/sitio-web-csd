@@ -10,8 +10,8 @@ permalink: /reserva-cupo/
     <div class="wrap">
       <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><span>Reserva de Cupo</span></div>
       <p class="eyebrow" style="margin-top:18px;">Estudiantes Antiguos</p>
-      <h1 class="reveal in">Reserva de Cupo Escolar — Colegio CSD.</h1>
-      <p class="lead reveal in">Confirmación de continuidad académica para el próximo año escolar. Ayúdanos a planificar los grupos, salones y recursos pedagógicos garantizando el cupo de tu hijo a tiempo.</p>
+      <h1 class="reveal in">Consulta de PIN y Prematrícula — Colegio CSD.</h1>
+      <p class="lead reveal in">Confirmación de continuidad académica para el próximo año escolar. Ingresa el número de documento de identidad del estudiante para obtener de inmediato tu PIN institucional y continuar a la actualización oficial de datos en EduColombia.</p>
     </div>
   </section>
 
@@ -20,82 +20,124 @@ permalink: /reserva-cupo/
     <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
   </svg>
 
-  <!-- ================= FORMULARIO DE RESERVA DE CUPO ================= -->
+  <!-- ================= FORMULARIO DE BUSQUEDA DE PIN ================= -->
   <section class="band band-paper" id="formulario-cupo">
     <div class="wrap">
       <div class="reserva-grid reveal">
         
         <div class="reserva-card-main">
           <div class="reserva-tag">
-            <span>✨ Proceso de Continuidad Institucional</span>
+            <span>✨ Prematrícula y Reserva de Cupo</span>
           </div>
 
-          <h2>Formulario de Reserva de Cupo</h2>
-          <p>Diligencia los datos a continuación para confirmar la continuidad de tu hijo(a) en el Colegio CSD. Esta información se registrará directamente en la Tesorería y Secretaría académica.</p>
+          <h2>Consulta de PIN y Prematrícula</h2>
+          <p>Ingresa el número de documento de identidad del estudiante (Tarjeta de Identidad, Registro Civil o Cédula) para obtener de inmediato tu PIN institucional y continuar a la actualización oficial de datos en EduColombia.</p>
 
-          <form class="reserva-form" id="form-cupos" onsubmit="handleReservaCupo(event)">
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="res-estudiante-nombre">Nombre Completo del Estudiante *</label>
-                <input type="text" id="res-estudiante-nombre" placeholder="Ej. Mariana Gómez Rueda" required />
-              </div>
-              <div class="form-group">
-                <label for="res-grado-actual">Grado Actual *</label>
-                <select id="res-grado-actual" required>
-                  <option value="">Selecciona el grado actual</option>
-                  <option value="Jardín">Jardín</option>
-                  <option value="Transición">Transición</option>
-                  <option value="1º Primaria">1º Primaria</option>
-                  <option value="2º Primaria">2º Primaria</option>
-                  <option value="3º Primaria">3º Primaria</option>
-                  <option value="4º Primaria">4º Primaria</option>
-                  <option value="5º Primaria">5º Primaria</option>
-                  <option value="6º Bachillerato">6º Bachillerato</option>
-                  <option value="7º Bachillerato">7º Bachillerato</option>
-                  <option value="8º Bachillerato">8º Bachillerato</option>
-                  <option value="9º Bachillerato">9º Bachillerato</option>
-                  <option value="10º Bachillerato">10º Bachillerato</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-grid-2">
-              <div class="form-group">
-                <label for="res-acudiente-nombre">Nombre del Padre / Madre / Acudiente *</label>
-                <input type="text" id="res-acudiente-nombre" placeholder="Ej. Carlos Eduardo Gómez" required />
-              </div>
-              <div class="form-group">
-                <label for="res-acudiente-tel">Teléfono / WhatsApp de Contacto *</label>
-                <input type="tel" id="res-acudiente-tel" placeholder="Ej. 3152904403" required />
-              </div>
-            </div>
-
+          <form class="reserva-form" id="form-consulta-pin" onsubmit="consultarPin(event)">
             <div class="form-group">
-              <label for="res-confirmacion">¿Confirma la continuidad del estudiante en el colegio para el próximo año? *</label>
-              <select id="res-confirmacion" required>
-                <option value="SÍ, Confirmo Reserva de Cupo">✅ SÍ, Confirmo reserva de cupo para el próximo año</option>
-                <option value="NO Continuará">❌ NO continuará el próximo año escolar</option>
-                <option value="EN DUDA / Pendiente de decisión">❓ En duda / Pendiente de decisión familiar</option>
-              </select>
+              <label for="doc-estudiante" style="font-weight:700; font-size:1.02rem; display:flex; align-items:center; gap:8px;">
+                🆔 Número de Documento del Estudiante *
+              </label>
+              <div style="position:relative; margin-top:8px;">
+                <input 
+                  type="text" 
+                  id="doc-estudiante" 
+                  name="doc-estudiante" 
+                  inputmode="numeric" 
+                  autocomplete="off" 
+                  placeholder="Ej. 1098829170 (sin puntos ni espacios)" 
+                  required 
+                  style="font-size:1.15rem; font-weight:600; padding:16px 18px; letter-spacing:0.5px; border:2px solid #E2E8F0; border-radius:12px; width:100%; box-sizing:border-box; transition:border-color 0.2s;"
+                />
+              </div>
+              <small style="color:#64748B; font-size:0.85rem; margin-top:8px; display:block;">
+                🔒 <strong>Consulta segura:</strong> La información está protegida mediante hash SHA-256. Solo se consultan los datos del documento ingresado.
+              </small>
             </div>
 
-            <div class="form-group">
-              <label for="res-observaciones">Observaciones o Comentarios adicionales</label>
-              <textarea id="res-observaciones" rows="3" placeholder="Opcional. Indica cualquier solicitud o detalle para Tesorería/Secretaría."></textarea>
-            </div>
-
-            <div class="reserva-notice">
-              📧 **Registro Directo:** Tu respuesta quedará respaldada y vinculada a la cuenta oficial del colegio (`csddigitalweb@gmail.com`).
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="padding: 16px 28px; font-size: 1.05rem; justify-content:center;">
-              Confirmar y Enviar Reserva de Cupo →
+            <button type="submit" id="btn-consultar" class="btn btn-primary" style="padding: 16px 28px; font-size: 1.05rem; justify-content:center; width:100%; margin-top:8px; cursor:pointer;">
+              <span id="btn-text">Consultar PIN y Continuar →</span>
+              <span id="btn-spinner" style="display:none;">⏳ Buscando estudiante...</span>
             </button>
           </form>
 
-          <div id="reserva-success-msg" style="display:none; background: #ECFDF5; border: 1.5px solid #10B981; border-radius: var(--radius); padding: 20px; color: #065F46; text-align: center; margin-top: 16px;">
-            <h3 style="color:#065F46; margin:0 0 8px 0;">🎉 ¡Reserva de Cupo Registrada Exitosamente!</h3>
-            <p style="color:#047857; margin:0;">Hemos recibido la confirmación. La Secretaría y Tesorería del Colegio CSD han registrado tus datos correctamente.</p>
+          <!-- RESULTADO ÉXITO -->
+          <div id="resultado-exito" style="display:none; margin-top:16px;">
+            <div style="background:#F0FDF4; border:2px solid #22C55E; border-radius:16px; padding:24px; box-shadow:0 10px 25px -5px rgba(34,197,94,0.15);">
+              <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+                <span style="font-size:2.2rem; line-height:1;">🎓</span>
+                <div>
+                  <h3 style="color:#15803D; margin:0; font-size:1.28rem; font-weight:800;">¡Estudiante Registrado!</h3>
+                  <span style="color:#166534; font-size:0.92rem;">Tu PIN de prematrícula está listo</span>
+                </div>
+              </div>
+
+              <div style="background:white; border-radius:14px; padding:20px; border:1.5px solid #BBF7D0; margin-bottom:20px;">
+                <div style="margin-bottom:14px;">
+                  <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:0.5px; display:block;">Estudiante</span>
+                  <div id="res-nombre" style="font-size:1.22rem; font-weight:800; color:#0F172A; margin-top:2px;">-</div>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-top:1px dashed #CBD5E1; padding-top:14px;">
+                  <div>
+                    <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:0.5px; display:block;">Grado Actual</span>
+                    <div id="res-grado" style="font-weight:700; color:#1E293B; font-size:1.05rem; margin-top:2px;">-</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:0.5px; display:block;">Tu PIN de Matrícula</span>
+                    <div style="margin-top:2px;">
+                      <span id="res-pin" style="display:inline-block; background:#FEF3C7; color:#92400E; font-weight:800; font-size:1.2rem; padding:6px 14px; border-radius:8px; border:1.5px solid #F59E0B; letter-spacing:1.2px; font-family:monospace;">
+                        -
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="background:#DCFCE7; border-left:4px solid #16A34A; padding:12px 16px; border-radius:0 8px 8px 0; margin-bottom:20px; font-size:0.92rem; color:#14532D; line-height:1.5;">
+                📌 <strong>Paso Final:</strong> Al hacer clic en el botón a continuación, ingresarás a <strong>EduColombia</strong> con tu PIN precargado para completar la actualización de datos de matrícula.
+              </div>
+
+              <form id="form-redirect-edu" action="https://educolombia.org/pin/" method="POST" target="_blank">
+                <input type="hidden" name="pin" id="hidden-pin" value="">
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:18px 24px; font-size:1.1rem; background:linear-gradient(135deg, #16A34A, #15803D); border:none; box-shadow:0 8px 20px -4px rgba(22,163,74,0.45); cursor:pointer; font-weight:700;">
+                  🚀 Continuar a Actualización en EduColombia →
+                </button>
+              </form>
+
+              <div style="margin-top:16px; text-align:center;">
+                <button type="button" onclick="reiniciarConsulta()" style="background:none; border:none; color:#475569; font-size:0.9rem; text-decoration:underline; cursor:pointer; padding:6px 12px;">
+                  ← Consultar otro número de documento
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULTADO ERROR -->
+          <div id="resultado-error" style="display:none; margin-top:16px;">
+            <div style="background:#FEF2F2; border:2px solid #EF4444; border-radius:16px; padding:22px; color:#991B1B;">
+              <div style="display:flex; align-items:flex-start; gap:14px;">
+                <span style="font-size:2rem; line-height:1;">⚠️</span>
+                <div style="flex:1;">
+                  <h3 style="color:#991B1B; margin:0 0 8px 0; font-size:1.2rem; font-weight:700;">Documento no encontrado</h3>
+                  <p style="margin:0 0 12px 0; font-size:0.93rem; color:#B91C1C; line-height:1.5;">
+                    No encontramos un estudiante registrado con el documento <strong id="doc-erroneo" style="font-family:monospace; background:#FEE2E2; padding:2px 6px; border-radius:4px;"></strong> en la base de datos de prematrículas.
+                  </p>
+                  <ul style="margin:0 0 16px 0; padding-left:18px; font-size:0.88rem; color:#7F1D1D; line-height:1.55;">
+                    <li>Verifica que hayas digitado el número sin puntos, comas ni espacios.</li>
+                    <li>Asegúrate de ingresar el documento del <strong>estudiante</strong> (no el del acudiente).</li>
+                    <li>Si eres estudiante nuevo o requieres soporte, la secretaría te atenderá con gusto:</li>
+                  </ul>
+                  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <a class="btn" href="https://wa.me/573152904403?text=Hola%20Colegio%20CSD,%20estoy%20consultando%20el%20PIN%20de%20prematricula%20pero%20el%20documento%20no%20aparece" target="_blank" rel="noopener" style="background:#DC2626; color:white; border:none; padding:10px 18px; font-size:0.92rem; font-weight:600; border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+                      💬 Contactar Secretaría por WhatsApp
+                    </a>
+                    <button type="button" onclick="reiniciarConsulta()" class="btn btn-outline" style="padding:10px 18px; font-size:0.92rem; font-weight:600; border-radius:8px; border:1px solid #DC2626; color:#DC2626; background:white; cursor:pointer;">
+                      Intentar de nuevo
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -126,33 +168,91 @@ permalink: /reserva-cupo/
 </main>
 
 <script>
-function handleReservaCupo(e) {
-  e.preventDefault();
-  const nombre = document.getElementById('res-estudiante-nombre').value;
-  const grado = document.getElementById('res-grado-actual').value;
-  const acudiente = document.getElementById('res-acudiente-nombre').value;
-  const tel = document.getElementById('res-acudiente-tel').value;
-  const confirmacion = document.getElementById('res-confirmacion').value;
-  const obs = document.getElementById('res-observaciones').value;
+let dataPrematriculas = null;
 
-  const data = {
-    fecha: new Date().toISOString(),
-    estudiante: nombre,
-    grado: grado,
-    acudiente: acudiente,
-    telefono: tel,
-    confirmacion: confirmacion,
-    observaciones: obs
-  };
-
-  // Guardar en almacenamiento local/servidor y notificar al sistema de reportes
-  try {
-    let reservas = JSON.parse(localStorage.getItem('csd_reservas_cupo') || '[]');
-    reservas.push(data);
-    localStorage.setItem('csd_reservas_cupo', JSON.stringify(reservas));
-  } catch(err){}
-
-  document.getElementById('form-cupos').style.display = 'none';
-  document.getElementById('reserva-success-msg').style.display = 'block';
+async function cargarDatos() {
+  if (dataPrematriculas) return dataPrematriculas;
+  if (window.DATA_PREMATRICULAS) {
+    dataPrematriculas = window.DATA_PREMATRICULAS;
+    return dataPrematriculas;
+  }
+  const paths = [
+    "/reserva-cupo/prematriculas_hash.json",
+    "./prematriculas_hash.json",
+    "../reserva-cupo/prematriculas_hash.json",
+    "/prematriculas_hash.json"
+  ];
+  for (const path of paths) {
+    try {
+      const res = await fetch(path);
+      if (res.ok) {
+        dataPrematriculas = await res.json();
+        return dataPrematriculas;
+      }
+    } catch (e) {}
+  }
+  return {};
 }
+
+async function sha256(str) {
+  const buf = new TextEncoder().encode(str);
+  const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+  return Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function consultarPin(e) {
+  e.preventDefault();
+  const input = document.getElementById("doc-estudiante");
+  const doc = input.value.replace(/[^0-9]/g, "").trim();
+
+  if (!doc || doc.length < 5) {
+    alert("Por favor ingresa un número de documento válido (mínimo 5 dígitos).");
+    input.focus();
+    return;
+  }
+
+  document.getElementById("btn-text").style.display = "none";
+  document.getElementById("btn-spinner").style.display = "inline-block";
+  document.getElementById("btn-consultar").disabled = true;
+  document.getElementById("resultado-exito").style.display = "none";
+  document.getElementById("resultado-error").style.display = "none";
+
+  try {
+    const db = await cargarDatos();
+    const hash = await sha256(doc);
+    const alumno = db[hash];
+
+    if (alumno && alumno.pin) {
+      document.getElementById("res-nombre").textContent = alumno.nombre;
+      document.getElementById("res-grado").textContent = alumno.grado;
+      document.getElementById("res-pin").textContent = alumno.pin;
+      document.getElementById("hidden-pin").value = alumno.pin;
+      document.getElementById("resultado-exito").style.display = "block";
+      document.getElementById("form-consulta-pin").style.display = "none";
+    } else {
+      document.getElementById("doc-erroneo").textContent = doc;
+      document.getElementById("resultado-error").style.display = "block";
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Ocurrió un inconveniente al consultar el PIN. Por favor intenta de nuevo.");
+  } finally {
+    document.getElementById("btn-text").style.display = "inline-block";
+    document.getElementById("btn-spinner").style.display = "none";
+    document.getElementById("btn-consultar").disabled = false;
+  }
+}
+
+function reiniciarConsulta() {
+  document.getElementById("resultado-exito").style.display = "none";
+  document.getElementById("resultado-error").style.display = "none";
+  document.getElementById("form-consulta-pin").style.display = "block";
+  const input = document.getElementById("doc-estudiante");
+  input.value = "";
+  input.focus();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  cargarDatos();
+});
 </script>
