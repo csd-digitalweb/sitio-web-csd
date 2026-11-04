@@ -5,193 +5,185 @@ description: Portal oficial de inscripciones y matrículas del Colegio CSD. Estu
 bodyClass: page-inscribete
 permalink: /inscribete/
 ---
-<main id="top">
-  <!-- ================= PAGE HERO ================= -->
-  <section class="page-hero">
-    <div class="wrap">
-      <div class="crumb reveal in"><a href="/">Inicio</a><span>/</span><span>Inscripciones y Matrículas</span></div>
-      <p class="eyebrow" style="margin-top:18px;">Admisiones & Prematrículas 2026 — 2027</p>
-      <h1 class="reveal in">Portal de Inscripciones y Matrículas — Colegio CSD</h1>
-      <p class="lead reveal in">Acompañamos a tu familia en cada paso del camino escolar. Selecciona a continuación tu perfil para acceder al proceso correspondiente de manera rápida, clara y personalizada.</p>
-    </div>
-  </section>
+<main id="top" style="background:#F1F5F9; min-height:85vh; padding-bottom:60px;">
 
-  <svg class="seam to-paper" viewBox="0 0 1440 56" preserveAspectRatio="none">
-    <path d="M0,26 C 360,-2 1080,54 1440,22 L1440,56 L0,56 Z"/>
-    <path class="seam-ring" d="M0,26 C 360,-2 1080,54 1440,22" vector-effect="non-scaling-stroke"/>
-  </svg>
-
-  <!-- ================= SELECCIÓN DE PERFIL ================= -->
-  <section class="band band-paper" id="selector-inscripciones">
-    <div class="wrap">
-      
-      <div class="section-head reveal in" style="text-align:center; max-width:760px; margin:0 auto 40px;">
-        <span class="badge" style="background:color-mix(in srgb, var(--yellow-500) 18%, var(--surface)); color:var(--ink); font-weight:700; border:1px solid color-mix(in srgb, var(--yellow-500) 45%, transparent); padding:6px 14px; border-radius:999px; display:inline-flex; align-items:center; gap:6px; font-size:0.86rem;">
-          ✨ Elige una de las dos opciones para continuar
-        </span>
-        <h2 style="margin-top:14px; font-size:clamp(1.8rem, 3.2vw, 2.4rem);">¿Eres Estudiante Nuevo o Antiguo?</h2>
-        <p style="color:var(--ink-light); font-size:1.05rem;">Haz clic sobre la opción que corresponda a tu caso para consultar requisitos, adquirir tu PIN o formalizar tu reserva de cupo.</p>
+  <!-- ENCABEZADO COMPACTO Y DIRECTO -->
+  <header style="background:linear-gradient(135deg, #002B4E 0%, #00182E 100%); color:#FFFFFF; padding:44px 20px 50px; text-align:center;">
+    <div style="max-width:860px; margin:0 auto;">
+      <div style="margin-bottom:12px; font-size:0.88rem; color:#FFC91B; font-weight:700; text-transform:uppercase; letter-spacing:0.8px;">
+        <a href="/" style="color:#FFC91B; text-decoration:none;">Inicio</a> <span style="opacity:0.6;">/</span> Inscripciones y Matrículas
       </div>
+      <h1 style="color:#FFFFFF; font-size:clamp(1.9rem, 3.8vw, 2.6rem); font-weight:800; line-height:1.2; margin:0 0 12px;">
+        Inscripciones y Matrículas — Colegio CSD
+      </h1>
+      <p style="color:#E2E8F0; font-size:1.08rem; max-width:680px; margin:0 auto; line-height:1.5;">
+        Por favor selecciona la opción correspondiente a tu familia para iniciar el proceso oficial:
+      </p>
+    </div>
+  </header>
 
-      <style>
-        .inscribete-grid {
-          display: grid !important;
-          grid-template-columns: 1fr 1fr !important;
-          gap: 28px !important;
-          align-items: stretch !important;
-          margin-bottom: 48px !important;
-        }
-        .inscribete-card {
-          display: flex !important;
-          flex-direction: column !important;
-          justify-content: space-between !important;
-          height: 100% !important;
-          background: var(--surface) !important;
-          border-radius: var(--radius-lg) !important;
-          padding: 36px 30px !important;
-          box-shadow: 0 12px 32px rgba(0, 34, 68, 0.08) !important;
-          transition: transform 0.25s ease, box-shadow 0.25s ease !important;
-        }
-        .inscribete-card:hover {
-          transform: translateY(-4px) !important;
-          box-shadow: 0 18px 42px rgba(0, 34, 68, 0.13) !important;
-        }
-        .card-nuevos {
-          border: 2.5px solid #FFC91B !important;
-        }
-        .card-antiguos {
-          border: 2.5px solid var(--blue-700) !important;
-        }
-        .inscribete-action {
-          margin-top: auto !important;
-          padding-top: 22px !important;
-          border-top: 1px dashed var(--line) !important;
-          display: flex !important;
-          flex-direction: column !important;
-          gap: 8px !important;
-        }
-        @media (max-width: 768px) {
-          .inscribete-grid {
-            grid-template-columns: 1fr !important;
-            gap: 24px !important;
-          }
-          .inscribete-card {
-            padding: 28px 20px !important;
-          }
-        }
-      </style>
-
-      <div class="inscribete-grid reveal in">
+  <!-- CONTENEDOR PRINCIPAL: LAS DOS CAJAS LADO A LADO -->
+  <section style="max-width:1160px; margin:-28px auto 0; padding:0 20px;">
+    
+    <div class="inscribete-dos-cajas" style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:stretch;">
+      
+      <!-- ========================================================
+           CAJA 1 (IZQUIERDA): ESTUDIANTES NUEVOS
+           ======================================================== -->
+      <div class="caja-perfil caja-nuevos" style="background:#FFFFFF; border:3px solid #F59E0B; border-radius:20px; box-shadow:0 16px 40px rgba(0,0,0,0.12); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; transition:transform 0.2s, box-shadow 0.2s;">
         
-        <!-- ================= CAJA IZQUIERDA: ESTUDIANTES NUEVOS ================= -->
-        <article class="inscribete-card card-nuevos">
-          <div class="card-content-top">
-            <div class="inscribete-tag tag-nuevos">
-              <span class="tag-icon">🎒</span>
-              <span>Aspirantes · Primer Ingreso</span>
-            </div>
+        <!-- Franja superior destacada -->
+        <div style="background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFFFFF; padding:18px 24px; display:flex; align-items:center; justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:1.6rem; line-height:1;">🎒</span>
+            <span style="font-weight:800; font-size:1.15rem; letter-spacing:0.3px; text-transform:uppercase;">Estudiantes Nuevos</span>
+          </div>
+          <span style="background:rgba(0,0,0,0.2); font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:0.5px;">Primer Ingreso</span>
+        </div>
 
-            <div class="inscribete-header">
-              <h3>Estudiantes Nuevos</h3>
-              <p class="inscribete-sub">¡Bienvenidos a la Gran Familia CSD!</p>
-            </div>
+        <!-- Cuerpo con la lectura y beneficios -->
+        <div style="padding:28px 26px 20px; display:flex; flex-direction:column; gap:18px; flex-grow:1;">
+          <div>
+            <h2 style="font-size:1.5rem; color:#002B4E; margin:0 0 6px; font-weight:800;">¡Bienvenidos a la Familia CSD!</h2>
+            <p style="color:#64748B; font-size:0.92rem; font-weight:600; margin:0;">Inicia tu proceso de admisión para el nuevo año escolar</p>
+          </div>
 
-            <div class="inscribete-quote">
-              <p>
-                "Iniciar una nueva etapa escolar es abrir las puertas a un futuro brillante. En el Colegio Semillero Dos Mil acogemos a cada estudiante con el calor de un hogar y la exigencia de una educación de excelencia. Con más de 35 años de trayectoria en La Cumbre, salones personalizados con cupos limitados, ciclo completo desde preescolar hasta once y una formación temprana en ciencias, artes, inglés y filosofía bajo nuestros pilares de <strong>Estudio, Amor y Paz</strong>, aquí su hijo no será un número más: será un talento que aprenderá a pensar con criterio, liderar con valores y soñar en grande."
-              </p>
-            </div>
+          <!-- Lectura inspiradora -->
+          <div style="background:#FFFBEB; border-left:4px solid #F59E0B; border-radius:8px; padding:16px 18px;">
+            <p style="color:#1E293B; font-size:0.93rem; line-height:1.65; margin:0; font-style:normal;">
+              "Iniciar una nueva etapa escolar es abrir las puertas a un futuro brillante. En el Colegio Semillero Dos Mil acogemos a cada estudiante con el calor de un hogar y la exigencia de una educación de excelencia. Con más de 35 años de trayectoria en La Cumbre, salones personalizados con cupos limitados, ciclo completo desde preescolar hasta once y una formación temprana en ciencias, artes, inglés y filosofía bajo nuestros pilares de <strong>Estudio, Amor y Paz</strong>, aquí su hijo no será un número más: será un talento que aprenderá a pensar con criterio, liderar con valores y soñar en grande."
+            </p>
+          </div>
 
-            <ul class="inscribete-perks">
-              <li>
-                <span class="perk-check">✓</span>
+          <!-- Ventajas destacadas -->
+          <div style="margin-top:4px;">
+            <p style="font-weight:800; color:#002B4E; font-size:0.86rem; text-transform:uppercase; letter-spacing:0.5px; margin:0 0 10px;">
+              Lo que ofrecemos a los nuevos estudiantes:
+            </p>
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px; font-size:0.91rem; color:#334155;">
+              <li style="display:flex; align-items:flex-start; gap:8px;">
+                <span style="color:#D97706; font-weight:900;">✓</span>
                 <span><strong>Salones pequeños:</strong> Acompañamiento individual y cercanía real.</span>
               </li>
-              <li>
-                <span class="perk-check">✓</span>
+              <li style="display:flex; align-items:flex-start; gap:8px;">
+                <span style="color:#D97706; font-weight:900;">✓</span>
                 <span><strong>Exigencia temprana:</strong> Física, química y filosofía desde primaria.</span>
               </li>
-              <li>
-                <span class="perk-check">✓</span>
+              <li style="display:flex; align-items:flex-start; gap:8px;">
+                <span style="color:#D97706; font-weight:900;">✓</span>
                 <span><strong>Ciclo completo:</strong> De preescolar a once en la misma sede La Cumbre.</span>
               </li>
             </ul>
           </div>
+        </div>
 
-          <div class="inscribete-action">
-            <a class="btn btn-primary btn-inscribete" href="/admisiones/" style="width:100%; justify-content:center; padding:16px 20px; font-size:1.02rem; font-weight:800; border-radius:10px;">
-              <span>Iniciar Proceso — Estudiantes Nuevos</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-            <span class="action-caption">Paso a paso, solicitud de PIN ($2.000) y formulario oficial</span>
+        <!-- PARTE BAJA: BOTÓN QUE LO LLEVA AL PROCESO -->
+        <div style="background:#F8FAFC; border-top:2px dashed #E2E8F0; padding:22px 26px; text-align:center;">
+          <a href="/admisiones/" style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; box-sizing:border-box; background:linear-gradient(135deg, #F59E0B, #D97706); color:#FFFFFF; text-decoration:none; padding:16px 20px; font-size:1.06rem; font-weight:800; border-radius:12px; box-shadow:0 6px 20px rgba(217, 119, 6, 0.35); transition:transform 0.2s;">
+            <span>Iniciar Proceso — Estudiantes Nuevos</span>
+            <span style="font-size:1.2rem;">➔</span>
+          </a>
+          <span style="display:block; margin-top:8px; font-size:0.8rem; color:#64748B; font-weight:600;">
+            Paso a paso, solicitud de PIN ($2.000) y formulario oficial
+          </span>
+        </div>
+
+      </div>
+
+
+      <!-- ========================================================
+           CAJA 2 (DERECHA): ESTUDIANTES ANTIGUOS
+           ======================================================== -->
+      <div class="caja-perfil caja-antiguos" style="background:#FFFFFF; border:3px solid #003865; border-radius:20px; box-shadow:0 16px 40px rgba(0,0,0,0.12); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; transition:transform 0.2s, box-shadow 0.2s;">
+        
+        <!-- Franja superior destacada -->
+        <div style="background:linear-gradient(135deg, #003865, #001F3B); color:#FFFFFF; padding:18px 24px; display:flex; align-items:center; justify-content:space-between;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:1.6rem; line-height:1;">🎓</span>
+            <span style="font-weight:800; font-size:1.15rem; letter-spacing:0.3px; text-transform:uppercase;">Estudiantes Antiguos</span>
           </div>
-        </article>
+          <span style="background:rgba(255,201,27,0.25); color:#FFC91B; font-size:0.75rem; font-weight:800; padding:4px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:0.5px;">Familia CSD</span>
+        </div>
 
-        <!-- ================= CAJA DERECHA: ESTUDIANTES ANTIGUOS ================= -->
-        <article class="inscribete-card card-antiguos">
-          <div class="card-content-top">
-            <div class="inscribete-tag tag-antiguos">
-              <span class="tag-icon">🎓</span>
-              <span>Familia Semillerista · Continuidad</span>
-            </div>
+        <!-- Cuerpo con la lectura y beneficios -->
+        <div style="padding:28px 26px 20px; display:flex; flex-direction:column; gap:18px; flex-grow:1;">
+          <div>
+            <h2 style="font-size:1.5rem; color:#002B4E; margin:0 0 6px; font-weight:800;">Familia Semillerista de Corazón</h2>
+            <p style="color:#64748B; font-size:0.92rem; font-weight:600; margin:0;">Reserva de cupo y confirmación para el próximo año lectivo</p>
+          </div>
 
-            <div class="inscribete-header">
-              <h3>Estudiantes Antiguos</h3>
-              <p class="inscribete-sub">Familia Semillerista de Corazón</p>
-            </div>
+          <!-- Lectura de fidelización y reafirmación -->
+          <div style="background:#EFF6FF; border-left:4px solid #003865; border-radius:8px; padding:16px 18px;">
+            <p style="color:#1E293B; font-size:0.93rem; line-height:1.65; margin:0; font-style:normal;">
+              "Ver crecer a sus hijos año tras año es nuestro mayor orgullo y bendición. Gracias por renovar su confianza en nosotros y por ser el corazón de esta gran familia que educa con cercanía real, afecto y rigor pedagógico. Continuar en el CSD es garantizar la estabilidad de su proceso formativo, el cariño de sus docentes, los amigos de siempre y un entorno seguro donde cada logro es celebrado. Aseguremos juntos el cupo para el próximo año lectivo y sigamos construyendo su mejor versión."
+            </p>
+          </div>
 
-            <div class="inscribete-quote">
-              <p>
-                "Ver crecer a sus hijos año tras año es nuestro mayor orgullo y bendición. Gracias por renovar su confianza en nosotros y por ser el corazón de esta gran familia que educa con cercanía real, afecto y rigor pedagógico. Continuar en el CSD es garantizar la estabilidad de su proceso formativo, el cariño de sus docentes, los amigos de siempre y un entorno seguro donde cada logro es celebrado. Aseguremos juntos el cupo para el próximo año lectivo y sigamos construyendo su mejor versión."
-              </p>
-            </div>
-
-            <ul class="inscribete-perks">
-              <li>
-                <span class="perk-check check-blue">✓</span>
-                <span><strong>Continuidad académica:</strong> Proceso pedagógico sin interrupciones.</span>
+          <!-- Ventajas destacadas -->
+          <div style="margin-top:4px;">
+            <p style="font-weight:800; color:#002B4E; font-size:0.86rem; text-transform:uppercase; letter-spacing:0.5px; margin:0 0 10px;">
+              Facilidades para estudiantes antiguos:
+            </p>
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:9px; font-size:0.91rem; color:#334155;">
+              <li style="display:flex; align-items:flex-start; gap:8px;">
+                <span style="color:#003865; font-weight:900;">✓</span>
+                <span><strong>Continuidad académica:</strong> Proceso pedagógico continuo sin interrupciones.</span>
               </li>
-              <li>
-                <span class="perk-check check-blue">✓</span>
-                <span><strong>Consulta de PIN en línea:</strong> Solo necesitas el documento de identidad.</span>
+              <li style="display:flex; align-items:flex-start; gap:8px;">
+                <span style="color:#003865; font-weight:900;">✓</span>
+                <span><strong>Consulta de PIN con documento:</strong> Consulta rápida en línea en 2 segundos.</span>
               </li>
-              <li>
-                <span class="perk-check check-blue">✓</span>
-                <span><strong>Prematrícula rápida:</strong> Actualización directa de datos en EduColombia.</span>
+              <li style="display:flex; align-items:flex-start; gap:8px;">
+                <span style="color:#003865; font-weight:900;">✓</span>
+                <span><strong>Prematrícula ágil:</strong> Actualización directa de datos en EduColombia.</span>
               </li>
             </ul>
           </div>
-
-          <div class="inscribete-action">
-            <a class="btn btn-primary btn-inscribete btn-semillerista" href="/reserva-cupo/" style="width:100%; justify-content:center; padding:16px 20px; font-size:1.02rem; font-weight:800; border-radius:10px; background:linear-gradient(135deg, #003865, #002244); color:#FFFFFF !important; border:1.5px solid #FFC91B;">
-              <span>Continuar al Proceso — Estudiantes Antiguos</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </a>
-            <span class="action-caption">Consulta de PIN institucional y confirmación de cupo</span>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- ================= BLOQUE DE AYUDA / ASISTENCIA ================= -->
-      <div class="inscribete-support reveal in">
-        <div class="support-content">
-          <div class="support-icon">💬</div>
-          <div>
-            <h4>¿Tienes dudas o necesitas acompañamiento personalizado?</h4>
-            <p>Nuestro equipo de Secretaría y Admisiones está listo para guiarte en el horario escolar habitual.</p>
-          </div>
         </div>
-        <div class="support-actions">
-          <a class="btn btn-outline" href="https://wa.me/573152904403?text=Hola%20Colegio%20CSD,%20quisiera%20solicitar%20asesor%C3%ADa%20sobre%20inscripciones%20y%20matr%C3%ADculas" target="_blank" rel="noopener">
-            <span>📱 Escríbenos por WhatsApp</span>
+
+        <!-- PARTE BAJA: BOTÓN QUE LO LLEVA AL PROCESO -->
+        <div style="background:#F8FAFC; border-top:2px dashed #E2E8F0; padding:22px 26px; text-align:center;">
+          <a href="/reserva-cupo/" style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; box-sizing:border-box; background:linear-gradient(135deg, #003865, #001F3B); color:#FFFFFF; text-decoration:none; padding:16px 20px; font-size:1.06rem; font-weight:800; border-radius:12px; border:1.5px solid #FFC91B; box-shadow:0 6px 20px rgba(0, 56, 101, 0.35); transition:transform 0.2s;">
+            <span>Continuar al Proceso — Estudiantes Antiguos</span>
+            <span style="font-size:1.2rem;">➔</span>
           </a>
-          <a class="btn btn-ghost" href="/contacto/">
-            <span>Ver Sede y Teléfonos</span>
-          </a>
+          <span style="display:block; margin-top:8px; font-size:0.8rem; color:#64748B; font-weight:600;">
+            Consulta de PIN institucional y confirmación de cupo
+          </span>
         </div>
+
       </div>
 
     </div>
+
+    <!-- BLOQUE INFERIOR DE SOPORTE -->
+    <div style="margin-top:36px; background:#FFFFFF; border:1.5px solid #CBD5E1; border-radius:14px; padding:20px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <span style="font-size:2rem;">💬</span>
+        <div>
+          <strong style="color:#002B4E; font-size:1.02rem; display:block;">¿Tienes dudas o necesitas asistencia?</strong>
+          <span style="color:#64748B; font-size:0.88rem;">Secretaría del Colegio CSD está a tu disposición en horario escolar.</span>
+        </div>
+      </div>
+      <a href="https://wa.me/573152904403?text=Hola%20Colegio%20CSD,%20quisiera%20solicitar%20asesor%C3%ADa%20sobre%20inscripciones%20y%20matr%C3%ADculas" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:#25D366; color:#FFFFFF; text-decoration:none; padding:10px 18px; border-radius:8px; font-weight:700; font-size:0.92rem;">
+        <span>WhatsApp Secretaría (315 290 4403)</span>
+      </a>
+    </div>
+
   </section>
+
+  <!-- RESPONSIVIDAD PARA CELULAR -->
+  <style>
+    @media (max-width: 768px) {
+      .inscribete-dos-cajas {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+    }
+    .caja-perfil:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0, 38, 70, 0.18) !important;
+    }
+  </style>
+
 </main>
