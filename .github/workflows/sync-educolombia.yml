@@ -1,0 +1,38 @@
+name: Sincronización Automática con EduColombia
+
+on:
+  schedule:
+    # Ejecuta cada 3 horas entre las 7am y 9pm (hora Colombia / UTC-5: 12:00 a 02:00 UTC)
+    - cron: '0 12,15,18,21,0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Ejecutar script de sincronización con EduColombia
+        run: python scripts/sync_educolombia.py
+
+      - name: Verificar cambios y hacer commit
+        run: |
+          git config --local user.email "csddigitalweb@gmail.com"
+          git config --local user.name "Colegio Semillero Dos Mil (Bot)"
+          git add src/reserva-cupo/prematriculas_semillero.csv src/reserva-cupo/prematriculas_hash.json
+          if git diff --staged --quiet; then
+            echo "No hay cambios nuevos en EduColombia."
+          else
+            echo "Cambios detectados. Guardando y publicando actualización..."
+            git commit -m "chore(sync): actualizar cupos y prematrículas desde EduColombia [skip ci]"
+            git push origin main
+          fi

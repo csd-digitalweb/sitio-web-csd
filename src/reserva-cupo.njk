@@ -63,12 +63,20 @@ permalink: /reserva-cupo/
 
           <!-- RESULTADO ÉXITO -->
           <div id="resultado-exito" style="display:none; margin-top:16px;">
-            <div style="background:#F0FDF4; border:2px solid #22C55E; border-radius:16px; padding:24px; box-shadow:0 10px 25px -5px rgba(34,197,94,0.15);">
-              <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
-                <span style="font-size:2.2rem; line-height:1;">🎓</span>
-                <div>
-                  <h3 style="color:#15803D; margin:0; font-size:1.28rem; font-weight:800;">¡Estudiante Registrado!</h3>
-                  <span style="color:#166534; font-size:0.92rem;">Tu PIN de prematrícula está listo</span>
+            <div id="resultado-exito-box" style="background:#F0FDF4; border:2px solid #22C55E; border-radius:16px; padding:24px; box-shadow:0 10px 25px -5px rgba(34,197,94,0.15);">
+              
+              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:18px; flex-wrap:wrap;">
+                <div style="display:flex; align-items:center; gap:12px;">
+                  <span id="res-icon" style="font-size:2.4rem; line-height:1;">🎓</span>
+                  <div>
+                    <h3 id="res-header-title" style="color:#15803D; margin:0; font-size:1.35rem; font-weight:800;">¡Estudiante Registrado!</h3>
+                    <span id="res-header-sub" style="color:#166534; font-size:0.92rem;">Tu PIN de prematrícula está listo</span>
+                  </div>
+                </div>
+                <div id="res-badge-wrap">
+                  <span id="res-badge" style="display:inline-flex; align-items:center; gap:6px; font-weight:800; font-size:0.85rem; padding:6px 14px; border-radius:999px; border:1.5px solid #86EFAC; background:#DCFCE7; color:#15803D;">
+                    ✅ Estado: Cupo Apartado
+                  </span>
                 </div>
               </div>
 
@@ -93,13 +101,13 @@ permalink: /reserva-cupo/
                 </div>
               </div>
 
-              <div style="background:#DCFCE7; border-left:4px solid #16A34A; padding:12px 16px; border-radius:0 8px 8px 0; margin-bottom:20px; font-size:0.92rem; color:#14532D; line-height:1.5;">
+              <div id="res-mensaje-box" style="background:#DCFCE7; border-left:4px solid #16A34A; padding:14px 18px; border-radius:0 10px 10px 0; margin-bottom:20px; font-size:0.95rem; color:#14532D; line-height:1.55;">
                 📌 <strong>Paso Final:</strong> Al hacer clic en el botón a continuación, ingresarás a <strong>EduColombia</strong> con tu PIN precargado para completar la actualización de datos de matrícula.
               </div>
 
               <form id="form-redirect-edu" action="https://educolombia.org/pin/" method="POST" target="_blank">
                 <input type="hidden" name="pin" id="hidden-pin" value="">
-                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:18px 24px; font-size:1.1rem; background:linear-gradient(135deg, #16A34A, #15803D); border:none; box-shadow:0 8px 20px -4px rgba(22,163,74,0.45); cursor:pointer; font-weight:700;">
+                <button type="submit" id="btn-submit-edu" class="btn btn-primary" style="width:100%; justify-content:center; padding:18px 24px; font-size:1.1rem; background:linear-gradient(135deg, #16A34A, #15803D); border:none; box-shadow:0 8px 20px -4px rgba(22,163,74,0.45); cursor:pointer; font-weight:700;">
                   🚀 Continuar a Actualización en EduColombia →
                 </button>
               </form>
@@ -223,10 +231,67 @@ async function consultarPin(e) {
     const alumno = db[hash];
 
     if (alumno && alumno.pin) {
+      const isConfirmed = alumno.estado && alumno.estado.toLowerCase().includes("sigue");
+
       document.getElementById("res-nombre").textContent = alumno.nombre;
       document.getElementById("res-grado").textContent = alumno.grado;
       document.getElementById("res-pin").textContent = alumno.pin;
       document.getElementById("hidden-pin").value = alumno.pin;
+
+      const resBox = document.getElementById("resultado-exito-box");
+      const resIcon = document.getElementById("res-icon");
+      const resTitle = document.getElementById("res-header-title");
+      const resSub = document.getElementById("res-header-sub");
+      const resBadge = document.getElementById("res-badge");
+      const resMsg = document.getElementById("res-mensaje-box");
+      const resBtn = document.getElementById("btn-submit-edu");
+
+      if (isConfirmed) {
+        resBox.style.borderColor = "#22C55E";
+        resBox.style.background = "#F0FDF4";
+        resIcon.textContent = "🎉";
+        resTitle.textContent = "¡Cupo Apartado!";
+        resTitle.style.color = "#15803D";
+        resSub.textContent = "Tu cupo para el año escolar 2027 ya se encuentra reservado y confirmado.";
+        resSub.style.color = "#166534";
+
+        resBadge.textContent = "✅ Estado: Cupo Apartado / Confirmado";
+        resBadge.style.background = "#DCFCE7";
+        resBadge.style.color = "#15803D";
+        resBadge.style.borderColor = "#86EFAC";
+
+        resMsg.style.background = "#DCFCE7";
+        resMsg.style.borderLeft = "4px solid #16A34A";
+        resMsg.style.color = "#14532D";
+        resMsg.innerHTML = "💚 <strong>¡Todo listo!</strong> Los datos del estudiante ya fueron actualizados exitosamente en la plataforma EduColombia. El cupo para el año lectivo 2027 está debidamente apartado. ¡Nos alegra contar con ustedes un año más en la Familia Semillerista!";
+
+        resBtn.textContent = "📄 Consultar o Ver Ficha en EduColombia →";
+        resBtn.style.background = "linear-gradient(135deg, #003865, #002244)";
+        resBtn.style.boxShadow = "0 8px 20px -4px rgba(0,56,101,0.4)";
+      } else {
+        resBox.style.borderColor = "#F59E0B";
+        resBox.style.background = "#FFFBEB";
+        resIcon.textContent = "📋";
+        resTitle.textContent = "¡Estudiante Registrado!";
+        resTitle.style.color = "#92400E";
+        resSub.textContent = "Tu PIN de prematrícula está listo para apartar tu cupo";
+        resSub.style.color = "#B45309";
+
+        resBadge.textContent = "⏳ Estado: Pendiente por apartar cupo";
+        resBadge.style.background = "#FEF3C7";
+        resBadge.style.color = "#92400E";
+        resBadge.style.borderColor = "#FCD34D";
+
+        resMsg.style.background = "#FEF3C7";
+        resMsg.style.borderLeft = "4px solid #F59E0B";
+        resMsg.style.color = "#92400E";
+        resMsg.innerHTML = "📌 <strong>Paso Final:</strong> Al hacer clic en el botón a continuación, ingresarás a <strong>EduColombia</strong> con tu PIN precargado para completar la actualización de datos y apartar tu cupo escolar.";
+
+        resBtn.textContent = "🚀 Continuar a Apartar Cupo en EduColombia →";
+        resBtn.style.background = "linear-gradient(135deg, #16A34A, #15803D)";
+        resBtn.style.boxShadow = "0 8px 20px -4px rgba(22,163,74,0.45)";
+      }
+
       document.getElementById("resultado-exito").style.display = "block";
       document.getElementById("form-consulta-pin").style.display = "none";
     } else {
