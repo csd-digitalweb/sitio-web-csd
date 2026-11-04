@@ -33,89 +33,141 @@ permalink: /inscribete/
         <p style="color:var(--ink-light); font-size:1.05rem;">Haz clic sobre la opción que corresponda a tu caso para consultar requisitos, adquirir tu PIN o formalizar tu reserva de cupo.</p>
       </div>
 
+      <style>
+        .inscribete-grid {
+          display: grid !important;
+          grid-template-columns: 1fr 1fr !important;
+          gap: 28px !important;
+          align-items: stretch !important;
+          margin-bottom: 48px !important;
+        }
+        .inscribete-card {
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: space-between !important;
+          height: 100% !important;
+          background: var(--surface) !important;
+          border-radius: var(--radius-lg) !important;
+          padding: 36px 30px !important;
+          box-shadow: 0 12px 32px rgba(0, 34, 68, 0.08) !important;
+          transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+        }
+        .inscribete-card:hover {
+          transform: translateY(-4px) !important;
+          box-shadow: 0 18px 42px rgba(0, 34, 68, 0.13) !important;
+        }
+        .card-nuevos {
+          border: 2.5px solid #FFC91B !important;
+        }
+        .card-antiguos {
+          border: 2.5px solid var(--blue-700) !important;
+        }
+        .inscribete-action {
+          margin-top: auto !important;
+          padding-top: 22px !important;
+          border-top: 1px dashed var(--line) !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 8px !important;
+        }
+        @media (max-width: 768px) {
+          .inscribete-grid {
+            grid-template-columns: 1fr !important;
+            gap: 24px !important;
+          }
+          .inscribete-card {
+            padding: 28px 20px !important;
+          }
+        }
+      </style>
+
       <div class="inscribete-grid reveal in">
         
-        <!-- ================= TARJETA 1: ESTUDIANTES NUEVOS ================= -->
+        <!-- ================= CAJA IZQUIERDA: ESTUDIANTES NUEVOS ================= -->
         <article class="inscribete-card card-nuevos">
-          <div class="inscribete-tag tag-nuevos">
-            <span class="tag-icon">🎒</span>
-            <span>Aspirantes · Primer Ingreso</span>
-          </div>
+          <div class="card-content-top">
+            <div class="inscribete-tag tag-nuevos">
+              <span class="tag-icon">🎒</span>
+              <span>Aspirantes · Primer Ingreso</span>
+            </div>
 
-          <div class="inscribete-header">
-            <h3>Estudiantes Nuevos</h3>
-            <p class="inscribete-sub">¡Bienvenidos a la Gran Familia CSD!</p>
-          </div>
+            <div class="inscribete-header">
+              <h3>Estudiantes Nuevos</h3>
+              <p class="inscribete-sub">¡Bienvenidos a la Gran Familia CSD!</p>
+            </div>
 
-          <div class="inscribete-quote">
-            <p>
-              "Iniciar una nueva etapa escolar es abrir las puertas a un futuro brillante. En el Colegio Semillero Dos Mil acogemos a cada estudiante con el calor de un hogar y la exigencia de una educación de excelencia. Con más de 35 años de trayectoria en La Cumbre, salones personalizados con cupos limitados, ciclo completo desde preescolar hasta once y una formación temprana en ciencias, artes, inglés y filosofía bajo nuestros pilares de <strong>Estudio, Amor y Paz</strong>, aquí su hijo no será un número más: será un talento que aprenderá a pensar con criterio, liderar con valores y soñar en grande."
-            </p>
-          </div>
+            <div class="inscribete-quote">
+              <p>
+                "Iniciar una nueva etapa escolar es abrir las puertas a un futuro brillante. En el Colegio Semillero Dos Mil acogemos a cada estudiante con el calor de un hogar y la exigencia de una educación de excelencia. Con más de 35 años de trayectoria en La Cumbre, salones personalizados con cupos limitados, ciclo completo desde preescolar hasta once y una formación temprana en ciencias, artes, inglés y filosofía bajo nuestros pilares de <strong>Estudio, Amor y Paz</strong>, aquí su hijo no será un número más: será un talento que aprenderá a pensar con criterio, liderar con valores y soñar en grande."
+              </p>
+            </div>
 
-          <ul class="inscribete-perks">
-            <li>
-              <span class="perk-check">✓</span>
-              <span><strong>Salones pequeños:</strong> Acompañamiento individual y cercanía real.</span>
-            </li>
-            <li>
-              <span class="perk-check">✓</span>
-              <span><strong>Exigencia temprana:</strong> Física, química y filosofía desde primaria.</span>
-            </li>
-            <li>
-              <span class="perk-check">✓</span>
-              <span><strong>Ciclo completo:</strong> De preescolar a once en la misma sede La Cumbre.</span>
-            </li>
-          </ul>
+            <ul class="inscribete-perks">
+              <li>
+                <span class="perk-check">✓</span>
+                <span><strong>Salones pequeños:</strong> Acompañamiento individual y cercanía real.</span>
+              </li>
+              <li>
+                <span class="perk-check">✓</span>
+                <span><strong>Exigencia temprana:</strong> Física, química y filosofía desde primaria.</span>
+              </li>
+              <li>
+                <span class="perk-check">✓</span>
+                <span><strong>Ciclo completo:</strong> De preescolar a once en la misma sede La Cumbre.</span>
+              </li>
+            </ul>
+          </div>
 
           <div class="inscribete-action">
-            <a class="btn btn-primary btn-inscribete" href="/admisiones/">
-              <span>Iniciar Admisión — Estudiantes Nuevos</span>
+            <a class="btn btn-primary btn-inscribete" href="/admisiones/" style="width:100%; justify-content:center; padding:16px 20px; font-size:1.02rem; font-weight:800; border-radius:10px;">
+              <span>Iniciar Proceso — Estudiantes Nuevos</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
-            <span class="action-caption">Adquisición de PIN ($2.000) y formulario de aspirante oficial</span>
+            <span class="action-caption">Paso a paso, solicitud de PIN ($2.000) y formulario oficial</span>
           </div>
         </article>
 
-        <!-- ================= TARJETA 2: ESTUDIANTES ANTIGUOS ================= -->
+        <!-- ================= CAJA DERECHA: ESTUDIANTES ANTIGUOS ================= -->
         <article class="inscribete-card card-antiguos">
-          <div class="inscribete-tag tag-antiguos">
-            <span class="tag-icon">🎓</span>
-            <span>Familia Semillerista · Continuidad</span>
-          </div>
+          <div class="card-content-top">
+            <div class="inscribete-tag tag-antiguos">
+              <span class="tag-icon">🎓</span>
+              <span>Familia Semillerista · Continuidad</span>
+            </div>
 
-          <div class="inscribete-header">
-            <h3>Estudiantes Antiguos</h3>
-            <p class="inscribete-sub">Familia Semillerista de Corazón</p>
-          </div>
+            <div class="inscribete-header">
+              <h3>Estudiantes Antiguos</h3>
+              <p class="inscribete-sub">Familia Semillerista de Corazón</p>
+            </div>
 
-          <div class="inscribete-quote">
-            <p>
-              "Ver crecer a sus hijos año tras año es nuestro mayor orgullo y bendición. Gracias por renovar su confianza en nosotros y por ser el corazón de esta gran familia que educa con cercanía real, afecto y rigor pedagógico. Continuar en el CSD es garantizar la estabilidad de su proceso formativo, el cariño de sus docentes, los amigos de siempre y un entorno seguro donde cada logro es celebrado. Aseguremos juntos el cupo para el próximo año lectivo y sigamos construyendo su mejor versión."
-            </p>
-          </div>
+            <div class="inscribete-quote">
+              <p>
+                "Ver crecer a sus hijos año tras año es nuestro mayor orgullo y bendición. Gracias por renovar su confianza en nosotros y por ser el corazón de esta gran familia que educa con cercanía real, afecto y rigor pedagógico. Continuar en el CSD es garantizar la estabilidad de su proceso formativo, el cariño de sus docentes, los amigos de siempre y un entorno seguro donde cada logro es celebrado. Aseguremos juntos el cupo para el próximo año lectivo y sigamos construyendo su mejor versión."
+              </p>
+            </div>
 
-          <ul class="inscribete-perks">
-            <li>
-              <span class="perk-check check-blue">✓</span>
-              <span><strong>Continuidad académica:</strong> Proceso pedagógico sin interrupciones.</span>
-            </li>
-            <li>
-              <span class="perk-check check-blue">✓</span>
-              <span><strong>Consulta de PIN en línea:</strong> Solo necesitas el documento de identidad.</span>
-            </li>
-            <li>
-              <span class="perk-check check-blue">✓</span>
-              <span><strong>Prematrícula rápida:</strong> Actualización directa de datos en EduColombia.</span>
-            </li>
-          </ul>
+            <ul class="inscribete-perks">
+              <li>
+                <span class="perk-check check-blue">✓</span>
+                <span><strong>Continuidad académica:</strong> Proceso pedagógico sin interrupciones.</span>
+              </li>
+              <li>
+                <span class="perk-check check-blue">✓</span>
+                <span><strong>Consulta de PIN en línea:</strong> Solo necesitas el documento de identidad.</span>
+              </li>
+              <li>
+                <span class="perk-check check-blue">✓</span>
+                <span><strong>Prematrícula rápida:</strong> Actualización directa de datos en EduColombia.</span>
+              </li>
+            </ul>
+          </div>
 
           <div class="inscribete-action">
-            <a class="btn btn-primary btn-inscribete btn-semillerista" href="/reserva-cupo/">
-              <span>Reserva de Cupo y Prematrícula — Familia CSD</span>
+            <a class="btn btn-primary btn-inscribete btn-semillerista" href="/reserva-cupo/" style="width:100%; justify-content:center; padding:16px 20px; font-size:1.02rem; font-weight:800; border-radius:10px; background:linear-gradient(135deg, #003865, #002244); color:#FFFFFF !important; border:1.5px solid #FFC91B;">
+              <span>Continuar al Proceso — Estudiantes Antiguos</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
-            <span class="action-caption">Consulta inmediata de PIN y enlace directo a EduColombia</span>
+            <span class="action-caption">Consulta de PIN institucional y confirmación de cupo</span>
           </div>
         </article>
 

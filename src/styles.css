@@ -3147,7 +3147,7 @@ footer a:hover { color: var(--yellow-500); }
   flex-wrap: wrap;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .inscribete-grid {
     grid-template-columns: 1fr;
     gap: 24px;
