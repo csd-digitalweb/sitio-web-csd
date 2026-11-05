@@ -10,10 +10,11 @@ def main():
     print("1. 📰 Redactar y Publicar una Nueva Noticia / Artículo de Interés")
     print("2. 📸 Publicar un Nuevo Álbum de Fotos de un Evento")
     print("3. 🚀 Sincronizar y Publicar Cambios Pendientes")
-    print("4. ❌ Salir")
+    print("4. 🔄 Sincronizar Cupos en Vivo desde EduColombia")
+    print("5. ❌ Salir")
     print("-" * 60)
 
-    option = input("Selecciona una opción (1-4): ").strip()
+    option = input("Selecciona una opción (1-5): ").strip()
 
     if option == "1":
         print("\n--- 📰 CREAR NOTICIA O ARTÍCULO DE INTERÉS ---")
@@ -72,6 +73,16 @@ def main():
         print("\n🚀 Sincronizando y publicando en internet...")
         success, msg = publish_to_web("Actualización manual desde Community Manager")
         print(f"\n{msg}")
+
+    elif option == "4":
+        print("\n🔄 Sincronizando cupos y estados en vivo desde EduColombia...")
+        from sync_educolombia import sync
+        sync()
+        pub = input("\n¿Deseas publicar la base de datos actualizada inmediatamente en csd.edu.co? (s/n): ").strip().lower()
+        if pub == 's':
+            print("🚀 Publicando en internet...")
+            success, msg = publish_to_web("Sincronización de cupos EduColombia")
+            print(f"\n{msg}")
 
     else:
         print("¡Hasta pronto!")
