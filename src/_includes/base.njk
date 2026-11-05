@@ -12,12 +12,25 @@
 <link rel="stylesheet" href="/styles.css?v=20260904B">
 </head>
 <body class="{{ bodyClass }}">
+<!-- Banner Superior de Admisiones / Temporada -->
+<div class="top-announcement-banner">
+  <div class="wrap top-announcement-inner">
+    <div class="announcement-content">
+      <span class="announcement-pill">ADMISIÓN 2027</span>
+      <span class="announcement-msg">Inscripciones y Reserva de Cupo abiertas para Nuevos y Antiguos</span>
+    </div>
+    <a class="announcement-cta" href="/inscribete/">
+      Inscríbete aquí ➔
+    </a>
+  </div>
+</div>
+
 <header class="site">
   <div class="nav">
     <a class="brand" href="/" aria-label="Colegio CSD - Inicio">
       <img src="/assets/logo.png" alt="Colegio CSD — Estudio, Amor y Paz" />
     </a>
-    <a class="btn-plataforma-header" href="https://educolombia.org/" target="_blank" rel="noopener" aria-label="Ingresar a la Plataforma Educativa (Notas y Boletines)" style="display:inline-flex !important; align-items:center; gap:8px; padding:8px 16px; background:linear-gradient(135deg, #003865, #002244); color:#FFFFFF !important; font-family:var(--font-title, 'Plus Jakarta Sans', sans-serif); font-weight:800; font-size:0.86rem; border-radius:999px; text-decoration:none !important; border:1.5px solid #FFC91B; box-shadow:0 4px 16px rgba(255, 201, 27, 0.45); margin-right:auto; z-index:100; flex-shrink:0;">
+    <a class="btn-plataforma-header" href="https://educolombia.org/" target="_blank" rel="noopener" aria-label="Ingresar a la Plataforma Educativa (Notas y Boletines)">
       <span class="plat-pulse" aria-hidden="true"></span>
       <span class="plat-icon" style="font-size:1.1rem; line-height:1;">🎓</span>
       <span class="plat-text">Plataforma Educativa</span>
@@ -31,6 +44,9 @@
       <a class="btn btn-pse-nav" href="/pagos/"><span class="pse-badge-sm">PSE</span> Pagos PSE</a>
       <a class="btn btn-primary" href="/inscribete/">Inscríbete aquí</a>
     </div>
+    <a class="btn btn-primary btn-inscribete-header-mobile" href="/inscribete/" aria-label="Inscríbete aquí en el Colegio CSD">
+      Inscríbete aquí
+    </a>
     <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
       <span class="bar"></span>
       <span class="bar"></span>
@@ -43,6 +59,11 @@
 <div class="mobile-backdrop" id="mobile-backdrop" aria-hidden="true"></div>
 <div class="mobile-drawer" id="mobile-nav" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Menú de navegación">
   <div class="mobile-drawer-inner">
+    <div class="mobile-drawer-hero-cta">
+      <a class="btn btn-primary" href="/inscribete/" style="width:100%; justify-content:center; padding:14px; font-size:1rem; font-weight:800; box-shadow:0 6px 18px rgba(255,201,27,0.35);">
+        ✍️ Inscríbete aquí (Nuevos y Antiguos) ➔
+      </a>
+    </div>
     <nav class="mobile-links" aria-label="Navegación móvil">
       {%- for item in nav %}
       <a href="{{ item.href }}"{% if page.url.startsWith(item.href) %} class="active"{% endif %}>{{ item.label }}</a>
@@ -50,7 +71,7 @@
     </nav>
     <div class="mobile-cta-group">
       <a class="btn btn-pse-nav" href="/pagos/"><span class="pse-badge-sm">PSE</span> Pagos PSE en Línea</a>
-      <a class="btn btn-outline" href="https://educolombia.org/" target="_blank" rel="noopener">Portal académico</a>
+      <a class="btn btn-outline" href="https://educolombia.org/" target="_blank" rel="noopener">Portal académico (EduColombia)</a>
       <a class="btn btn-primary" href="/inscribete/">Inscríbete aquí</a>
     </div>
     <div class="mobile-drawer-foot">
