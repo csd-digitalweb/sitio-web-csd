@@ -3,9 +3,7 @@ $scriptPath = "C:\Users\julio\dev\sitio-web-csd\scripts\auto_sync.py"
 $workDir = "C:\Users\julio\dev\sitio-web-csd"
 
 $action = New-ScheduledTaskAction -Execute $pythonPath -Argument "`"$scriptPath`"" -WorkingDirectory $workDir
-$trigger = New-ScheduledTaskTrigger -Daily -At "06:00"
-$trigger.RepetitionInterval = (New-TimeSpan -Minutes 15)
-$trigger.RepetitionDuration = (New-TimeSpan -Days 3650)
+$trigger = New-ScheduledTaskTrigger -Once -At "00:00" -RepetitionInterval (New-TimeSpan -Minutes 15) -RepetitionDuration (New-TimeSpan -Days 365)
 $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
 
 Register-ScheduledTask -TaskName "CSD_Sync_EduColombia" -Action $action -Trigger $trigger -Settings $settings -Description "Sincronizacion continua de cupos con EduColombia para Colegio CSD" -Force
