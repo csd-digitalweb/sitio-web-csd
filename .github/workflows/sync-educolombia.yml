@@ -2,8 +2,8 @@ name: Sincronización Automática con EduColombia
 
 on:
   schedule:
-    # Ejecuta cada 3 horas entre las 7am y 9pm (hora Colombia / UTC-5: 12:00 a 02:00 UTC)
-    - cron: '0 12,15,18,21,0 * * *'
+    # Ejecuta automáticamente cada 20 minutos de forma continua
+    - cron: '*/20 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -33,6 +33,6 @@ jobs:
             echo "No hay cambios nuevos en EduColombia."
           else
             echo "Cambios detectados. Guardando y publicando actualización..."
-            git commit -m "chore(sync): actualizar cupos y prematrículas desde EduColombia [skip ci]"
+            git commit -m "chore(sync): actualizar cupos confirmados en vivo desde EduColombia"
             git push origin main
           fi

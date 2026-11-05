@@ -45,7 +45,7 @@
     "nombre": "Carreño Ruiz Sara Valentina",
     "grado": "TRANSICION",
     "pin": "312-40FE4195",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "a308ad318613144fd0571ec68c8771601154b615053a3609b80c7b466d2569ab": {
     "nombre": "Herrera Monsalve Alisson Sofia",
@@ -63,7 +63,7 @@
     "nombre": "Martinez Porras Andres Felipe",
     "grado": "TRANSICION",
     "pin": "312-A614F62D",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "7e10df1ea04001778adc1878c8b95b1458748efdf14c7fc27f56861fe3f082b2": {
     "nombre": "Pedraza Caballero Emma Valeria",
@@ -75,7 +75,7 @@
     "nombre": "Suarez Cadena Eilyn Isabella",
     "grado": "TRANSICION",
     "pin": "312-D500728F",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "d1409852c6394131fc602229b8dca03f457e34ecee8a6d29f639166a98b07e12": {
     "nombre": "Velaides Cardona Ian Santiago",
@@ -87,7 +87,7 @@
     "nombre": "Vargas Diaz Abygail",
     "grado": "TRANSICION",
     "pin": "312-AA90431F",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "c651a7c9fb36dfd7e95894557174476b2a1672862a489b271997edd2aa360614": {
     "nombre": "Moreno Orduz Miguel Angel",
@@ -195,25 +195,25 @@
     "nombre": "Mendivelso Betancour Thomas Emiliano",
     "grado": "SEGUNDO",
     "pin": "312-D529B5B7",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "5b325bd206bd87991446bfef10b284477277f31aa04c9612a98a8fd7df839518": {
     "nombre": "Micolta Lozada Melanny Juliana",
     "grado": "SEGUNDO",
     "pin": "312-75445716",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "ea81bccb6254ff31928926b411c3c908d98b60f400ee62fa8ae8b5688151342f": {
     "nombre": "Niño Fontecha Noah Geronimo",
     "grado": "SEGUNDO",
     "pin": "312-76308DFB",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "9c7f8a3a8dcef1ff71d9652d45635d579fe1d0080af422a46a36494607b697ae": {
     "nombre": "Pernia Barrera Edwar Adrian",
     "grado": "SEGUNDO",
     "pin": "312-086F6D3C",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "8c1a9a3d56165ba3470a924952139f340d45597870970ea7035f40886b055f2f": {
     "nombre": "Ramirez Guerrero Isabella",
@@ -225,7 +225,7 @@
     "nombre": "Rincon Estrada Thomas Alejandro",
     "grado": "SEGUNDO",
     "pin": "312-8C08BCF4",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "d783771ce55f4eb27d734999f3b4d816070418658727e2ca8727273b8f86dadb": {
     "nombre": "Rivera Velasquez Helen Maitte",
@@ -255,13 +255,13 @@
     "nombre": "Acevedo Rios Juan David",
     "grado": "TERCERO",
     "pin": "312-4F3BC621",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "6c476c99a29eb112fb4ec747f1b5290b2ec8d08b253fa2ca6b25b2c8599002ff": {
     "nombre": "Carreño Ruiz Victoria Sofia",
     "grado": "TERCERO",
     "pin": "312-7197B9EB",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "eca39cffce9720a9febcf71ed409ddf862c99d43ec229cd45ce317ef9c6d80c5": {
     "nombre": "Carrillo Castellanos Bella Valentina",
@@ -279,7 +279,7 @@
     "nombre": "Garcia Grimaldos Ian",
     "grado": "TERCERO",
     "pin": "312-179EF09E",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "9eff5b9fc93477702a5714e89dd447b76f19c87ba842ab9d7a748fa03e31a8d0": {
     "nombre": "Mora Rodriguez Jeremy Samuel",
@@ -297,7 +297,7 @@
     "nombre": "Naranjo Hernandez Oscar Andres",
     "grado": "TERCERO",
     "pin": "312-8C78CDE1",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "3a44ab75b8a74cfc3c46749e72c379d6fbebd6eea86e1c97d78adf68db6ce8b8": {
     "nombre": "Ortiz Alfonso Sara Gabriela",
@@ -327,7 +327,7 @@
     "nombre": "Zambrano Rico Juan Esteban",
     "grado": "TERCERO",
     "pin": "312-53849552",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "22e649dfe080561c772d78a46ee7b5bc45ac1bcc007ff6e8c572331f13675ba9": {
     "nombre": "Barraza Carrillo Jarib Jeronimo",
@@ -369,7 +369,7 @@
     "nombre": "Patiño Rueda Danna Saray",
     "grado": "CUARTO",
     "pin": "312-F2FA7C84",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "804776b0bd25fe5294dc566b408d98c5d2e248755c9f166fae67277a93479e24": {
     "nombre": "Peña Gonzalez Joel Josue",
@@ -381,7 +381,7 @@
     "nombre": "Peña Medina Fabiana Alejandra",
     "grado": "CUARTO",
     "pin": "312-23C6E5FF",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "3de3ffcba676142dae7e9f4c6762d2a50049dccef2e379213f905d8081f6fffc": {
     "nombre": "Sequeda Melendez Jose David",
@@ -405,7 +405,7 @@
     "nombre": "Cipagauta Ballen Yised Mariana",
     "grado": "QUINTO",
     "pin": "312-D3D0BE10",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "2472d73a9bfb0759251b7612b3570a1a61d384ec0344d8e8bb3b813188715c08": {
     "nombre": "Barcenas Suarez Danna Camila",
@@ -489,7 +489,7 @@
     "nombre": "Valencia Arias Isabel Sofia",
     "grado": "QUINTO",
     "pin": "312-9F7BAB7D",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "10a833b9d06ad564b80089586660cdfe028e2f66bbb29296bb99b0b9cc80c753": {
     "nombre": "Velaides Cardona Melanny Sofia",
@@ -513,7 +513,7 @@
     "nombre": "Barrientos Duran Jorge Andres",
     "grado": "SEXTO",
     "pin": "312-3F260D3D",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "281f66beab20da33bc343b9b85628e0abbd84df312676f9405cefd589bee4f85": {
     "nombre": "Berrio Pinto Zahir Steven",
@@ -567,7 +567,7 @@
     "nombre": "González Hernandez José David",
     "grado": "SEXTO",
     "pin": "312-43928867",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "8206488816818a0b465c3c92b2482a2e2a59f2c1878adb65ab7721fe5971a341": {
     "nombre": "Guerrero Diaz Luciana Valentina",
@@ -591,7 +591,7 @@
     "nombre": "Madrid Estupiñan Samuel",
     "grado": "SEXTO",
     "pin": "312-C2027D6B",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "cf092f2335c69f0342bce73e32ee4a35c53549f88a5cde37a7d93dc2da45467a": {
     "nombre": "Martinez Bonilla Maria Jose",
@@ -633,7 +633,7 @@
     "nombre": "Portilla Gomez Isabella -",
     "grado": "SEXTO",
     "pin": "312-55459633",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "d07f061528774a6310b76d6800a5057be57bad3d93e8524464ab79e393b4c98d": {
     "nombre": "Reyes Maldonado Raul Mathias",
@@ -645,13 +645,13 @@
     "nombre": "Reyes Pacheco Damian Esteban",
     "grado": "SEXTO",
     "pin": "312-1B7AB97B",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "72adf58796981a214197255f1b7bed53346a4d2d65a336f25eb663bc12de0ace": {
     "nombre": "Staper Mejia Dana Isabella",
     "grado": "SEXTO",
     "pin": "312-F4D24DFD",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "0fa4eeca693f19910dae458a900c7b760562c6254e8aa49c51621fbdd03de127": {
     "nombre": "Villamizar Lopez Beyker Rumeniger",
@@ -675,7 +675,7 @@
     "nombre": "Avila Rincon Cielo Julieth",
     "grado": "SEPTIMO",
     "pin": "312-C74A449A",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "03524d9084a3a791b2fb77ea8de20c6549a0cf127400947c3e1b9dead3fdeb72": {
     "nombre": "Barragan Delgado Anamelie",
@@ -699,7 +699,7 @@
     "nombre": "Chaparro Diaz Thomas Julian",
     "grado": "SEPTIMO",
     "pin": "312-0E671DF7",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "9b61b1c05b7389030fe90bfccf0f20f5d25d70e6903135406066b45fc8ab1b2d": {
     "nombre": "Cuadros Benitez Erik Danobys",
@@ -717,7 +717,7 @@
     "nombre": "Duque Barrera Cristopher Antuhan",
     "grado": "SEPTIMO",
     "pin": "312-D40B4C84",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "2bdf8070736374902408ed32e9cee1803032d1a8c05a81c97ef797f351e30a89": {
     "nombre": "Duran Caceres Edwing Santiago",
@@ -753,13 +753,13 @@
     "nombre": "Guerrero Perez Jesus Daniel",
     "grado": "SEPTIMO",
     "pin": "312-CEF0E150",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "c7ead268764d7a27c14267d3e30a4fd91e90332ee1d8a153504ab111ee41e5a3": {
     "nombre": "Leon Delgado Darlyn Sofia",
     "grado": "SEPTIMO",
     "pin": "312-C3BF4A67",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "3ed51e0894560aba0c7f91058ecfdf9cfe4cba3c57e84e93b80dd337280c1636": {
     "nombre": "Mendoza Guarin Hanks Nicolas",
@@ -783,7 +783,7 @@
     "nombre": "Orduz Hernandez Deimer Stevan",
     "grado": "SEPTIMO",
     "pin": "312-CB4B2FEE",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "7122a6f8a41a694a7d95b81c0982c82e1bcf9e5134c233bbd076490aa1b4af82": {
     "nombre": "Pabon Lizcano Exon Daniel",
@@ -801,7 +801,7 @@
     "nombre": "Pineda Palomino Juan Esteban",
     "grado": "SEPTIMO",
     "pin": "312-1B83CF08",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "391fdb49d964f4b4a4dde2c9200b028af5c559aea744f8861a1e7d2e977260a8": {
     "nombre": "Pinto Mora Andres Camilo",
@@ -825,7 +825,7 @@
     "nombre": "Salas Puerta Samuel Andres",
     "grado": "SEPTIMO",
     "pin": "312-B96552F1",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "702693350ab7f3d0ffc90e41a0213fc65c01bc16d9f05df3214461a654acd74b": {
     "nombre": "Tarazona Sanabria Daniel Santiago",
@@ -837,7 +837,7 @@
     "nombre": "Villabon Cacua Megan Lucciana",
     "grado": "SEPTIMO",
     "pin": "312-086DB750",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "9ee13171003d3436fcb13dce0041efc06a13854b160d506081235447750d4564": {
     "nombre": "-villamizar Acevedo -adrian -samuel",
@@ -845,11 +845,17 @@
     "pin": "312-C09F05F1",
     "estado": "Confirma Sigue"
   },
+  "a9b2d1d1d3c3e5ff0e1909444a629a45b7f3c4bd0786b1ae558f795d08db47f6": {
+    "nombre": "Garcia Diaz Paula Maria",
+    "grado": "OCTAVO",
+    "pin": "312-7C68EBFF",
+    "estado": "Confirma Sigue"
+  },
   "f569f2a11def5a57ff8d88534b6ce9ad130a962d60fdf67a1b6c4b59fc7b2181": {
     "nombre": "Alfonso Hernandez Liseth Saray",
     "grado": "OCTAVO",
     "pin": "312-AE3B8530",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "9c5114bc1fb5f5c53c397cec99a35298ed018b41a46a182c58131bfd214a0c99": {
     "nombre": "Ariza Beltran Jonnathan Santiago",
@@ -981,13 +987,13 @@
     "nombre": "Staper Mejia Sarit Patricia",
     "grado": "OCTAVO",
     "pin": "312-783628EB",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "7c9761532731eca16211081601cf1db8dc73bf0231db75199d79f99228c655d9": {
     "nombre": "Tirado Villamizar Ashley Mariana",
     "grado": "OCTAVO",
     "pin": "312-F4D09BD8",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "26f885d6e619f10dda28fd989271f200c1c499083f9adc9a83bd515813db137d": {
     "nombre": "Barrera Garcia Michelle Vanesa",
@@ -1017,7 +1023,7 @@
     "nombre": "Bautista Landinez Danna Valentina",
     "grado": "NOVENO",
     "pin": "312-9F4B07B9",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "bfaa161070cd17520f7f4bd22a39a2a48a4552bb328186fe407c1b046f46295f": {
     "nombre": "Carvajal Bernal Jeferson",
@@ -1041,7 +1047,7 @@
     "nombre": "Lozano Diaz Osiris Yuliana",
     "grado": "NOVENO",
     "pin": "312-C7793209",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "dc087979e261e981ccb5f4062137202f5208b7a3e8d19912e2175f24af668bf1": {
     "nombre": "Monsalve Monsalve Lizeth Carolina",
@@ -1065,7 +1071,7 @@
     "nombre": "Paredes Prada Iker David",
     "grado": "NOVENO",
     "pin": "312-B14CE27A",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "5ff9589cbba871f67d97465a9f9811c4fcf0dfe5aa6f1111ee5f0b08e7fc561b": {
     "nombre": "Parra Torres Jensie Anahi",
@@ -1107,7 +1113,7 @@
     "nombre": "Valencia Arias Daniel Felipe",
     "grado": "NOVENO",
     "pin": "312-E41EB9D8",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "254e41260c7fa46e928c31741459d275b3b26c687144c92c7294d693396e70c7": {
     "nombre": "Vega Santos Juan Jose",
@@ -1137,7 +1143,7 @@
     "nombre": "Blanco Quiroga Juan David",
     "grado": "DECIMO",
     "pin": "312-ABF7F34C",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "f9550e20e0f11cce8df270b8227378a827d99792fd3e5a4678adf65482dc69d3": {
     "nombre": "Camacho Mora Leidy Mariana",
@@ -1149,7 +1155,7 @@
     "nombre": "Carreño Aguillon Juan David",
     "grado": "DECIMO",
     "pin": "312-42A54233",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "1a0683ad6d1208efd36106f5eda84122b26fc5d474b7d6c6a69e0834694bfe21": {
     "nombre": "Hernandez Rivera Mayleif Valentina",
@@ -1191,7 +1197,7 @@
     "nombre": "Ortiz Suarez Juan Sebastian",
     "grado": "DECIMO",
     "pin": "312-EBE3C736",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "edcda4e148cb4113bc932fe0dc6929040aceaef3cb91a5691bbb195071d1b01a": {
     "nombre": "Pabon Lizcano David Santiago",
@@ -1221,7 +1227,7 @@
     "nombre": "Silva Leon Karol Sofia",
     "grado": "DECIMO",
     "pin": "312-7C10E91B",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "d4993fbe284a0fe0bcb1fe941502e718286d89de2cf559b9bf0f8a8fc1c51578": {
     "nombre": "Vanegas Bayen Cristian Santiago",
@@ -1337,16 +1343,34 @@
     "pin": "312-913D762C",
     "estado": "Sin Confirmar"
   },
-  "a9b2d1d1d3c3e5ff0e1909444a629a45b7f3c4bd0786b1ae558f795d08db47f6": {
-    "nombre": "Garcia Diaz Paula Maria",
+  "996bdd9a07464d4e50ab52f829b4c9cadd520a42c63fe697a9e3b9a44ac10f6a": {
+    "nombre": "- - - -",
     "grado": "SIN ASIGNAR",
-    "pin": "312-7C68EBFF",
+    "pin": "312-B5E948CB",
     "estado": "Sin Confirmar"
   },
   "f30f1a8dc9b94e1e870ee8e3f9c991db706034ed5479ecd712363edbf3786c30": {
     "nombre": "- - - -",
     "grado": "SIN ASIGNAR",
     "pin": "312-2CA586DD",
+    "estado": "Sin Confirmar"
+  },
+  "b40fe53d64d5e2dbade35f11435a8258eeeded43d7ab0313e9823a1bad4a7d67": {
+    "nombre": "- - - -",
+    "grado": "SIN ASIGNAR",
+    "pin": "312-A73B9E82",
+    "estado": "Sin Confirmar"
+  },
+  "585d13714c20faccce20c9e0655cc1cde93041d22a2400af565c2e3f4257418a": {
+    "nombre": "- - - -",
+    "grado": "SIN ASIGNAR",
+    "pin": "312-7E66F82E",
+    "estado": "Sin Confirmar"
+  },
+  "12cf30061332616e81d6e769ea590440a68d83cb29ac92dc0ba6dc2c35678f98": {
+    "nombre": "- - - -",
+    "grado": "SIN ASIGNAR",
+    "pin": "312-AC0660C4",
     "estado": "Sin Confirmar"
   },
   "88903207ad2ae7fa99ce0f1cf722c5cc8cc155c63b5bfd8f71a762225cfd9cb2": {
@@ -1359,30 +1383,6 @@
     "nombre": "- - - -",
     "grado": "SIN ASIGNAR",
     "pin": "312-B5D58F67",
-    "estado": "Sin Confirmar"
-  },
-  "12cf30061332616e81d6e769ea590440a68d83cb29ac92dc0ba6dc2c35678f98": {
-    "nombre": "- - - -",
-    "grado": "SIN ASIGNAR",
-    "pin": "312-AC0660C4",
-    "estado": "Sin Confirmar"
-  },
-  "585d13714c20faccce20c9e0655cc1cde93041d22a2400af565c2e3f4257418a": {
-    "nombre": "- - - -",
-    "grado": "SIN ASIGNAR",
-    "pin": "312-7E66F82E",
-    "estado": "Sin Confirmar"
-  },
-  "b40fe53d64d5e2dbade35f11435a8258eeeded43d7ab0313e9823a1bad4a7d67": {
-    "nombre": "- - - -",
-    "grado": "SIN ASIGNAR",
-    "pin": "312-A73B9E82",
-    "estado": "Sin Confirmar"
-  },
-  "996bdd9a07464d4e50ab52f829b4c9cadd520a42c63fe697a9e3b9a44ac10f6a": {
-    "nombre": "- - - -",
-    "grado": "SIN ASIGNAR",
-    "pin": "312-B5E948CB",
     "estado": "Sin Confirmar"
   },
   "b131ca3e951c11967973e9d0fc5e846e30253e93431c13b680128ec9d1bad41c": {

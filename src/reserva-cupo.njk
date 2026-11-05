@@ -178,21 +178,21 @@ permalink: /reserva-cupo/
 <script>
 let dataPrematriculas = null;
 
-async function cargarDatos() {
-  if (dataPrematriculas) return dataPrematriculas;
-  if (window.DATA_PREMATRICULAS) {
+async function cargarDatos(forceRefresh = false) {
+  if (dataPrematriculas && !forceRefresh) return dataPrematriculas;
+  if (window.DATA_PREMATRICULAS && !forceRefresh) {
     dataPrematriculas = window.DATA_PREMATRICULAS;
     return dataPrematriculas;
   }
+  const cacheBuster = "?_t=" + Date.now();
   const paths = [
-    "/reserva-cupo/prematriculas_hash.json",
-    "./prematriculas_hash.json",
-    "../reserva-cupo/prematriculas_hash.json",
-    "/prematriculas_hash.json"
+    "/reserva-cupo/prematriculas_hash.json" + cacheBuster,
+    "./prematriculas_hash.json" + cacheBuster,
+    "/prematriculas_hash.json" + cacheBuster
   ];
   for (const path of paths) {
     try {
-      const res = await fetch(path);
+      const res = await fetch(path, { cache: "no-store" });
       if (res.ok) {
         dataPrematriculas = await res.json();
         return dataPrematriculas;
@@ -226,12 +226,13 @@ async function consultarPin(e) {
   document.getElementById("resultado-error").style.display = "none";
 
   try {
-    const db = await cargarDatos();
+    const db = await cargarDatos(true);
     const hash = await sha256(doc);
     const alumno = db[hash];
 
     if (alumno && alumno.pin) {
-      const isConfirmed = alumno.estado && alumno.estado.toLowerCase().includes("sigue");
+      const est = (alumno.estado || "").toLowerCase();
+      const isConfirmed = (est.includes("sigue") || est.includes("confirmad")) && !est.includes("sin");
 
       document.getElementById("res-nombre").textContent = alumno.nombre;
       document.getElementById("res-grado").textContent = alumno.grado;
