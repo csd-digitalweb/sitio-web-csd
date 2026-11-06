@@ -363,7 +363,7 @@
     "nombre": "Mogollon Sanchez Geronimo",
     "grado": "CUARTO",
     "pin": "312-823E5831",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "248e9a1c95069f2db6c192148ae25ebf42b0490b3b80a45a15c1744ff6a12e84": {
     "nombre": "Patiño Rueda Danna Saray",
@@ -399,7 +399,7 @@
     "nombre": "Arroyo Giraldo Carlos Mathias",
     "grado": "QUINTO",
     "pin": "312-87E9B38C",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "db1231f2bb6fcfb5cf1e8f912c91d85398bf898340eb4603ba4eae833d1df0c2": {
     "nombre": "Cipagauta Ballen Yised Mariana",
@@ -657,7 +657,7 @@
     "nombre": "Villamizar Lopez Beyker Rumeniger",
     "grado": "SEXTO",
     "pin": "312-0C3FE4EB",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "e04d6a6851b23aa4397f613ba5704d9708c76945de6b1cc983742c9868886a5a": {
     "nombre": "Acosta Gutierrez William Alfonsi",
@@ -681,7 +681,7 @@
     "nombre": "Barragan Delgado Anamelie",
     "grado": "SEPTIMO",
     "pin": "312-02386F2D",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "edc976d48ec82ebc9105cfbf168f1552d534b22ac2e34d5d4cbfbddc6ef6bb1f": {
     "nombre": "Castillo Rueda Deyvid Nicolas",
@@ -1017,7 +1017,7 @@
     "nombre": "Ballesteros Porras Maria Alejandra",
     "grado": "NOVENO",
     "pin": "312-01FE4BB2",
-    "estado": "Sin Confirmar"
+    "estado": "Confirma Sigue"
   },
   "9df755ac4123af00ab4c35b5243e3bb3623670c7b4fea9f2a96992f430b61422": {
     "nombre": "Bautista Landinez Danna Valentina",
@@ -1349,12 +1349,6 @@
     "pin": "312-B5E948CB",
     "estado": "Sin Confirmar"
   },
-  "f30f1a8dc9b94e1e870ee8e3f9c991db706034ed5479ecd712363edbf3786c30": {
-    "nombre": "- - - -",
-    "grado": "SIN ASIGNAR",
-    "pin": "312-2CA586DD",
-    "estado": "Sin Confirmar"
-  },
   "585d13714c20faccce20c9e0655cc1cde93041d22a2400af565c2e3f4257418a": {
     "nombre": "- - - -",
     "grado": "SIN ASIGNAR",
@@ -1367,16 +1361,16 @@
     "pin": "312-AC0660C4",
     "estado": "Sin Confirmar"
   },
-  "88903207ad2ae7fa99ce0f1cf722c5cc8cc155c63b5bfd8f71a762225cfd9cb2": {
-    "nombre": "- - - -",
-    "grado": "SIN ASIGNAR",
-    "pin": "312-55652DCE",
-    "estado": "Sin Confirmar"
-  },
   "85ae5b99635b255996a29345fa9c361da8aee64f3512fce33d24a7fa3f7d0f55": {
     "nombre": "- - - -",
     "grado": "SIN ASIGNAR",
     "pin": "312-B5D58F67",
+    "estado": "Sin Confirmar"
+  },
+  "88903207ad2ae7fa99ce0f1cf722c5cc8cc155c63b5bfd8f71a762225cfd9cb2": {
+    "nombre": "- - - -",
+    "grado": "SIN ASIGNAR",
+    "pin": "312-55652DCE",
     "estado": "Sin Confirmar"
   },
   "b40fe53d64d5e2dbade35f11435a8258eeeded43d7ab0313e9823a1bad4a7d67": {
@@ -1467,6 +1461,12 @@
     "nombre": "-villamil -camacho -daniel -felipe",
     "grado": "SIN ASIGNAR",
     "pin": "312-784B6EB2",
+    "estado": "Confirma Sigue"
+  },
+  "f30f1a8dc9b94e1e870ee8e3f9c991db706034ed5479ecd712363edbf3786c30": {
+    "nombre": "-villamizar -jaimes -yerick -camilo",
+    "grado": "SIN ASIGNAR",
+    "pin": "312-2CA586DD",
     "estado": "Confirma Sigue"
   },
   "014ba3fd43c4ea8fc97641ab63d959c300ac6cb64d6e07eb6ce7037d4d176a0f": {
