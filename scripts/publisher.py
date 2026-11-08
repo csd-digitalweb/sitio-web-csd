@@ -4,25 +4,31 @@ import os
 def publish_to_web(commit_message="Publicación automática desde Community Manager"):
     """
     Ejecuta git add, commit y push a origin main.
-    Esto dispara el despliegue automático en Netlify para que la página se actualice en vivo en < 1 min.
+    Esto dispara el despliegue automático en GitHub Pages para que la página se actualice en vivo en < 1 min.
     """
     repo_dir = r"C:\Users\julio\dev\sitio-web-csd"
     try:
-        # Git add
+        # 1. Asegurar sincronización con origin/main antes de operar
+        subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=repo_dir, capture_output=True, text=True)
+
+        # 2. Git add
         res_add = subprocess.run(["git", "add", "."], cwd=repo_dir, capture_output=True, text=True)
         if res_add.returncode != 0:
             return False, f"Error en git add: {res_add.stderr}"
 
-        # Git commit
+        # 3. Git commit si hay cambios pendientes
         res_commit = subprocess.run(["git", "commit", "-m", commit_message], cwd=repo_dir, capture_output=True, text=True)
-        # Si no hay cambios que commitear no es error grave
         if "nothing to commit" in res_commit.stdout or "nada para hacer commit" in res_commit.stdout:
-            print("No hay cambios pendientes para commit.")
+            print("No hay cambios pendientes para commit local.")
 
-        # Git push
+        # 4. Git push con reintento automático mediante rebase si hubo commits remotos concurrentes
         res_push = subprocess.run(["git", "push", "origin", "main"], cwd=repo_dir, capture_output=True, text=True)
         if res_push.returncode != 0:
-            return False, f"Error al subir a GitHub (push): {res_push.stderr}"
+            print("Reintentando push con pull --rebase...")
+            subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=repo_dir, capture_output=True, text=True)
+            res_push = subprocess.run(["git", "push", "origin", "main"], cwd=repo_dir, capture_output=True, text=True)
+            if res_push.returncode != 0:
+                return False, f"Error al subir a GitHub (push): {res_push.stderr}"
 
         return True, "¡Publicado en vivo exitosamente! La página web csd.edu.co se actualizará en unos segundos."
 

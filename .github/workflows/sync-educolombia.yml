@@ -8,10 +8,19 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repositorio
         uses: actions/checkout@v4
@@ -24,15 +33,48 @@ jobs:
       - name: Ejecutar script de sincronización con EduColombia
         run: python scripts/sync_educolombia.py
 
-      - name: Verificar cambios y hacer commit
+      - name: Verificar cambios y publicar
+        id: check_changes
         run: |
           git config --local user.email "csddigitalweb@gmail.com"
           git config --local user.name "Colegio Semillero Dos Mil (Bot)"
           git add src/reserva-cupo/prematriculas_semillero.csv src/reserva-cupo/prematriculas_hash.json
           if git diff --staged --quiet; then
             echo "No hay cambios nuevos en EduColombia."
+            echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "Cambios detectados. Guardando y publicando actualización..."
             git commit -m "chore(sync): actualizar cupos confirmados en vivo desde EduColombia"
             git push origin main
+            echo "changed=true" >> $GITHUB_OUTPUT
           fi
+
+      - name: Configurar Node.js para despliegue
+        if: steps.check_changes.outputs.changed == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        if: steps.check_changes.outputs.changed == 'true'
+        run: npm install
+
+      - name: Compilar sitio web con Eleventy
+        if: steps.check_changes.outputs.changed == 'true'
+        run: npm run build
+
+      - name: Configurar GitHub Pages
+        if: steps.check_changes.outputs.changed == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Subir artefactos de la web (_site)
+        if: steps.check_changes.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+      - name: Desplegar en vivo en GitHub Pages
+        if: steps.check_changes.outputs.changed == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4

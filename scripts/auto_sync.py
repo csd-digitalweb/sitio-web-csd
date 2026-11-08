@@ -25,10 +25,17 @@ def check_and_publish():
     print(f"\n[{time.strftime('%Y-%m-%d %H:%M:%S')}] Iniciando verificación con EduColombia...")
     sync()
 
-    # Verificar si hubo cambios en los archivos de prematrícula
-    res = subprocess.run(["git", "status", "--porcelain"], cwd=BASE_DIR, capture_output=True, text=True)
-    if "prematriculas" in res.stdout:
-        print("⚡ Nuevos cupos o cambios detectados. Publicando a la web en vivo...")
+    # 1. Verificar si hay cambios en los archivos de prematrícula
+    res_status = subprocess.run(["git", "status", "--porcelain"], cwd=BASE_DIR, capture_output=True, text=True)
+    # 2. Verificar si hay commits locales pendientes de subir a origin/main
+    subprocess.run(["git", "fetch", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+    res_ahead = subprocess.run(["git", "log", "origin/main..HEAD", "--oneline"], cwd=BASE_DIR, capture_output=True, text=True)
+
+    has_file_changes = "prematriculas" in res_status.stdout
+    has_unpushed_commits = bool(res_ahead.stdout.strip())
+
+    if has_file_changes or has_unpushed_commits:
+        print("⚡ Nuevos cupos o cambios pendientes por publicar. Publicando a la web en vivo...")
         success, msg = publish_to_web("chore(sync): actualizar cupos confirmados en vivo desde EduColombia")
         print(f"Estado de publicación: {msg}")
     else:
