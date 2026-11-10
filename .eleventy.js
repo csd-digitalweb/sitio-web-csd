@@ -6,6 +6,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/logo.png": "favicon.ico" });
   eleventyConfig.addPassthroughCopy({ "src/reserva-cupo/prematriculas_hash.json": "reserva-cupo/prematriculas_hash.json" });
   eleventyConfig.addPassthroughCopy({ "src/reserva-cupo/prematriculas_semillero.csv": "reserva-cupo/prematriculas_semillero.csv" });
+  eleventyConfig.addPassthroughCopy({ "src/admisiones/admitidos_hash.json": "admisiones/admitidos_hash.json" });
 
   // Panel de administración de Decap CMS (Paso 4). El index.html ya lo
   // procesa Eleventy como plantilla normal; config.yml no es un formato

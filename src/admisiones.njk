@@ -46,6 +46,9 @@ permalink: /admisiones/
           <div class="step-number">04</div>
           <h3>Matrícula y Bienvenida</h3>
           <p>Entrega de documentos institucionales, firma de la matrícula y bienvenida oficial a la comunidad educativa del Colegio CSD.</p>
+          <a href="#consulta-admision" class="btn btn-outline" style="margin-top:14px; font-size:0.85rem; padding:8px 16px; border-radius:999px; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">
+            Consultar Admisión Paso 4 ↓
+          </a>
         </div>
       </div>
     </div>
@@ -86,6 +89,372 @@ permalink: /admisiones/
       </div>
     </div>
   </section>
+
+  <!-- ================= 3. PASO 04: CONSULTA DE ADMISIÓN Y ASIGNACIÓN DE CUPO 2027 ================= -->
+  <section class="band band-paper" id="consulta-admision" style="padding-top:40px; padding-bottom:56px;">
+    <div class="wrap" style="max-width:980px;">
+      
+      <!-- CAJA DE BÚSQUEDA INTERACTIVA (PASO 04) -->
+      <div class="reveal" style="background:linear-gradient(135deg, #002244 0%, #003865 100%); border-radius:22px; padding:38px 30px; color:white; border:2.5px solid #FFC91B; box-shadow:0 16px 36px rgba(0, 34, 68, 0.3); margin-bottom:32px;">
+        <div style="text-align:center; margin-bottom:26px;">
+          <span style="display:inline-block; background:#FFC91B; color:#002244; padding:5px 16px; border-radius:999px; font-weight:800; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:12px;">
+            Paso 04: Admisión y Matrícula 2027
+          </span>
+          <h2 style="color:white; font-size:clamp(1.7rem, 3.4vw, 2.3rem); font-weight:800; margin:0 0 10px 0;">
+            Consulta de Admisión y Asignación de Cupo
+          </h2>
+          <p style="color:#E2E8F0; font-size:0.98rem; max-width:680px; margin:0 auto; line-height:1.6; opacity:0.9;">
+            Si tu hijo(a) ya presentó el examen académico y la entrevista pedagógica, ingresa su <strong>número de documento de identidad</strong> para verificar la asignación de salón en EduColombia y habilitar la orden de matrícula oficial.
+          </p>
+        </div>
+
+        <form id="form-consulta-admision" onsubmit="consultarAdmision(event)" style="max-width:640px; margin:0 auto; display:flex; gap:12px; flex-wrap:wrap;">
+          <div style="flex:1 1 300px; position:relative;">
+            <input 
+              type="text" 
+              id="input-doc-admision" 
+              inputmode="numeric" 
+              autocomplete="off" 
+              placeholder="Ej: 1097138223 (Sin puntos ni espacios)" 
+              required 
+              style="width:100%; box-sizing:border-box; font-size:1.15rem; font-weight:600; padding:16px 20px; border-radius:12px; border:none; outline:none; color:#0F172A; background:white; box-shadow:0 4px 14px rgba(0,0,0,0.12);"
+            />
+          </div>
+          <button 
+            type="submit" 
+            id="btn-consultar-admision" 
+            style="flex:0 0 auto; min-width:200px; background:linear-gradient(135deg, #FFC91B, #D9A400); color:#002244; font-weight:800; font-size:1.05rem; border:none; border-radius:12px; padding:16px 28px; cursor:pointer; transition:all 0.25s ease; box-shadow:0 6px 18px rgba(255, 201, 27, 0.45);"
+          >
+            <span id="btn-adm-text">Consultar Admisión →</span>
+            <span id="btn-adm-spinner" style="display:none;">⏳ Verificando...</span>
+          </button>
+        </form>
+
+        <!-- Acciones Rápidas para Pruebas del Evaluador -->
+        <div style="margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.15); text-align:center; font-size:0.84rem;">
+          <span style="color:#CBD5E1; margin-right:8px;">Prueba rápida con 1 clic:</span>
+          <button type="button" onclick="probarDocAdmision('1097138223')" style="background:rgba(255,255,255,0.16); border:1px solid rgba(255,201,27,0.5); color:#FFF; font-size:0.8rem; padding:5px 14px; border-radius:999px; cursor:pointer; margin:4px; font-weight:600;">
+            ✅ Caso A: Con Salón Asignado (1097138223)
+          </button>
+          <button type="button" onclick="probarDocAdmision('9999999999')" style="background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.3); color:#FFF; font-size:0.8rem; padding:5px 14px; border-radius:999px; cursor:pointer; margin:4px; font-weight:600;">
+            ⏳ Caso B: Aún Sin Salón / En Revisión (9999999999)
+          </button>
+        </div>
+      </div>
+
+      <!-- CONTENEDOR DE RESULTADO: ESTADO B (NO ADMITIDO / AÚN SIN SALÓN) -->
+      <div id="alerta-no-admitido" class="reveal" style="display:none; margin-bottom:30px;">
+        <div style="background:#FFFBEB; border:2px solid #F59E0B; border-radius:20px; padding:32px 28px; box-shadow:0 12px 30px rgba(245, 158, 11, 0.12); display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+          <div style="background:#FEF3C7; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2.2rem; flex-shrink:0;">
+            ⏳
+          </div>
+          <div style="flex:1 1 320px;">
+            <span style="display:inline-block; background:#FEF3C7; color:#92400E; font-weight:800; font-size:0.8rem; padding:4px 14px; border-radius:999px; border:1px solid #FDE68A; margin-bottom:10px;">
+              PROCESO EN REVISIÓN
+            </span>
+            <h3 style="color:#92400E; font-size:1.45rem; font-weight:800; margin:0 0 10px 0;">
+              Aún no se ha registrado la admisión de este estudiante
+            </h3>
+            <p style="color:#475569; font-size:0.98rem; line-height:1.6; margin-bottom:16px;">
+              Apreciada familia: El documento <strong id="doc-consultado-no-admitido" style="font-family:monospace; background:#FEF3C7; padding:2px 8px; border-radius:6px; color:#0F172A;"></strong> no registra actualmente un salón asignado en el sistema institucional de <strong>EduColombia.org</strong>.
+            </p>
+            <div style="background:white; border:1px solid #CBD5E1; border-radius:12px; padding:18px; font-size:0.9rem; color:#475569; line-height:1.65; margin-bottom:20px;">
+              <strong style="color:#0F172A;">¿Qué significa esto?</strong><br>
+              • Si el aspirante ya presentó el examen de valoración y la entrevista pedagógica, los resultados se encuentran en fase de consolidación por parte del Comité de Admisiones.<br>
+              • La secretaría académica estará asignando los salones oficiales en los próximos días.<br>
+              • Si deseas confirmar el estado exacto de la postulación o agendar la entrevista presencial:
+            </div>
+            <div style="display:flex; gap:12px; flex-wrap:wrap;">
+              <a id="btn-wsp-secretaria" href="https://wa.me/573152904403" target="_blank" rel="noopener" class="btn btn-primary" style="background:#003865; border:none; padding:12px 22px; font-weight:700; border-radius:999px; text-decoration:none;">
+                💬 Contactar a Secretaría (WhatsApp 315 290 4403)
+              </a>
+              <button type="button" onclick="reiniciarConsultaAdmision()" class="btn btn-outline" style="padding:12px 20px; font-size:0.9rem; border-radius:999px; cursor:pointer;">
+                ← Consultar otro documento
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTENEDOR DE RESULTADO: ESTADO A (ADMITIDO CON SALÓN ASIGNADO) -->
+      <div id="seccion-admitido" style="display:none; margin-bottom:30px;">
+        
+        <!-- Banner de Felicitación / Notificación -->
+        <div style="background:#ECFDF5; border:2px solid #10B981; border-radius:20px; padding:24px 28px; margin-bottom:26px; display:flex; align-items:center; gap:18px; box-shadow:0 10px 25px rgba(16, 185, 129, 0.15);">
+          <span style="font-size:2.8rem; line-height:1;">🎉</span>
+          <div>
+            <span style="display:inline-block; background:#DCFCE7; color:#15803D; font-weight:800; font-size:0.78rem; padding:4px 12px; border-radius:999px; border:1px solid #86EFAC; margin-bottom:4px;">
+              SALÓN ASIGNADO EN EDUCOLOMBIA · ADMISIÓN APROBADA
+            </span>
+            <h3 style="margin:0; font-size:1.38rem; font-weight:800; color:#065F46;">
+              ¡Felicitaciones! Has sido admitido oficialmente a la Familia Semillerista
+            </h3>
+          </div>
+        </div>
+
+        <!-- Pestañas Interactivas (Tabs) -->
+        <div class="no-print" style="display:flex; gap:8px; border-bottom:2px solid #E2E8F0; margin-bottom:24px; overflow-x:auto;">
+          <button type="button" class="tab-btn-custom active" id="adm-tab-btn-1" onclick="cambiarTabAdmision(1)" style="padding:12px 22px; border:none; background:transparent; font-weight:800; font-size:0.96rem; color:#64748B; border-bottom:3.5px solid transparent; cursor:pointer; display:inline-flex; align-items:center; gap:8px; border-radius:8px 8px 0 0; transition:all 0.2s;">
+            <span>🌱</span> Pestaña 1: Bienvenida
+          </button>
+          <button type="button" class="tab-btn-custom" id="adm-tab-btn-2" onclick="cambiarTabAdmision(2)" style="padding:12px 22px; border:none; background:transparent; font-weight:800; font-size:0.96rem; color:#64748B; border-bottom:3.5px solid transparent; cursor:pointer; display:inline-flex; align-items:center; gap:8px; border-radius:8px 8px 0 0; transition:all 0.2s;">
+            <span>💳</span> Pestaña 2: Orden de Pago
+          </button>
+          <button type="button" class="tab-btn-custom" id="adm-tab-btn-3" onclick="cambiarTabAdmision(3)" style="padding:12px 22px; border:none; background:transparent; font-weight:800; font-size:0.96rem; color:#64748B; border-bottom:3.5px solid transparent; cursor:pointer; display:inline-flex; align-items:center; gap:8px; border-radius:8px 8px 0 0; transition:all 0.2s;">
+            <span>📋</span> Pestaña 3: Documentos
+          </button>
+        </div>
+
+        <!-- CONTENIDO PESTAÑA 1: BIENVENIDA Y FICHA -->
+        <div id="adm-tab-content-1" style="background:white; border-radius:20px; border:1px solid #E2E8F0; padding:36px 30px; box-shadow:0 12px 30px rgba(0,0,0,0.06);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+            <div>
+              <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:0.5px; display:block;">Colegio Semillero Dos Mil</span>
+              <h3 style="color:#002244; font-size:1.5rem; font-weight:800; margin:4px 0 0 0;">Carta Oficial de Bienvenida</h3>
+            </div>
+            <span style="background:#EBF3FA; color:#003865; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.85rem; border:1px solid #BAE6FD;">
+              Año Escolar 2027
+            </span>
+          </div>
+
+          <p style="font-size:1.02rem; color:#334155; line-height:1.65; margin-bottom:24px;">
+            Apreciada Familia <strong id="est-apellido-familia" style="color:#0F172A;">-</strong>:<br>
+            La <strong>Corporación Educativa Colegio Semillero Dos Mil (CSD)</strong> les da una afectuosa bienvenida. Nos complace informarles que tras evaluar satisfactoriamente las etapas de <strong>examen de valoración académica y entrevista pedagógica</strong>, el aspirante ha sido oficialmente admitido y se le ha asignado su cupo institucional en la plataforma <strong>EduColombia.org</strong>.
+          </p>
+
+          <!-- Ficha de Datos Extraídos en Vivo -->
+          <div style="background:#F8FAFC; border-radius:16px; padding:24px; border:1.5px solid #E2E8F0; margin-bottom:24px;">
+            <h4 style="color:#003865; font-size:0.88rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; margin:0 0 18px 0;">
+              📌 Ficha de Admisión Confirmada
+            </h4>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px;">
+              <div>
+                <span style="color:#64748B; font-size:0.78rem; text-transform:uppercase; font-weight:700; display:block;">Estudiante Admitido:</span>
+                <strong style="color:#0F172A; font-size:1.15rem; display:block; margin-top:2px;" id="res-nombre-estudiante">-</strong>
+              </div>
+              <div>
+                <span style="color:#64748B; font-size:0.78rem; text-transform:uppercase; font-weight:700; display:block;">Documento de Identidad:</span>
+                <strong style="color:#0F172A; font-size:1.15rem; font-family:monospace; display:block; margin-top:2px;" id="res-doc-estudiante">-</strong>
+              </div>
+              <div>
+                <span style="color:#64748B; font-size:0.78rem; text-transform:uppercase; font-weight:700; display:block;">Salón Asignado en EduColombia:</span>
+                <span style="display:inline-block; background:#DCFCE7; color:#15803D; font-weight:800; font-size:0.95rem; padding:4px 12px; border-radius:999px; border:1px solid #86EFAC; margin-top:2px;" id="res-salon-educolombia">-</span>
+              </div>
+              <div>
+                <span style="color:#64748B; font-size:0.78rem; text-transform:uppercase; font-weight:700; display:block;">Grado a Cursar en 2027:</span>
+                <strong style="color:#2563EB; font-size:1.15rem; display:block; margin-top:2px;" id="res-grado-2027">-</strong>
+              </div>
+              <div>
+                <span style="color:#64748B; font-size:0.78rem; text-transform:uppercase; font-weight:700; display:block;">Acudiente Responsable de Pago:</span>
+                <span style="color:#1E293B; font-weight:700; font-size:1.02rem; display:block; margin-top:2px;" id="res-acudiente">-</span>
+              </div>
+              <div>
+                <span style="color:#64748B; font-size:0.78rem; text-transform:uppercase; font-weight:700; display:block;">Cédula Acudiente:</span>
+                <span style="color:#1E293B; font-weight:700; font-family:monospace; font-size:1.02rem; display:block; margin-top:2px;" id="res-doc-acudiente">-</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:right;" class="no-print">
+            <button type="button" class="btn btn-primary" onclick="cambiarTabAdmision(2)" style="padding:14px 28px; font-weight:800; font-size:1rem; border-radius:999px; cursor:pointer;">
+              Continuar a la Orden de Pago (Pestaña 2) →
+            </button>
+          </div>
+        </div>
+
+        <!-- CONTENIDO PESTAÑA 2: ORDEN DE PAGO -->
+        <div id="adm-tab-content-2" style="display:none; background:white; border-radius:20px; border:1px solid #E2E8F0; padding:36px 30px; box-shadow:0 12px 30px rgba(0,0,0,0.06);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+            <div>
+              <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:0.5px; display:block;">Secretaría y Tesorería</span>
+              <h3 style="color:#002244; font-size:1.5rem; font-weight:800; margin:4px 0 0 0;">Orden Oficial de Pago de Matrícula 2027</h3>
+            </div>
+            <span style="background:#FEF3C7; color:#92400E; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.85rem; border:1px solid #FDE68A;">
+              Llave: 0087466183
+            </span>
+          </div>
+
+          <p style="color:#64748B; font-size:0.92rem; margin-bottom:22px;">
+            Para legalizar la reserva del cupo y proceder con la firma del contrato educativo, realice la cancelación antes del vencimiento de la tarifa ordinaria:
+          </p>
+
+          <!-- Tarjeta de Tarifa y Llave -->
+          <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-left:6px solid #FFC91B; border-radius:16px; padding:24px 22px; margin-bottom:26px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+              <div>
+                <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; display:block;">Valor Matrícula 2027</span>
+                <div style="font-size:2.2rem; font-weight:800; color:#002244; line-height:1.2; margin:4px 0;">
+                  .400 <span style="font-size:1.05rem; color:#64748B; font-weight:600;">COP</span>
+                </div>
+                <span style="display:inline-block; background:#FEF3C7; color:#92400E; font-size:0.82rem; font-weight:700; padding:4px 12px; border-radius:999px; border:1px solid #FCD34D;">
+                  ⏰ Tarifa ordinaria válida hasta el 5 de Diciembre
+                </span>
+              </div>
+              <div style="background:#FFFBEB; border:1.5px dashed #F59E0B; border-radius:14px; padding:16px 20px; display:flex; align-items:center; gap:16px;">
+                <div>
+                  <small style="color:#92400E; font-weight:800; font-size:0.75rem; text-transform:uppercase; display:block;">Llave de Pago Institucional</small>
+                  <strong style="color:#0F172A; font-family:monospace; font-size:1.3rem;">0087466183</strong>
+                </div>
+                <button type="button" class="btn-copy-pill" onclick="copiarTexto('0087466183', this)" style="background:#FEF3C7; border:1px solid #FDE68A; color:#92400E; font-weight:800; font-size:0.78rem; padding:6px 12px; border-radius:8px; cursor:pointer;">
+                  📋 Copiar Llave
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medios de Pago y Afiche con QR -->
+          <h4 style="color:#003865; font-size:1.15rem; font-weight:800; margin:0 0 16px 0;">Medios de Pago Habilitados</h4>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px; align-items:center; margin-bottom:26px;">
+            <div>
+              <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:18px; margin-bottom:14px;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
+                  <div>
+                    <strong style="color:#0F172A; font-size:1.02rem; display:block;">🏦 Cuenta de Ahorros BBVA</strong>
+                    <span style="color:#2563EB; font-weight:800; font-family:monospace; font-size:1.25rem;">232383109</span>
+                    <small style="color:#475569; display:block; margin-top:4px;">Titular: <strong>Corporación Educativa CSD</strong></small>
+                    <small style="color:#64748B; display:block; margin-top:2px;">Habilitada para transferencias y corresponsales <strong>Efecty</strong></small>
+                  </div>
+                  <button type="button" class="btn-copy-pill" onclick="copiarTexto('232383109', this)" style="background:#EBF3FA; border:1px solid #BAE6FD; color:#0369A1; font-weight:800; font-size:0.78rem; padding:6px 12px; border-radius:8px; cursor:pointer;">
+                    📋 Copiar
+                  </button>
+                </div>
+              </div>
+
+              <div style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:14px; padding:18px;">
+                <strong style="color:#0F172A; font-size:1.02rem; display:block;">💳 Tarjeta de Crédito / Débito en Secretaría</strong>
+                <small style="color:#64748B; display:block; margin-top:4px; line-height:1.5;">Datáfono disponible directamente en la secretaría del colegio en el Barrio La Cumbre, Floridablanca.</small>
+              </div>
+            </div>
+
+            <!-- Imagen del QR Oficial -->
+            <div style="text-align:center;">
+              <div style="display:inline-block; padding:10px; background:white; border-radius:16px; border:1.5px solid #E2E8F0; box-shadow:0 8px 24px rgba(0,0,0,0.06);">
+                <img src="data:image/jpeg;base64,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" alt="Medios de Pago Oficiales CSD" style="max-height:260px; max-width:100%; border-radius:10px; display:block; margin:0 auto;" />
+                <small style="color:#64748B; font-size:0.75rem; display:block; margin-top:8px;">Escanee el código QR desde su App Bancolombia o bancaria</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notificación a Tesorería por WhatsApp -->
+          <div style="background:#F0FDF4; border:1.5px solid #86EFAC; border-radius:18px; padding:22px 24px; margin-bottom:26px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+              <div style="flex:1 1 320px;">
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+                  <span style="font-size:1.3rem;">📲</span>
+                  <h5 style="color:#15803D; font-size:1.05rem; font-weight:800; margin:0;">¿Ya realizaste el pago? Envía el comprobante</h5>
+                </div>
+                <p style="color:#166534; font-size:0.9rem; margin:0; line-height:1.55;">
+                  Una vez realizada la transferencia o consignación, remite la foto o soporte al <strong>WhatsApp de Tesorería: 321 890 3190</strong>. Con este comprobante validaremos de inmediato el ingreso para habilitar la firma de tu contrato digital.
+                </p>
+              </div>
+              <div style="flex:0 0 auto;">
+                <a id="btn-wsp-tesoreria" href="https://wa.me/573218903190" target="_blank" rel="noopener" class="btn btn-primary" style="background:#25D366; border:none; padding:14px 22px; font-weight:800; font-size:0.96rem; border-radius:999px; display:inline-flex; align-items:center; gap:8px; text-decoration:none; box-shadow:0 4px 14px rgba(37,211,102,0.35);">
+                  💬 Reportar a Tesorería (321 890 3190)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;" class="no-print">
+            <button type="button" class="btn btn-outline" onclick="cambiarTabAdmision(1)" style="padding:12px 22px; border-radius:999px;">
+              ← Volver a Bienvenida
+            </button>
+            <button type="button" class="btn btn-primary" onclick="cambiarTabAdmision(3)" style="padding:12px 26px; border-radius:999px; font-weight:800;">
+              Continuar a Documentos Requeridos (Pestaña 3) →
+            </button>
+          </div>
+        </div>
+
+        <!-- CONTENIDO PESTAÑA 3: LISTA DE DOCUMENTOS -->
+        <div id="adm-tab-content-3" style="display:none; background:white; border-radius:20px; border:1px solid #E2E8F0; padding:36px 30px; box-shadow:0 12px 30px rgba(0,0,0,0.06);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+            <div>
+              <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:0.5px; display:block;">Secretaría Académica</span>
+              <h3 style="color:#002244; font-size:1.5rem; font-weight:800; margin:4px 0 0 0;">Documentos para Legalización de Matrícula</h3>
+            </div>
+            <span style="background:#FEF3C7; color:#92400E; padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.85rem; border:1px solid #FDE68A;">
+              Plazo: 15 de Enero 2027
+            </span>
+          </div>
+
+          <p style="color:#64748B; font-size:0.92rem; margin-bottom:16px;">
+            Los siguientes 6 documentos deben hacerse llegar físicamente a la secretaría del colegio en la Sede La Cumbre:
+          </p>
+
+          <div style="background:#FFFBEB; border:1px solid #FDE68A; border-radius:14px; padding:16px 20px; display:flex; align-items:center; gap:12px; margin-bottom:22px;">
+            <span style="font-size:1.5rem;">📅</span>
+            <div>
+              <strong style="color:#92400E; font-size:0.92rem;">Fecha Límite Improrrogable:</strong>
+              <span style="color:#475569; font-size:0.9rem; display:block;">Tienen plazo de entregar esta carpeta hasta el <strong>15 de Enero de 2027</strong> en la secretaría del colegio.</span>
+            </div>
+          </div>
+
+          <!-- Checklist -->
+          <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:28px;">
+            <label style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:14px 18px; display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; transform:scale(1.2); cursor:pointer;">
+              <span style="flex:1;">
+                <strong style="color:#0F172A; display:block; font-size:0.98rem;">1. Comprobante de pago de Matrícula</strong>
+                <small style="color:#64748B; font-size:0.85rem;">Soporte original por el valor de .400.</small>
+              </span>
+            </label>
+
+            <label style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:14px 18px; display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; transform:scale(1.2); cursor:pointer;">
+              <span style="flex:1;">
+                <strong style="color:#0F172A; display:block; font-size:0.98rem;">2. Fotocopia del documento de identidad del estudiante o Registro civil (150%)</strong>
+                <small style="color:#64748B; font-size:0.85rem;">Documento de identidad legible ampliado al 150%.</small>
+              </span>
+            </label>
+
+            <label style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:14px 18px; display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; transform:scale(1.2); cursor:pointer;">
+              <span style="flex:1;">
+                <strong style="color:#0F172A; display:block; font-size:0.98rem;">3. Fotocopia de la cédula de los padres / acudientes responsables del pago</strong>
+                <small style="color:#64748B; font-size:0.85rem;">Copia de la cédula del acudiente firmante.</small>
+              </span>
+            </label>
+
+            <label style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:14px 18px; display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; transform:scale(1.2); cursor:pointer;">
+              <span style="flex:1;">
+                <strong style="color:#0F172A; display:block; font-size:0.98rem;">4. Certificado de afiliación a EPS (vigente)</strong>
+                <small style="color:#64748B; font-size:0.85rem;">Expedido con fecha no mayor a 30 días.</small>
+              </span>
+            </label>
+
+            <label style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:14px 18px; display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; transform:scale(1.2); cursor:pointer;">
+              <span style="flex:1;">
+                <strong style="color:#0F172A; display:block; font-size:0.98rem;">5. Certificado que fue promovido al siguiente año y Paz y salvo del colegio anterior</strong>
+                <small style="color:#64748B; font-size:0.85rem;">Boletín final con constancia de aprobación y paz y salvo financiero.</small>
+              </span>
+            </label>
+
+            <label style="background:#F8FAFC; border:1px solid #E2E8F0; border-radius:12px; padding:14px 18px; display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+              <input type="checkbox" style="margin-top:4px; transform:scale(1.2); cursor:pointer;">
+              <span style="flex:1;">
+                <strong style="color:#0F172A; display:block; font-size:0.98rem;">6. Certificado del retiro en el SIMAT</strong>
+                <small style="color:#64748B; font-size:0.85rem;">Constancia oficial de retiro o liberación en el sistema nacional SIMAT.</small>
+              </span>
+            </label>
+          </div>
+
+          <!-- Botones de Acción -->
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;" class="no-print">
+            <button type="button" class="btn btn-outline" onclick="cambiarTabAdmision(2)" style="padding:12px 22px; border-radius:999px;">
+              ← Volver a Orden de Pago
+            </button>
+            <button type="button" class="btn btn-primary" onclick="window.print()" style="padding:12px 24px; border-radius:999px; font-weight:800; background:linear-gradient(135deg, #003865, #002244);">
+              🖨️ Imprimir / Guardar en PDF
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 
   <!-- REQUISITOS Y NIVELES -->
   <section class="band band-deep">
@@ -173,4 +542,146 @@ permalink: /admisiones/
       </div>
     </div>
   </section>
+
+<script>
+let dataAdmisiones = null;
+
+async function cargarDatosAdmision() {
+  if (dataAdmisiones) return dataAdmisiones;
+  try {
+    const res = await fetch('/admisiones/admitidos_hash.json?_t=' + Date.now(), { cache: "no-store" });
+    if (res.ok) {
+      dataAdmisiones = await res.json();
+      return dataAdmisiones;
+    }
+  } catch (err) {
+    console.warn("No se pudo cargar admitidos_hash.json remotamente", err);
+  }
+  return {};
+}
+
+async function sha256Doc(str) {
+  const buf = new TextEncoder().encode(str);
+  const hashBuf = await crypto.subtle.digest("SHA-256", buf);
+  return Array.from(new Uint8Array(hashBuf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function consultarAdmision(e) {
+  if (e) e.preventDefault();
+  const input = document.getElementById('input-doc-admision');
+  const doc = input.value.trim().replace(/[^0-9]/g, '');
+  const alertaNoAdmitido = document.getElementById('alerta-no-admitido');
+  const seccionAdmitido = document.getElementById('seccion-admitido');
+
+  alertaNoAdmitido.style.display = 'none';
+  seccionAdmitido.style.display = 'none';
+
+  if (!doc || doc.length < 5) {
+    alert("Por favor ingrese un número de documento válido (mínimo 5 dígitos).");
+    input.focus();
+    return;
+  }
+
+  document.getElementById('btn-adm-text').style.display = 'none';
+  document.getElementById('btn-adm-spinner').style.display = 'inline-block';
+  document.getElementById('btn-consultar-admision').disabled = true;
+
+  try {
+    const db = await cargarDatosAdmision();
+    const hash = await sha256Doc(doc);
+    const estudiante = db[hash];
+
+    // Condición: Existe en base de datos Y tiene un SALÓN asignado (no vacío y no SIN ASIGNAR)
+    if (estudiante && estudiante.salon && estudiante.salon !== '' && estudiante.salon !== 'SIN ASIGNAR') {
+      // Caso A: ADMITIDO CON SALÓN
+      document.getElementById('res-nombre-estudiante').textContent = estudiante.nombre;
+      document.getElementById('res-doc-estudiante').textContent = estudiante.doc;
+      document.getElementById('res-salon-educolombia').textContent = estudiante.salon;
+      document.getElementById('res-grado-2027').textContent = estudiante.grado_2027;
+      document.getElementById('res-acudiente').textContent = estudiante.acudiente || 'Acudiente Registrado';
+      document.getElementById('res-doc-acudiente').textContent = estudiante.doc_acudiente || 'C.C. Registrada';
+
+      const apellidos = estudiante.nombre.split(' ');
+      const fam = apellidos.length >= 3 ? apellidos.slice(2).join(' ') : apellidos.join(' ');
+      document.getElementById('est-apellido-familia').textContent = fam;
+
+      // Actualizar enlace directo a WhatsApp de Tesorería
+      const wspMsg = encodeURIComponent('Hola Tesorería CSD, adjunto comprobante de pago de matrícula 2027 del estudiante nuevo admitido ' + estudiante.nombre + ' (Doc: ' + estudiante.doc + ').');
+      document.getElementById('btn-wsp-tesoreria').href = 'https://wa.me/573218903190?text=' + wspMsg;
+
+      seccionAdmitido.style.display = 'block';
+      cambiarTabAdmision(1);
+      seccionAdmitido.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Caso B: NO ADMITIDO O SIN SALÓN EN EDUCOLOMBIA
+      document.getElementById('doc-consultado-no-admitido').textContent = doc;
+      const wspSecMsg = encodeURIComponent('Hola Secretaría CSD, quisiera consultar el estado de admisión para el documento ' + doc + ' ya que no registra salón asignado.');
+      document.getElementById('btn-wsp-secretaria').href = 'https://wa.me/573152904403?text=' + wspSecMsg;
+
+      alertaNoAdmitido.style.display = 'block';
+      alertaNoAdmitido.scrollIntoView({ behavior: 'smooth' });
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Ocurrió un inconveniente al consultar la admisión. Por favor intente nuevamente.");
+  } finally {
+    document.getElementById('btn-adm-text').style.display = 'inline-block';
+    document.getElementById('btn-adm-spinner').style.display = 'none';
+    document.getElementById('btn-consultar-admision').disabled = false;
+  }
+}
+
+function probarDocAdmision(num) {
+  const input = document.getElementById('input-doc-admision');
+  input.value = num;
+  consultarAdmision();
+}
+
+function reiniciarConsultaAdmision() {
+  const input = document.getElementById('input-doc-admision');
+  input.value = '';
+  document.getElementById('alerta-no-admitido').style.display = 'none';
+  document.getElementById('seccion-admitido').style.display = 'none';
+  input.focus();
+}
+
+function cambiarTabAdmision(num) {
+  for (let i = 1; i <= 3; i++) {
+    const tabBtn = document.getElementById('adm-tab-btn-' + i);
+    const tabContent = document.getElementById('adm-tab-content-' + i);
+    if (tabBtn && tabContent) {
+      if (i === num) {
+        tabBtn.style.color = '#003865';
+        tabBtn.style.borderBottomColor = '#003865';
+        tabBtn.style.background = 'rgba(0, 56, 101, 0.05)';
+        tabContent.style.display = 'block';
+      } else {
+        tabBtn.style.color = '#64748B';
+        tabBtn.style.borderBottomColor = 'transparent';
+        tabBtn.style.background = 'transparent';
+        tabContent.style.display = 'none';
+      }
+    }
+  }
+}
+
+function copiarTexto(texto, btn) {
+  navigator.clipboard.writeText(texto).then(() => {
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '✅ ¡Copiado!';
+    btn.style.background = '#BBF7D0';
+    btn.style.color = '#166534';
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  cargarDatosAdmision();
+});
+</script>
+
 </main>
