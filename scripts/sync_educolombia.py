@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
-Sincronizador automático de Prematrículas desde EduColombia para Colegio CSD
+Sincronizador automático desde EduColombia para Colegio CSD
 Conecta con la plataforma EduColombia, extrae todos los salones y actualiza:
-- src/reserva-cupo/prematriculas_semillero.csv
-- src/reserva-cupo/prematriculas_hash.json
+1. src/reserva-cupo/prematriculas_semillero.csv (Reporte completo)
+2. src/reserva-cupo/prematriculas_hash.json (Consulta de PIN y reserva de cupos)
+3. src/admisiones/admitidos_hash.json (Consulta de Admisión Paso 4 y asignación de salón para matrícula)
 """
 
 import urllib.request
@@ -47,7 +48,27 @@ SALONES = [
     (-1, "SIN ASIGNAR")
 ]
 
+SIGUIENTE_GRADO = {
+    "PREJARDIN": "JARDIN",
+    "JARDIN": "TRANSICION",
+    "TRANSICION": "PRIMERO",
+    "PRIMERO": "SEGUNDO",
+    "SEGUNDO": "TERCERO",
+    "TERCERO": "CUARTO",
+    "CUARTO": "QUINTO",
+    "QUINTO": "SEXTO",
+    "SEXTO": "SEPTIMO",
+    "SEPTIMO": "OCTAVO",
+    "OCTAVO": "NOVENO",
+    "NOVENO": "DECIMO",
+    "DECIMO": "UNDECIMO",
+    "UNDECIMO": "EGRESADO",
+    "SIN ASIGNAR": "SIN ASIGNAR"
+}
+
 def format_title_name(name):
+    if not name:
+        return ""
     words = name.strip().split()
     return " ".join(w.capitalize() for w in words)
 
@@ -99,6 +120,10 @@ def sync():
 
         for match in filas:
             alu_nombre = re.sub(r'\s+', ' ', match[0]).strip()
+            # Clean up unwanted hyphens if any
+            alu_nombre = re.sub(r'^\s*-\s*', '', alu_nombre)
+            alu_nombre = re.sub(r'\s+-\s+', ' ', alu_nombre)
+            
             documento = match[1].strip()
             estado = match[2].strip()
             pin = match[3].strip()
@@ -121,11 +146,13 @@ def sync():
     print(f"\n📊 Total estudiantes: {total} | Confirmados (Cupo Apartado): {confirmados} | Pendientes: {pendientes}")
 
     repo_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    target_dir = os.path.join(repo_dir, "src", "reserva-cupo")
-    os.makedirs(target_dir, exist_ok=True)
+    target_reserva = os.path.join(repo_dir, "src", "reserva-cupo")
+    target_admisiones = os.path.join(repo_dir, "src", "admisiones")
+    os.makedirs(target_reserva, exist_ok=True)
+    os.makedirs(target_admisiones, exist_ok=True)
 
-    # 1. Guardar CSV
-    csv_path = os.path.join(target_dir, "prematriculas_semillero.csv")
+    # 1. Guardar CSV de reserva de cupo
+    csv_path = os.path.join(target_reserva, "prematriculas_semillero.csv")
     with open(csv_path, "w", newline="", encoding="utf-8-sig") as f:
         writer = csv.writer(f, delimiter=";")
         writer.writerow(["Documento", "Nombre Completo", "Grado", "Estado", "PIN Prematricula", "Email Acudiente"])
@@ -140,7 +167,7 @@ def sync():
             ])
     print(f"💾 [3/3] Guardado CSV: {csv_path}")
 
-    # 2. Guardar JSON con Hash SHA-256
+    # 2. Guardar JSON con Hash SHA-256 para Reserva de Cupos (Antiguos)
     hash_data = {}
     for est in estudiantes:
         doc_clean = re.sub(r'[^0-9]', '', est["documento"])
@@ -152,10 +179,54 @@ def sync():
             "estado": est["estado"]
         }
 
-    json_path = os.path.join(target_dir, "prematriculas_hash.json")
+    json_path = os.path.join(target_reserva, "prematriculas_hash.json")
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(hash_data, f, ensure_ascii=False, indent=2)
-    print(f"💾 Guardado JSON de consulta: {json_path}")
+    print(f"💾 Guardado JSON de Reserva de Cupo: {json_path}")
+
+    # 3. Actualizar JSON con Hash SHA-256 para Admisiones (Paso 4 - Asignación de Salón para Matrícula)
+    adm_path = os.path.join(target_admisiones, "admitidos_hash.json")
+    adm_data = {}
+    if os.path.exists(adm_path):
+        try:
+            with open(adm_path, "r", encoding="utf-8") as f:
+                adm_data = json.load(f)
+        except Exception as e:
+            print(f"⚠️ Error leyendo admitidos_hash.json existente: {e}")
+
+    # Actualizar o agregar salón según la asignación en vivo de EduColombia
+    actualizados_adm = 0
+    for est in estudiantes:
+        doc_clean = re.sub(r'[^0-9]', '', est["documento"])
+        doc_hash = hashlib.sha256(doc_clean.encode("utf-8")).hexdigest()
+        
+        salon_actual = est["grado"]
+        grado_2027 = SIGUIENTE_GRADO.get(salon_actual, salon_actual)
+
+        if doc_hash in adm_data:
+            # Mantener acudiente/doc_acudiente/celular si ya existen, y actualizar salón en vivo
+            registro = adm_data[doc_hash]
+            registro["salon"] = salon_actual
+            registro["grado_2027"] = grado_2027
+            registro["nombre"] = est["nombre_display"]
+            actualizados_adm += 1
+        else:
+            # Nuevo estudiante registrado en EduColombia
+            adm_data[doc_hash] = {
+                "doc": doc_clean,
+                "nombre": est["nombre_display"],
+                "grado_2027": grado_2027,
+                "salon": salon_actual,
+                "acudiente": "Acudiente Registrado",
+                "doc_acudiente": "",
+                "celular": "",
+                "estado_pago": "PENDIENTE"
+            }
+            actualizados_adm += 1
+
+    with open(adm_path, "w", encoding="utf-8") as f:
+        json.dump(adm_data, f, ensure_ascii=False, indent=2)
+    print(f"💾 Guardado JSON de Admisiones y Asignación de Salón ({len(adm_data)} registros): {adm_path}")
     print("✨ Sincronización completada exitosamente.")
 
 if __name__ == "__main__":
