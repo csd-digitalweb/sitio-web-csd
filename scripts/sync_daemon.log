@@ -1,0 +1,110 @@
+[2026-11-10 09:55:55] Demonio de sincronización en vivo CSD iniciado (frecuencia: cada 3 minutos)...
+
+[2026-11-10 09:55:55] Iniciando verificación con EduColombia...
+🔐 [1/3] Iniciando sesión en EduColombia...
+✅ Sesión iniciada con éxito.
+📥 [2/3] Extrayendo prematrículas de los salones...
+  • PREJARDIN   : 0 estudiantes
+  • JARDIN      : 7 estudiantes
+  • TRANSICION  : 10 estudiantes
+  • PRIMERO     : 10 estudiantes
+  • SEGUNDO     : 12 estudiantes
+  • TERCERO     : 16 estudiantes
+  • CUARTO      : 11 estudiantes
+  • QUINTO      : 17 estudiantes
+  • SEXTO       : 28 estudiantes
+  • SEPTIMO     : 30 estudiantes
+  • OCTAVO      : 25 estudiantes
+  • NOVENO      : 21 estudiantes
+  • DECIMO      : 19 estudiantes
+  • UNDECIMO    : 18 estudiantes
+  • SIN ASIGNAR : 27 estudiantes
+
+📊 Total estudiantes: 251 | Confirmados (Cupo Apartado): 130 | Pendientes: 121
+💾 [3/3] Guardado CSV: C:\Users\julio\dev\sitio-web-csd\src\reserva-cupo\prematriculas_semillero.csv
+💾 Guardado JSON de consulta: C:\Users\julio\dev\sitio-web-csd\src\reserva-cupo\prematriculas_hash.json
+✨ Sincronización completada exitosamente.
+⚡ Nuevos cupos o cambios pendientes por publicar. Publicando a la web en vivo...
+Estado de publicación: ¡Publicado en vivo exitosamente! La página web csd.edu.co se actualizará en unos segundos.
+
+[2026-11-10 09:59:24] Iniciando verificación con EduColombia...
+🔐 [1/3] Iniciando sesión en EduColombia...
+✅ Sesión iniciada con éxito.
+📥 [2/3] Extrayendo prematrículas de los salones...
+  • PREJARDIN   : 0 estudiantes
+  • JARDIN      : 7 estudiantes
+  • TRANSICION  : 10 estudiantes
+  • PRIMERO     : 10 estudiantes
+  • SEGUNDO     : 12 estudiantes
+  • TERCERO     : 16 estudiantes
+  • CUARTO      : 11 estudiantes
+  • QUINTO      : 17 estudiantes
+  • SEXTO       : 28 estudiantes
+  • SEPTIMO     : 30 estudiantes
+  • OCTAVO      : 25 estudiantes
+  • NOVENO      : 21 estudiantes
+  • DECIMO      : 19 estudiantes
+  • UNDECIMO    : 18 estudiantes
+  • SIN ASIGNAR : 27 estudiantes
+
+📊 Total estudiantes: 251 | Confirmados (Cupo Apartado): 130 | Pendientes: 121
+💾 [3/3] Guardado CSV: C:\Users\julio\dev\sitio-web-csd\src\reserva-cupo\prematriculas_semillero.csv
+💾 Guardado JSON de consulta: C:\Users\julio\dev\sitio-web-csd\src\reserva-cupo\prematriculas_hash.json
+✨ Sincronización completada exitosamente.
+✅ Base de datos al día. No hay cambios pendientes.
+
+[2026-11-10 10:02:43] Iniciando verificación con EduColombia...
+🔐 [1/3] Iniciando sesión en EduColombia...
+✅ Sesión iniciada con éxito.
+📥 [2/3] Extrayendo prematrículas de los salones...
+  • PREJARDIN   : 0 estudiantes
+  • JARDIN      : 7 estudiantes
+  • TRANSICION  : 10 estudiantes
+  • PRIMERO     : 10 estudiantes
+  • SEGUNDO     : 12 estudiantes
+  • TERCERO     : 16 estudiantes
+  • CUARTO      : 11 estudiantes
+  • QUINTO      : 17 estudiantes
+  • SEXTO       : 28 estudiantes
+  • SEPTIMO     : 30 estudiantes
+  • OCTAVO      : 25 estudiantes
+  • NOVENO      : 21 estudiantes
+  • DECIMO      : 19 estudiantes
+  • UNDECIMO    : 18 estudiantes
+  • SIN ASIGNAR : 27 estudiantes
+
+📊 Total estudiantes: 251 | Confirmados (Cupo Apartado): 130 | Pendientes: 121
+💾 [3/3] Guardado CSV: C:\Users\julio\dev\sitio-web-csd\src\reserva-cupo\prematriculas_semillero.csv
+💾 Guardado JSON de consulta: C:\Users\julio\dev\sitio-web-csd\src\reserva-cupo\prematriculas_hash.json
+✨ Sincronización completada exitosamente.
+✅ Base de datos al día. No hay cambios pendientes.
+
+[2026-11-10 10:05:59] Iniciando verificación con EduColombia...
+🔐 [1/3] Iniciando sesión en EduColombia...
+✅ Sesión iniciada con éxito.
+📥 [2/3] Extrayendo prematrículas de los salones...
+  • PREJARDIN   : 0 estudiantes
+  • JARDIN      : 7 estudiantes
+  • TRANSICION  : 10 estudiantes
+  • PRIMERO     : 10 estudiantes
+  • SEGUNDO     : 12 estudiantes
+  • TERCERO     : 16 estudiantes
+  • CUARTO      : 11 estudiantes
+  • QUINTO      : 17 estudiantes
+  • SEXTO       : 28 estudiantes
+  • SEPTIMO     : 30 estudiantes
+  • OCTAVO      : 25 estudiantes
+  • NOVENO      : 21 estudiantes
+  • DECIMO      : 19 estudiantes
+  • UNDECIMO    : 18 estudiantes
+  • SIN ASIGNAR : 27 estudiantes
+
+📊 Total estudiantes: 251 | Confirmados (Cupo Apartado): 130 | Pendientes: 121
+💾 [3/3] Guardado CSV: C:\Users\julio\dev\sitio-web-csd\src\reserva-cupo\prematriculas_semillero.csv
+💾 Guardado JSON de consulta: C:\Users\julio\dev\sitio-web-csd\src\reserva-cupo\prematriculas_hash.json
+✨ Sincronización completada exitosamente.
+✅ Base de datos al día. No hay cambios pendientes.
+
+[2026-11-10 10:13:33] Iniciando verificación con EduColombia...
+🔐 [1/3] Iniciando sesión en EduColombia...
+❌ Error conectando a EduColombia: <urlopen error [Errno 11001] getaddrinfo failed>
