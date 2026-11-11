@@ -64,11 +64,14 @@ permalink: /reserva-cupo/
             <div style="margin-top:20px; padding-top:16px; border-top:1px dashed #CBD5E1; text-align:center; font-size:0.84rem;">
               <span style="color:#64748B; margin-right:8px; display:block; margin-bottom:8px;">Pruebas rápidas oficiales con 1 clic:</span>
               <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
-                <button type="button" onclick="probarDocPremat('1097917913_prom')" style="background:#DCFCE7; border:1px solid #86EFAC; color:#15803D; font-size:0.8rem; padding:6px 14px; border-radius:999px; cursor:pointer; font-weight:700;">
-                  ⭐ Caso A: Estudiante Promovido al Siguiente Grado (Felicitaciones)
+                <button type="button" onclick="probarDocPremat('1097795465')" style="background:#FEF3C7; border:1.5px solid #F59E0B; color:#92400E; font-size:0.8rem; padding:6px 14px; border-radius:999px; cursor:pointer; font-weight:700;">
+                  ⚠️ Caso 1: Sin Apartar Cupo (1097795465)
                 </button>
-                <button type="button" onclick="probarDocPremat('1097917913')" style="background:#FEF3C7; border:1px solid #FDE68A; color:#92400E; font-size:0.8rem; padding:6px 14px; border-radius:999px; cursor:pointer; font-weight:700;">
-                  ⏳ Caso B: Notas en Cierre / Vuelve después del 20 de Nov (1097917913)
+                <button type="button" onclick="probarDocPremat('1097917913')" style="background:#EBF3FA; border:1.5px solid #003865; color:#002244; font-size:0.8rem; padding:6px 14px; border-radius:999px; cursor:pointer; font-weight:700;">
+                  ⏳ Caso 2: Cupo Apartado + Cierre Académico hasta 20 Nov (1097917913)
+                </button>
+                <button type="button" onclick="probarDocPremat('1097917913_prom')" style="background:#DCFCE7; border:1.5px solid #16A34A; color:#15803D; font-size:0.8rem; padding:6px 14px; border-radius:999px; cursor:pointer; font-weight:700;">
+                  ⭐ Caso 3: Cupo Apartado + Promovido (Felicitaciones)
                 </button>
               </div>
             </div>
@@ -231,6 +234,90 @@ permalink: /reserva-cupo/
             </div>
           </div>
 
+          <!-- ================= RESULTADO CASO C: DEBES APARTAR EL CUPO ================= -->
+          <div id="resultado-sin-apartar" style="display:none; margin-top:20px;">
+            <!-- Banner de Alerta -->
+            <div style="background:#FFFBEB; border:2px solid #F59E0B; border-radius:20px; padding:24px 28px; margin-bottom:20px; display:flex; align-items:center; gap:18px; box-shadow:0 10px 25px rgba(245, 158, 11, 0.12);">
+              <span style="font-size:2.8rem; line-height:1;">⚠️</span>
+              <div>
+                <span style="display:inline-block; background:#FEF3C7; color:#92400E; font-weight:800; font-size:0.78rem; padding:4px 12px; border-radius:999px; border:1px solid #FDE68A; margin-bottom:4px;">
+                  PASO OBLIGATORIO PREVIO · CUPO SIN CONFIRMAR
+                </span>
+                <h3 style="margin:0; font-size:1.35rem; font-weight:800; color:#92400E;">
+                  Debes apartar el cupo para continuar con el proceso
+                </h3>
+              </div>
+            </div>
+
+            <!-- Tarjeta con Instrucciones Claras y PIN -->
+            <div style="background:white; border-radius:20px; border:1.5px solid #FDE68A; padding:28px 24px; box-shadow:0 12px 30px rgba(0,0,0,0.06); margin-bottom:20px;">
+              <div style="background:#FFFBEB; border-left:5px solid #F59E0B; border-radius:0 12px 12px 0; padding:18px 20px; margin-bottom:22px; line-height:1.65; color:#78350F;">
+                <p style="font-size:1.05rem; font-weight:700; margin:0 0 10px 0; color:#92400E;">
+                  Apreciada Familia <strong id="sin-apartar-familia">-</strong>:
+                </p>
+                <p style="margin:0 0 12px 0; font-size:0.98rem; color:#475569;">
+                  En el sistema oficial de <strong>EduColombia</strong> se registra que <strong>aún no has confirmado la reserva del cupo</strong> para el estudiante <strong id="sin-apartar-estudiante-nom" style="color:#0F172A;">-</strong> para el año lectivo 2027.
+                </p>
+                <div style="background:white; border:1.5px solid #FCD34D; border-radius:12px; padding:16px 18px; margin:16px 0;">
+                  <strong style="color:#B45309; font-size:1.02rem; display:block; margin-bottom:6px;">
+                    📌 ¿Por qué es necesario apartar el cupo primero?
+                  </strong>
+                  <p style="margin:0; font-size:0.92rem; color:#475569; line-height:1.55;">
+                    Para poder verificar el cierre de notas académicas y continuar con la legalización de la matrícula, es indispensable que confirmes la continuidad de tu hijo(a) en la plataforma EduColombia. Utiliza el siguiente PIN institucional:
+                  </p>
+                </div>
+              </div>
+
+              <!-- Ficha con PIN Destacado -->
+              <div style="background:#F8FAFC; border-radius:16px; padding:22px; border:1.5px solid #E2E8F0; margin-bottom:24px;">
+                <h4 style="color:#003865; font-size:0.85rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; margin:0 0 16px 0;">
+                  📌 Ficha del Estudiante y PIN Asignado
+                </h4>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px;">
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Estudiante:</span>
+                    <strong style="color:#0F172A; font-size:1.05rem; display:block; margin-top:2px;" id="sin-apartar-nombre">-</strong>
+                  </div>
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Documento:</span>
+                    <strong style="color:#0F172A; font-size:1.05rem; font-family:monospace; display:block; margin-top:2px;" id="sin-apartar-doc">-</strong>
+                  </div>
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Grado Actual (2026):</span>
+                    <strong style="color:#475569; font-size:1.05rem; display:block; margin-top:2px;" id="sin-apartar-grado">-</strong>
+                  </div>
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Grado para el que se recibe:</span>
+                    <strong style="color:#2563EB; font-size:1.15rem; text-transform:uppercase; display:block; margin-top:2px;" id="sin-apartar-grado-recibe">-</strong>
+                  </div>
+                  <div style="grid-column: 1 / -1; background:#FEF3C7; border:1.5px dashed #F59E0B; border-radius:12px; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                    <div>
+                      <span style="color:#92400E; font-size:0.75rem; text-transform:uppercase; font-weight:800; display:block;">Tu PIN Institucional de Prematrícula:</span>
+                      <strong style="color:#0F172A; font-family:monospace; font-size:1.3rem; letter-spacing:1px;" id="sin-apartar-pin">-</strong>
+                    </div>
+                    <button type="button" onclick="copiarPin('sin-apartar-pin', this)" style="background:#FDE68A; border:1px solid #F59E0B; color:#92400E; font-weight:800; font-size:0.8rem; padding:8px 16px; border-radius:8px; cursor:pointer;">
+                      📋 Copiar PIN
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botón a EduColombia -->
+              <form action="https://educolombia.org/pin/" method="POST" target="_blank" style="margin-bottom:14px;">
+                <input type="hidden" name="pin" id="sin-apartar-hidden-pin" value="">
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:18px 24px; font-size:1.1rem; background:linear-gradient(135deg, #F59E0B, #D97706); border:none; box-shadow:0 8px 20px -4px rgba(245,158,11,0.45); cursor:pointer; font-weight:700; border-radius:12px; color:white;">
+                  🚀 Ingresar a EduColombia y Apartar Cupo con tu PIN →
+                </button>
+              </form>
+
+              <div style="text-align:center;">
+                <button type="button" onclick="reiniciarConsulta()" style="background:none; border:none; color:#475569; font-size:0.9rem; text-decoration:underline; cursor:pointer; padding:6px 12px;">
+                  ← Consultar otro número de documento
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- RESULTADO ERROR -->
           <div id="resultado-error" style="display:none; margin-top:20px;">
             <div style="background:#FEF2F2; border:2px solid #EF4444; border-radius:16px; padding:22px; color:#991B1B;">
@@ -336,6 +423,7 @@ async function consultarPin(e) {
 
   document.getElementById("resultado-promovido").style.display = "none";
   document.getElementById("resultado-espera-notas").style.display = "none";
+  document.getElementById("resultado-sin-apartar").style.display = "none";
   document.getElementById("resultado-error").style.display = "none";
 
   try {
@@ -355,11 +443,28 @@ async function consultarPin(e) {
       const gradoActual = alumno.grado || '-';
       const gradoRecibe = alumno.grado_siguiente || alumno.grado || '-';
 
-      // EVALUACIÓN DE ESTADO EN EDUCOLOMBIA:
-      // Si promovido === 1: Mostrar felicitaciones y siguiente grado
-      // Si promovido === 0: Mostrar aviso gentil de espera de cierre de notas hasta el 20 de noviembre
-      if (alumno.promovido === 1 || alumno.promovido === "1" || alumno.promovido === true) {
-        // CASO A: PROMOVIDO
+      const estadoPremat = (alumno.estado || "").toLowerCase();
+      const haApartadoCupo = (estadoPremat.includes("sigue") || estadoPremat.includes("confirmad")) && !estadoPremat.includes("sin");
+
+      // REGLA 1: Si el estudiante NO ha apartado el cupo todavía:
+      // Debe apartar el cupo para continuar con el proceso.
+      if (!haApartadoCupo) {
+        // CASO C: SIN APARTAR CUPO
+        document.getElementById("sin-apartar-familia").textContent = fam;
+        document.getElementById("sin-apartar-estudiante-nom").textContent = nombreLimpio;
+        document.getElementById("sin-apartar-nombre").textContent = nombreLimpio;
+        document.getElementById("sin-apartar-doc").textContent = alumno.doc || doc;
+        document.getElementById("sin-apartar-grado").textContent = gradoActual;
+        document.getElementById("sin-apartar-grado-recibe").textContent = gradoRecibe;
+        document.getElementById("sin-apartar-pin").textContent = alumno.pin;
+        document.getElementById("sin-apartar-hidden-pin").value = alumno.pin;
+
+        document.getElementById("resultado-sin-apartar").style.display = "block";
+        document.getElementById("resultado-sin-apartar").scrollIntoView({ behavior: 'smooth' });
+      } 
+      // REGLA 2: El mensaje de cierre académico o promoción SOLO debe salirle a quien ya apartó el cupo:
+      else if (alumno.promovido === 1 || alumno.promovido === "1" || alumno.promovido === true) {
+        // CASO A: CUPO APARTADO + PROMOVIDO AL SIGUIENTE GRADO
         document.getElementById("prom-nombre").textContent = nombreLimpio;
         document.getElementById("prom-nombre-saludo").textContent = primerNom;
         document.getElementById("prom-doc").textContent = alumno.doc || doc.replace('_prom', '');
@@ -372,7 +477,7 @@ async function consultarPin(e) {
         document.getElementById("resultado-promovido").style.display = "block";
         document.getElementById("resultado-promovido").scrollIntoView({ behavior: 'smooth' });
       } else {
-        // CASO B: NOTAS EN CIERRE / EN ESPERA HASTA EL 20 DE NOVIEMBRE
+        // CASO B: CUPO APARTADO + NOTAS EN CIERRE / EN ESPERA HASTA EL 20 DE NOVIEMBRE
         document.getElementById("espera-familia").textContent = fam;
         document.getElementById("espera-nombre").textContent = nombreLimpio;
         document.getElementById("espera-grado").textContent = gradoActual;
@@ -423,6 +528,7 @@ function copiarPin(elementId, btn) {
 function reiniciarConsulta() {
   document.getElementById("resultado-promovido").style.display = "none";
   document.getElementById("resultado-espera-notas").style.display = "none";
+  document.getElementById("resultado-sin-apartar").style.display = "none";
   document.getElementById("resultado-error").style.display = "none";
   document.getElementById("form-consulta-pin").style.display = "block";
   const input = document.getElementById("doc-estudiante");
