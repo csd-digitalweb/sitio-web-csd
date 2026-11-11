@@ -69,8 +69,9 @@ SIGUIENTE_GRADO = {
 def format_title_name(name):
     if not name:
         return ""
-    words = name.strip().split()
-    return " ".join(w.capitalize() for w in words)
+    clean = re.sub(r'[-_]', ' ', name)
+    clean = re.sub(r'\s+', ' ', clean).strip()
+    return " ".join(w.capitalize() for w in clean.split())
 
 def sync():
     cj = http.cookiejar.CookieJar()
@@ -119,10 +120,8 @@ def sync():
         )
 
         for match in filas:
-            alu_nombre = re.sub(r'\s+', ' ', match[0]).strip()
-            # Clean up unwanted hyphens if any
-            alu_nombre = re.sub(r'^\s*-\s*', '', alu_nombre)
-            alu_nombre = re.sub(r'\s+-\s+', ' ', alu_nombre)
+            alu_nombre = re.sub(r'[-_]', ' ', match[0])
+            alu_nombre = re.sub(r'\s+', ' ', alu_nombre).strip()
             
             documento = match[1].strip()
             estado = match[2].strip()

@@ -104,7 +104,7 @@ permalink: /admisiones/
             Consulta de Admisión y Asignación de Cupo
           </h2>
           <p style="color:#E2E8F0; font-size:0.98rem; max-width:680px; margin:0 auto; line-height:1.6; opacity:0.9;">
-            Si tu hijo(a) ya presentó el examen académico y la entrevista pedagógica, ingresa su <strong>número de documento de identidad</strong> para verificar la asignación de salón en EduColombia y habilitar la orden de matrícula oficial.
+            Si tu hijo(a) ya presentó el examen académico y la entrevista pedagógica, ingresa su <strong>número de documento de identidad</strong> para verificar el estado de admisión y habilitar la orden de matrícula oficial.
           </p>
         </div>
 
@@ -187,7 +187,7 @@ permalink: /admisiones/
           <span style="font-size:2.8rem; line-height:1;">🎉</span>
           <div>
             <span style="display:inline-block; background:#DCFCE7; color:#15803D; font-weight:800; font-size:0.78rem; padding:4px 12px; border-radius:999px; border:1px solid #86EFAC; margin-bottom:4px;">
-              SALÓN ASIGNADO EN EDUCOLOMBIA · ADMISIÓN APROBADA
+              ADMISIÓN APROBADA · AÑO ESCOLAR 2027
             </span>
             <h3 style="margin:0; font-size:1.38rem; font-weight:800; color:#065F46;">
               ¡Felicitaciones! Has sido admitido oficialmente a la Familia Semillerista
@@ -240,7 +240,7 @@ permalink: /admisiones/
                 <strong style="color:#0F172A; font-size:1.15rem; font-family:monospace; display:block; margin-top:2px;" id="res-doc-estudiante">-</strong>
               </div>
               <div style="grid-column: 1 / -1;">
-                <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:700; display:block;">Grado al que fué admitido en el 2027:</span>
+                <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:700; display:block;">Grado para el que se recibe:</span>
                 <strong style="color:#2563EB; font-size:1.3rem; text-transform:uppercase; display:block; margin-top:2px;" id="res-grado-admitido">-</strong>
                 <span id="res-grado-2027" style="display:none;">-</span>
                 <span id="res-salon-educolombia" style="display:none;">-</span>
@@ -595,17 +595,21 @@ async function consultarAdmision(e) {
     // Condición: Existe en base de datos Y tiene un SALÓN asignado (no vacío y no SIN ASIGNAR)
     if (estudiante && estudiante.salon && estudiante.salon !== '' && estudiante.salon !== 'SIN ASIGNAR') {
       // Caso A: ADMITIDO CON SALÓN
-      document.getElementById('res-nombre-estudiante').textContent = estudiante.nombre;
+      let nombreLimpio = estudiante.nombre.replace(/[-_]/g, ' ').replace(/\s+/g, ' ').trim();
+      nombreLimpio = nombreLimpio.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      document.getElementById('res-nombre-estudiante').textContent = nombreLimpio;
       document.getElementById('res-doc-estudiante').textContent = estudiante.doc;
       const gradoAdmitido = estudiante.grado_2027 || estudiante.salon || 'PRIMERO';
       if (document.getElementById('res-grado-admitido')) document.getElementById('res-grado-admitido').textContent = gradoAdmitido;
       if (document.getElementById('res-grado-2027')) document.getElementById('res-grado-2027').textContent = gradoAdmitido;
       if (document.getElementById('res-salon-educolombia')) document.getElementById('res-salon-educolombia').textContent = estudiante.salon;
-      document.getElementById('res-acudiente').textContent = estudiante.acudiente || 'Acudiente Registrado';
+      document.getElementById('res-acudiente').textContent = (estudiante.acudiente && estudiante.acudiente !== 'Acudiente Registrado') ? estudiante.acudiente.replace(/[-_]/g, ' ').trim() : 'Acudiente Registrado';
       document.getElementById('res-doc-acudiente').textContent = estudiante.doc_acudiente || 'C.C. Registrada';
 
-      const apellidos = estudiante.nombre.split(' ');
-      const fam = apellidos.length >= 3 ? apellidos.slice(2).join(' ') : apellidos.join(' ');
+      // En EduColombia el formato institucional es: Apellido1 Apellido2 Nombre1 Nombre2
+      // Para la Familia, tomamos los dos primeros apellidos:
+      const partes = nombreLimpio.split(' ');
+      const fam = partes.length >= 2 ? partes.slice(0, 2).join(' ') : partes[0];
       document.getElementById('est-apellido-familia').textContent = fam;
 
       // Actualizar enlace directo a WhatsApp de Tesorería
