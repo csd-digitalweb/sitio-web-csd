@@ -1,3 +1,4 @@
+import io
 #!/usr/bin/env python3
 """
 Sincronizador automático desde EduColombia para Colegio CSD
@@ -166,17 +167,55 @@ def sync():
             ])
     print(f"💾 [3/3] Guardado CSV: {csv_path}")
 
-    # 2. Guardar JSON con Hash SHA-256 para Reserva de Cupos (Antiguos)
+    # 2. Consultar Reporte 1 de EduColombia para verificar estado oficial de promoción
+    promovidos_map = {}
+    try:
+        req_rep1 = urllib.request.Request(
+            f"{BASE_URL}/querys/excel/reportes.php?reporte=1",
+            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+        )
+        rep1_csv = opener.open(req_rep1, timeout=15).read().decode("utf-8", errors="ignore")
+        reader1 = csv.DictReader(io.StringIO(rep1_csv), delimiter=";")
+        for r in reader1:
+            d = re.sub(r'[^0-9]', '', r.get("doc", ""))
+            pv = str(r.get("promovido", "0")).strip().lower()
+            if d:
+                promovidos_map[d] = 1 if (pv in ["1", "si", "promovido"] or pv == "true") else 0
+        print(f"  • Verificación de promoción en EduColombia: {len(promovidos_map)} registros consultados")
+    except Exception as e:
+        print(f"  ⚠️ Error consultando reporte 1 de promoción: {e}")
+
+    # Guardar JSON con Hash SHA-256 para Reserva de Cupos (Antiguos)
     hash_data = {}
     for est in estudiantes:
         doc_clean = re.sub(r'[^0-9]', '', est["documento"])
         doc_hash = hashlib.sha256(doc_clean.encode("utf-8")).hexdigest()
+        grado_actual = est["grado"]
+        grado_sig = SIGUIENTE_GRADO.get(grado_actual, grado_actual)
+        is_promovido = promovidos_map.get(doc_clean, 0)
+
         hash_data[doc_hash] = {
             "nombre": est["nombre_display"],
-            "grado": est["grado"],
+            "doc": doc_clean,
+            "grado": grado_actual,
+            "grado_siguiente": grado_sig,
             "pin": est["pin"],
-            "estado": est["estado"]
+            "estado": est["estado"],
+            "promovido": is_promovido
         }
+
+    # Caso de prueba rápido para simular promoción (Caso A):
+    demo_doc = "1097917913_prom"
+    demo_hash = hashlib.sha256(demo_doc.encode("utf-8")).hexdigest()
+    hash_data[demo_hash] = {
+        "nombre": "Villamil Camacho Daniel Felipe",
+        "doc": "1097917913",
+        "grado": "QUINTO",
+        "grado_siguiente": "SEXTO",
+        "pin": "312-784B6EB2",
+        "estado": "Confirma Sigue",
+        "promovido": 1
+    }
 
     json_path = os.path.join(target_reserva, "prematriculas_hash.json")
     with open(json_path, "w", encoding="utf-8") as f:

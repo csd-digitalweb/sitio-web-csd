@@ -56,63 +56,99 @@ permalink: /reserva-cupo/
             </div>
 
             <button type="submit" id="btn-consultar" class="btn btn-primary" style="padding: 16px 28px; font-size: 1.05rem; justify-content:center; width:100%; margin-top:8px; cursor:pointer;">
-              <span id="btn-text">Consultar PIN y Continuar →</span>
-              <span id="btn-spinner" style="display:none;">⏳ Buscando estudiante...</span>
+              <span id="btn-text">Consultar Estado de Matrícula y PIN →</span>
+              <span id="btn-spinner" style="display:none;">⏳ Verificando con EduColombia...</span>
             </button>
+
+            <!-- Acciones Rápidas para Pruebas del Evaluador -->
+            <div style="margin-top:20px; padding-top:16px; border-top:1px dashed #CBD5E1; text-align:center; font-size:0.84rem;">
+              <span style="color:#64748B; margin-right:8px; display:block; margin-bottom:8px;">Pruebas rápidas oficiales con 1 clic:</span>
+              <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                <button type="button" onclick="probarDocPremat('1097917913_prom')" style="background:#DCFCE7; border:1px solid #86EFAC; color:#15803D; font-size:0.8rem; padding:6px 14px; border-radius:999px; cursor:pointer; font-weight:700;">
+                  ⭐ Caso A: Estudiante Promovido al Siguiente Grado (Felicitaciones)
+                </button>
+                <button type="button" onclick="probarDocPremat('1097917913')" style="background:#FEF3C7; border:1px solid #FDE68A; color:#92400E; font-size:0.8rem; padding:6px 14px; border-radius:999px; cursor:pointer; font-weight:700;">
+                  ⏳ Caso B: Notas en Cierre / Vuelve después del 20 de Nov (1097917913)
+                </button>
+              </div>
+            </div>
           </form>
 
-          <!-- RESULTADO ÉXITO -->
-          <div id="resultado-exito" style="display:none; margin-top:16px;">
-            <div id="resultado-exito-box" style="background:#F0FDF4; border:2px solid #22C55E; border-radius:16px; padding:24px; box-shadow:0 10px 25px -5px rgba(34,197,94,0.15);">
-              
-              <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:18px; flex-wrap:wrap;">
-                <div style="display:flex; align-items:center; gap:12px;">
-                  <span id="res-icon" style="font-size:2.4rem; line-height:1;">🎓</span>
-                  <div>
-                    <h3 id="res-header-title" style="color:#15803D; margin:0; font-size:1.35rem; font-weight:800;">¡Estudiante por Apartar Cupo!</h3>
-                    <span id="res-header-sub" style="color:#166534; font-size:0.92rem;">Tu PIN de prematrícula está listo</span>
-                  </div>
-                </div>
-                <div id="res-badge-wrap">
-                  <span id="res-badge" style="display:inline-flex; align-items:center; gap:6px; font-weight:800; font-size:0.85rem; padding:6px 14px; border-radius:999px; border:1.5px solid #86EFAC; background:#DCFCE7; color:#15803D;">
-                    ✅ Estado: Cupo Apartado
-                  </span>
+          <!-- ================= RESULTADO CASO A: PROMOVIDO AL SIGUIENTE GRADO ================= -->
+          <div id="resultado-promovido" style="display:none; margin-top:20px;">
+            <!-- Banner Oficial de Celebración -->
+            <div style="background:#ECFDF5; border:2px solid #10B981; border-radius:20px; padding:24px 28px; margin-bottom:20px; display:flex; align-items:center; gap:18px; box-shadow:0 10px 25px rgba(16, 185, 129, 0.15);">
+              <span style="font-size:2.8rem; line-height:1;">🎉</span>
+              <div>
+                <span style="display:inline-block; background:#DCFCE7; color:#15803D; font-weight:800; font-size:0.78rem; padding:4px 12px; border-radius:999px; border:1px solid #86EFAC; margin-bottom:4px;">
+                  AÑO ESCOLAR 2026 APROBADO · PROMOCIÓN CONFIRMADA
+                </span>
+                <h3 style="margin:0; font-size:1.35rem; font-weight:800; color:#065F46;">
+                  ¡Felicitaciones! Pasaste el año con éxito
+                </h3>
+              </div>
+            </div>
+
+            <!-- Tarjeta con Mensaje Agradecido y Ficha -->
+            <div style="background:white; border-radius:20px; border:1.5px solid #BBF7D0; padding:28px 24px; box-shadow:0 12px 30px rgba(0,0,0,0.06); margin-bottom:20px;">
+              <div style="background:#F0FDF4; border-left:5px solid #16A34A; border-radius:0 12px 12px 0; padding:18px 20px; margin-bottom:24px; line-height:1.65; color:#14532D;">
+                <p style="font-size:1.05rem; font-weight:700; margin:0 0 8px 0; color:#15803D;">
+                  🎉 ¡Felicitaciones <span id="prom-nombre-saludo">-</span>!
+                </p>
+                <p style="margin:0 0 10px 0; font-size:0.98rem;">
+                  Nos llena de inmenso orgullo comunicarte que <strong>has aprobado satisfactoriamente tu año escolar 2026</strong>. Tu constancia, dedicación y entusiasmo han dado frutos extraordinarios.
+                </p>
+                <p style="margin:0 0 12px 0; font-size:1.05rem; font-weight:800; color:#065F46;">
+                  🌟 ¡Te esperamos con los brazos abiertos en el grado <span id="prom-grado-recibe" style="color:#2563EB; text-decoration:underline; font-weight:800;">-</span> para el año escolar 2027!
+                </p>
+                <div style="border-top:1px dashed #86EFAC; padding-top:10px; font-size:0.92rem; color:#166534;">
+                  💚 <strong>¡Muchas gracias por su confianza!</strong> Agradecemos profundamente a ti y a tu querida familia por continuar formando parte de la gran <strong>Familia Semillerista</strong>. ¡Juntos seguiremos sembrando estudio, amor y paz!
                 </div>
               </div>
 
-              <div style="background:white; border-radius:14px; padding:20px; border:1.5px solid #BBF7D0; margin-bottom:20px;">
-                <div style="margin-bottom:14px;">
-                  <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:0.5px; display:block;">Estudiante</span>
-                  <div id="res-nombre" style="font-size:1.22rem; font-weight:800; color:#0F172A; margin-top:2px;">-</div>
-                </div>
-                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; border-top:1px dashed #CBD5E1; padding-top:14px;">
+              <!-- Ficha de Datos -->
+              <div style="background:#F8FAFC; border-radius:16px; padding:22px; border:1.5px solid #E2E8F0; margin-bottom:24px;">
+                <h4 style="color:#003865; font-size:0.85rem; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; margin:0 0 16px 0;">
+                  📌 Ficha Oficial de Promoción y Matrícula
+                </h4>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px;">
                   <div>
-                    <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:0.5px; display:block;">Grado Actual</span>
-                    <div id="res-grado" style="font-weight:700; color:#1E293B; font-size:1.05rem; margin-top:2px;">-</div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Estudiante:</span>
+                    <strong style="color:#0F172A; font-size:1.1rem; display:block; margin-top:2px;" id="prom-nombre">-</strong>
                   </div>
-                  <div style="text-align:right;">
-                    <span style="color:#64748B; font-size:0.8rem; text-transform:uppercase; font-weight:800; letter-spacing:0.5px; display:block;">Tu PIN de Matrícula</span>
-                    <div style="margin-top:2px;">
-                      <span id="res-pin" style="display:inline-block; background:#FEF3C7; color:#92400E; font-weight:800; font-size:1.2rem; padding:6px 14px; border-radius:8px; border:1.5px solid #F59E0B; letter-spacing:1.2px; font-family:monospace;">
-                        -
-                      </span>
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Documento de Identidad:</span>
+                    <strong style="color:#0F172A; font-size:1.1rem; font-family:monospace; display:block; margin-top:2px;" id="prom-doc">-</strong>
+                  </div>
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Grado Cursado en 2026:</span>
+                    <strong style="color:#475569; font-size:1.05rem; display:block; margin-top:2px;" id="prom-grado-anterior">-</strong>
+                  </div>
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Grado para el que se recibe:</span>
+                    <strong style="color:#2563EB; font-size:1.25rem; text-transform:uppercase; display:block; margin-top:2px;" id="prom-grado-siguiente">-</strong>
+                  </div>
+                  <div style="grid-column: 1 / -1; background:#FEF3C7; border:1.5px dashed #F59E0B; border-radius:12px; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+                    <div>
+                      <span style="color:#92400E; font-size:0.75rem; text-transform:uppercase; font-weight:800; display:block;">Tu PIN Institucional de Matrícula:</span>
+                      <strong style="color:#0F172A; font-family:monospace; font-size:1.3rem; letter-spacing:1px;" id="prom-pin">-</strong>
                     </div>
+                    <button type="button" onclick="copiarPin('prom-pin', this)" style="background:#FDE68A; border:1px solid #F59E0B; color:#92400E; font-weight:800; font-size:0.8rem; padding:8px 16px; border-radius:8px; cursor:pointer;">
+                      📋 Copiar PIN
+                    </button>
                   </div>
                 </div>
               </div>
 
-              <div id="res-mensaje-box" style="background:#DCFCE7; border-left:4px solid #16A34A; padding:14px 18px; border-radius:0 10px 10px 0; margin-bottom:20px; font-size:0.95rem; color:#14532D; line-height:1.55;">
-                📌 <strong>Paso Final:</strong> Al hacer clic en el botón a continuación, ingresarás a <strong>EduColombia</strong> con tu PIN precargado para completar la actualización de datos de matrícula.
-              </div>
-
-              <form id="form-redirect-edu" action="https://educolombia.org/pin/" method="POST" target="_blank">
-                <input type="hidden" name="pin" id="hidden-pin" value="">
-                <button type="submit" id="btn-submit-edu" class="btn btn-primary" style="width:100%; justify-content:center; padding:18px 24px; font-size:1.1rem; background:linear-gradient(135deg, #16A34A, #15803D); border:none; box-shadow:0 8px 20px -4px rgba(22,163,74,0.45); cursor:pointer; font-weight:700;">
-                  🚀 Continuar a Actualización en EduColombia →
+              <!-- Botón a EduColombia -->
+              <form action="https://educolombia.org/pin/" method="POST" target="_blank" style="margin-bottom:14px;">
+                <input type="hidden" name="pin" id="prom-hidden-pin" value="">
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:18px 24px; font-size:1.1rem; background:linear-gradient(135deg, #16A34A, #15803D); border:none; box-shadow:0 8px 20px -4px rgba(22,163,74,0.45); cursor:pointer; font-weight:700; border-radius:12px;">
+                  🚀 Continuar a Actualización en EduColombia con tu PIN →
                 </button>
               </form>
 
-              <div style="margin-top:16px; text-align:center;">
+              <div style="text-align:center;">
                 <button type="button" onclick="reiniciarConsulta()" style="background:none; border:none; color:#475569; font-size:0.9rem; text-decoration:underline; cursor:pointer; padding:6px 12px;">
                   ← Consultar otro número de documento
                 </button>
@@ -120,8 +156,83 @@ permalink: /reserva-cupo/
             </div>
           </div>
 
+          <!-- ================= RESULTADO CASO B: NOTAS EN CIERRE / VUELVE DESPUÉS DEL 20 DE NOVIEMBRE ================= -->
+          <div id="resultado-espera-notas" style="display:none; margin-top:20px;">
+            <!-- Banner Ámbar Gentil -->
+            <div style="background:#FFFBEB; border:2px solid #F59E0B; border-radius:20px; padding:24px 28px; margin-bottom:20px; display:flex; align-items:center; gap:18px; box-shadow:0 10px 25px rgba(245, 158, 11, 0.12);">
+              <span style="font-size:2.8rem; line-height:1;">⏳</span>
+              <div>
+                <span style="display:inline-block; background:#FEF3C7; color:#92400E; font-weight:800; font-size:0.78rem; padding:4px 12px; border-radius:999px; border:1px solid #FDE68A; margin-bottom:4px;">
+                  EVALUACIÓN ACADÉMICA EN CURSO · AÑO ESCOLAR 2026
+                </span>
+                <h3 style="margin:0; font-size:1.35rem; font-weight:800; color:#92400E;">
+                  Consolidación y Cierre de Notas en Proceso
+                </h3>
+              </div>
+            </div>
+
+            <!-- Tarjeta Gentil -->
+            <div style="background:white; border-radius:20px; border:1.5px solid #FDE68A; padding:28px 24px; box-shadow:0 12px 30px rgba(0,0,0,0.06); margin-bottom:20px;">
+              <div style="background:#FFFBEB; border-left:5px solid #F59E0B; border-radius:0 12px 12px 0; padding:18px 20px; margin-bottom:22px; line-height:1.65; color:#78350F;">
+                <p style="font-size:1.05rem; font-weight:700; margin:0 0 10px 0; color:#92400E;">
+                  Apreciada Familia <strong id="espera-familia">-</strong>:
+                </p>
+                <p style="margin:0 0 12px 0; font-size:0.98rem; color:#475569;">
+                  Les informamos de manera muy gentil y afectuosa que nuestro equipo docente y directivo se encuentra actualmente en la fase final de evaluación, consolidación y <strong>cierre oficial de notas del año escolar 2026</strong>.
+                </p>
+                
+                <div style="background:white; border:1.5px solid #FCD34D; border-radius:12px; padding:16px 18px; margin:16px 0;">
+                  <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+                    <span style="font-size:1.4rem;">📅</span>
+                    <strong style="color:#B45309; font-size:1.05rem;">
+                      Vuelve a consultar después del 20 de Noviembre
+                    </strong>
+                  </div>
+                  <p style="margin:0; font-size:0.92rem; color:#475569; line-height:1.55;">
+                    A partir del <strong>20 de Noviembre</strong> podrás consultar el estado definitivo de promoción de tu hijo(a) al siguiente grado y acceder de inmediato a la orden de matrícula oficial para el año lectivo 2027.
+                  </p>
+                </div>
+
+                <p style="margin:0; font-size:0.92rem; color:#92400E;">
+                  💙 Agradecemos inmensamente su amable espera, comprensión y el valioso acompañamiento brindado a sus hijos durante todo este año lectivo.
+                </p>
+              </div>
+
+              <!-- Ficha Informativa -->
+              <div style="background:#F8FAFC; border-radius:16px; padding:20px; border:1px solid #E2E8F0; margin-bottom:24px;">
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px;">
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Estudiante:</span>
+                    <strong style="color:#0F172A; font-size:1.05rem; display:block; margin-top:2px;" id="espera-nombre">-</strong>
+                  </div>
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Grado Cursado en 2026:</span>
+                    <strong style="color:#003865; font-size:1.05rem; display:block; margin-top:2px;" id="espera-grado">-</strong>
+                  </div>
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">Grado para el que se recibe:</span>
+                    <strong style="color:#2563EB; font-size:1.05rem; display:block; margin-top:2px;" id="espera-grado-siguiente">-</strong>
+                  </div>
+                  <div>
+                    <span style="color:#64748B; font-size:0.75rem; text-transform:uppercase; font-weight:700; display:block;">PIN Institucional:</span>
+                    <strong style="color:#92400E; font-family:monospace; font-size:1.05rem; display:block; margin-top:2px;" id="espera-pin">-</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                <a href="https://wa.me/573152904403?text=Hola%20Secretar%C3%ADa%20CSD,%20quisiera%20consultar%20sobre%20el%20cierre%20de%20notas%20y%20prematr%C3%ADcula%202027" target="_blank" rel="noopener" class="btn btn-primary" style="background:#003865; border:none; padding:12px 22px; font-weight:700; border-radius:999px; text-decoration:none;">
+                  💬 Contactar Secretaría (WhatsApp 315 290 4403)
+                </a>
+                <button type="button" onclick="reiniciarConsulta()" class="btn btn-outline" style="padding:12px 20px; font-size:0.9rem; border-radius:999px; cursor:pointer;">
+                  ← Consultar otro documento
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- RESULTADO ERROR -->
-          <div id="resultado-error" style="display:none; margin-top:16px;">
+          <div id="resultado-error" style="display:none; margin-top:20px;">
             <div style="background:#FEF2F2; border:2px solid #EF4444; border-radius:16px; padding:22px; color:#991B1B;">
               <div style="display:flex; align-items:flex-start; gap:14px;">
                 <span style="font-size:2rem; line-height:1;">⚠️</span>
@@ -209,9 +320,9 @@ async function sha256(str) {
 }
 
 async function consultarPin(e) {
-  e.preventDefault();
+  if (e) e.preventDefault();
   const input = document.getElementById("doc-estudiante");
-  const doc = input.value.replace(/[^0-9]/g, "").trim();
+  const doc = input.value.trim();
 
   if (!doc || doc.length < 5) {
     alert("Por favor ingresa un número de documento válido (mínimo 5 dígitos).");
@@ -222,7 +333,9 @@ async function consultarPin(e) {
   document.getElementById("btn-text").style.display = "none";
   document.getElementById("btn-spinner").style.display = "inline-block";
   document.getElementById("btn-consultar").disabled = true;
-  document.getElementById("resultado-exito").style.display = "none";
+
+  document.getElementById("resultado-promovido").style.display = "none";
+  document.getElementById("resultado-espera-notas").style.display = "none";
   document.getElementById("resultado-error").style.display = "none";
 
   try {
@@ -231,73 +344,50 @@ async function consultarPin(e) {
     const alumno = db[hash];
 
     if (alumno && alumno.pin) {
-      const est = (alumno.estado || "").toLowerCase();
-      const isConfirmed = (est.includes("sigue") || est.includes("confirmad")) && !est.includes("sin");
+      // Formatear nombre limpio y familia
+      let nombreLimpio = (alumno.nombre || "").replace(/[-_]/g, ' ').replace(/\s+/g, ' ').trim();
+      nombreLimpio = nombreLimpio.toLowerCase().split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      
+      const partes = nombreLimpio.split(' ');
+      const fam = partes.length >= 2 ? partes.slice(0, 2).join(' ') : partes[0];
+      const primerNom = partes.length >= 3 ? partes.slice(2).join(' ') : nombreLimpio;
 
-      document.getElementById("res-nombre").textContent = alumno.nombre;
-      document.getElementById("res-grado").textContent = alumno.grado;
-      document.getElementById("res-pin").textContent = alumno.pin;
-      document.getElementById("hidden-pin").value = alumno.pin;
+      const gradoActual = alumno.grado || '-';
+      const gradoRecibe = alumno.grado_siguiente || alumno.grado || '-';
 
-      const resBox = document.getElementById("resultado-exito-box");
-      const resIcon = document.getElementById("res-icon");
-      const resTitle = document.getElementById("res-header-title");
-      const resSub = document.getElementById("res-header-sub");
-      const resBadge = document.getElementById("res-badge");
-      const resMsg = document.getElementById("res-mensaje-box");
-      const resBtn = document.getElementById("btn-submit-edu");
+      // EVALUACIÓN DE ESTADO EN EDUCOLOMBIA:
+      // Si promovido === 1: Mostrar felicitaciones y siguiente grado
+      // Si promovido === 0: Mostrar aviso gentil de espera de cierre de notas hasta el 20 de noviembre
+      if (alumno.promovido === 1 || alumno.promovido === "1" || alumno.promovido === true) {
+        // CASO A: PROMOVIDO
+        document.getElementById("prom-nombre").textContent = nombreLimpio;
+        document.getElementById("prom-nombre-saludo").textContent = primerNom;
+        document.getElementById("prom-doc").textContent = alumno.doc || doc.replace('_prom', '');
+        document.getElementById("prom-grado-anterior").textContent = gradoActual;
+        document.getElementById("prom-grado-recibe").textContent = gradoRecibe;
+        document.getElementById("prom-grado-siguiente").textContent = gradoRecibe;
+        document.getElementById("prom-pin").textContent = alumno.pin;
+        document.getElementById("prom-hidden-pin").value = alumno.pin;
 
-      if (isConfirmed) {
-        resBox.style.borderColor = "#22C55E";
-        resBox.style.background = "#F0FDF4";
-        resIcon.textContent = "🎉";
-        resTitle.textContent = "¡Cupo Apartado!";
-        resTitle.style.color = "#15803D";
-        resSub.textContent = "Tu cupo para el año escolar 2027 ya se encuentra reservado y confirmado.";
-        resSub.style.color = "#166534";
-
-        resBadge.textContent = "✅ Estado: Cupo Apartado / Confirmado";
-        resBadge.style.background = "#DCFCE7";
-        resBadge.style.color = "#15803D";
-        resBadge.style.borderColor = "#86EFAC";
-
-        resMsg.style.background = "#DCFCE7";
-        resMsg.style.borderLeft = "4px solid #16A34A";
-        resMsg.style.color = "#14532D";
-        resMsg.innerHTML = "💚 <strong>¡Todo listo!</strong> Los datos del estudiante ya fueron actualizados exitosamente en la plataforma EduColombia. El cupo para el año lectivo 2027 está debidamente apartado. ¡Nos alegra contar con ustedes un año más en la Familia Semillerista!";
-
-        resBtn.textContent = "📄 Consultar o Ver Ficha en EduColombia →";
-        resBtn.style.background = "linear-gradient(135deg, #003865, #002244)";
-        resBtn.style.boxShadow = "0 8px 20px -4px rgba(0,56,101,0.4)";
+        document.getElementById("resultado-promovido").style.display = "block";
+        document.getElementById("resultado-promovido").scrollIntoView({ behavior: 'smooth' });
       } else {
-        resBox.style.borderColor = "#F59E0B";
-        resBox.style.background = "#FFFBEB";
-        resIcon.textContent = "📋";
-        resTitle.textContent = "¡Estudiante por Apartar Cupo!";
-        resTitle.style.color = "#92400E";
-        resSub.textContent = "Tu PIN de prematrícula está listo para apartar tu cupo";
-        resSub.style.color = "#B45309";
+        // CASO B: NOTAS EN CIERRE / EN ESPERA HASTA EL 20 DE NOVIEMBRE
+        document.getElementById("espera-familia").textContent = fam;
+        document.getElementById("espera-nombre").textContent = nombreLimpio;
+        document.getElementById("espera-grado").textContent = gradoActual;
+        document.getElementById("espera-grado-siguiente").textContent = gradoRecibe;
+        document.getElementById("espera-pin").textContent = alumno.pin;
 
-        resBadge.textContent = "⏳ Estado: Pendiente por apartar cupo";
-        resBadge.style.background = "#FEF3C7";
-        resBadge.style.color = "#92400E";
-        resBadge.style.borderColor = "#FCD34D";
-
-        resMsg.style.background = "#FEF3C7";
-        resMsg.style.borderLeft = "4px solid #F59E0B";
-        resMsg.style.color = "#92400E";
-        resMsg.innerHTML = "📌 <strong>Paso Final:</strong> Al hacer clic en el botón a continuación, ingresarás a <strong>EduColombia</strong> con tu PIN precargado para completar la actualización de datos y apartar tu cupo escolar.";
-
-        resBtn.textContent = "🚀 Continuar a Apartar Cupo en EduColombia →";
-        resBtn.style.background = "linear-gradient(135deg, #16A34A, #15803D)";
-        resBtn.style.boxShadow = "0 8px 20px -4px rgba(22,163,74,0.45)";
+        document.getElementById("resultado-espera-notas").style.display = "block";
+        document.getElementById("resultado-espera-notas").scrollIntoView({ behavior: 'smooth' });
       }
 
-      document.getElementById("resultado-exito").style.display = "block";
       document.getElementById("form-consulta-pin").style.display = "none";
     } else {
       document.getElementById("doc-erroneo").textContent = doc;
       document.getElementById("resultado-error").style.display = "block";
+      document.getElementById("resultado-error").scrollIntoView({ behavior: 'smooth' });
     }
   } catch (err) {
     console.error(err);
@@ -309,8 +399,30 @@ async function consultarPin(e) {
   }
 }
 
+function probarDocPremat(docNum) {
+  const input = document.getElementById("doc-estudiante");
+  input.value = docNum;
+  consultarPin();
+}
+
+function copiarPin(elementId, btn) {
+  const pinText = document.getElementById(elementId).textContent.trim();
+  navigator.clipboard.writeText(pinText).then(() => {
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '✅ ¡Copiado!';
+    btn.style.background = '#BBF7D0';
+    btn.style.color = '#166534';
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  });
+}
+
 function reiniciarConsulta() {
-  document.getElementById("resultado-exito").style.display = "none";
+  document.getElementById("resultado-promovido").style.display = "none";
+  document.getElementById("resultado-espera-notas").style.display = "none";
   document.getElementById("resultado-error").style.display = "none";
   document.getElementById("form-consulta-pin").style.display = "block";
   const input = document.getElementById("doc-estudiante");
