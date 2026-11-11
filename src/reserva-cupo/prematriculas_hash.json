@@ -1,67 +1,4 @@
 {
-  "63780febd0cef276f35de2d9fc3147794fcec9133a716c4ca166b9680b9767a0": {
-    "nombre": "Beltran Castro Thiago Mateo",
-    "doc": "1102645772",
-    "grado": "JARDIN",
-    "grado_siguiente": "TRANSICION",
-    "pin": "312-FEC96630",
-    "estado": "Confirma Sigue",
-    "promovido": 0
-  },
-  "ef5d48773c0d63f60040681945816bfc57fdbbf112c2838f56d02f6e2dfca1e1": {
-    "nombre": "Centeno Cardozo Liam Andres",
-    "doc": "1097795465",
-    "grado": "JARDIN",
-    "grado_siguiente": "TRANSICION",
-    "pin": "312-D9DE3019",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "bc9d3f3b0ce8a53f54150f21f1b2b4eaa56c847ba6b2fecdb83817f109e6ba16": {
-    "nombre": "Coronado Diaz Iker Santiago",
-    "doc": "1095847127",
-    "grado": "JARDIN",
-    "grado_siguiente": "TRANSICION",
-    "pin": "312-CD91D28D",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "3ee77598ca6db9ac6e72f2cd0835d8a658e31f2479e8d3482fb12b8ca500a28e": {
-    "nombre": "Dominguez Saavedra Angel David",
-    "doc": "1142727040",
-    "grado": "JARDIN",
-    "grado_siguiente": "TRANSICION",
-    "pin": "312-D42F78CC",
-    "estado": "Confirma Sigue",
-    "promovido": 0
-  },
-  "02a0607e1afebf843d88bd7ec2fb5bf25279d11efb10143e5209026a05e6df24": {
-    "nombre": "Giraldo Jaimes Thiago",
-    "doc": "1239092752",
-    "grado": "JARDIN",
-    "grado_siguiente": "TRANSICION",
-    "pin": "312-8D644FBD",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "6a97c9ea88a963cb61ba4c97c13b38399234a26a563f44b8320ba76741c6cc84": {
-    "nombre": "Vilchez Reina Alanna Zoe",
-    "doc": "1142726986",
-    "grado": "JARDIN",
-    "grado_siguiente": "TRANSICION",
-    "pin": "312-613E11ED",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "fca2da6defd0229ab23f2978b2fa957264bfeb1b7a75c50f1969bc27da1002a4": {
-    "nombre": "Sanchez Caceres Christopher Johao",
-    "doc": "1142727051",
-    "grado": "JARDIN",
-    "grado_siguiente": "TRANSICION",
-    "pin": "312-B7CE07E7",
-    "estado": "Confirma Sigue",
-    "promovido": 0
-  },
   "391ac25846885d13f788d1c9c4a26b8dc4b188e450c0a0b11b28e2ffe01f14db": {
     "nombre": "Carreño Ruiz Sara Valentina",
     "doc": "1097922513",
@@ -455,7 +392,7 @@
     "grado": "TERCERO",
     "grado_siguiente": "CUARTO",
     "pin": "312-D01DD12B",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "70ad64479073d13a7859c19341f44a31be3dae461f2c25a96832a70d3231a9c9": {
