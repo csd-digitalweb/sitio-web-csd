@@ -1511,6 +1511,15 @@
     "estado": "Confirma Sigue",
     "promovido": 0
   },
+  "180fb5c4a817bebafc9f6f40f3fb226953c40b4e3c4e00478aa4d3f870b45841": {
+    "nombre": "Gomez Morantes Samuel Matias",
+    "doc": "1096703742",
+    "grado": "OCTAVO",
+    "grado_siguiente": "NOVENO",
+    "pin": "312-2D27A8E7",
+    "estado": "Confirma Sigue",
+    "promovido": 0
+  },
   "26f885d6e619f10dda28fd989271f200c1c499083f9adc9a83bd515813db137d": {
     "nombre": "Barrera Garcia Michelle Vanesa",
     "doc": "1097113062",
@@ -2129,15 +2138,6 @@
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-756C1E69",
-    "estado": "Confirma Sigue",
-    "promovido": 0
-  },
-  "180fb5c4a817bebafc9f6f40f3fb226953c40b4e3c4e00478aa4d3f870b45841": {
-    "nombre": "Gomez Morantes Samuel Matias",
-    "doc": "1096703742",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-2D27A8E7",
     "estado": "Confirma Sigue",
     "promovido": 0
   },
