@@ -134,6 +134,15 @@
     "estado": "Confirma Sigue",
     "promovido": 0
   },
+  "a46c0197e7bc910fd529b38890badf83e52b89988ed68e89b66ce8a1fb9aea5e": {
+    "nombre": "Sepulveda Hernandez Nicolas Andres",
+    "doc": "1097922547",
+    "grado": "TRANSICION",
+    "grado_siguiente": "PRIMERO",
+    "pin": "312-01F299A7",
+    "estado": "Confirma Sigue",
+    "promovido": 0
+  },
   "c651a7c9fb36dfd7e95894557174476b2a1672862a489b271997edd2aa360614": {
     "nombre": "Moreno Orduz Miguel Angel",
     "doc": "1234342096",
@@ -2024,12 +2033,12 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
-  "996bdd9a07464d4e50ab52f829b4c9cadd520a42c63fe697a9e3b9a44ac10f6a": {
+  "88903207ad2ae7fa99ce0f1cf722c5cc8cc155c63b5bfd8f71a762225cfd9cb2": {
     "nombre": "",
-    "doc": "63527535",
+    "doc": "1234341981",
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-B5E948CB",
+    "pin": "312-55652DCE",
     "estado": "Sin Confirmar",
     "promovido": 0
   },
@@ -2078,21 +2087,21 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
-  "88903207ad2ae7fa99ce0f1cf722c5cc8cc155c63b5bfd8f71a762225cfd9cb2": {
-    "nombre": "",
-    "doc": "1234341981",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-55652DCE",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
   "85ae5b99635b255996a29345fa9c361da8aee64f3512fce33d24a7fa3f7d0f55": {
     "nombre": "",
     "doc": "1099427261",
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-B5D58F67",
+    "estado": "Sin Confirmar",
+    "promovido": 0
+  },
+  "996bdd9a07464d4e50ab52f829b4c9cadd520a42c63fe697a9e3b9a44ac10f6a": {
+    "nombre": "",
+    "doc": "63527535",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-B5E948CB",
     "estado": "Sin Confirmar",
     "promovido": 0
   },
@@ -2219,15 +2228,6 @@
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-D6E434F7",
-    "estado": "Confirma Sigue",
-    "promovido": 0
-  },
-  "a46c0197e7bc910fd529b38890badf83e52b89988ed68e89b66ce8a1fb9aea5e": {
-    "nombre": "Sepulveda Hernandez Nicolas Andres",
-    "doc": "1097922547",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-01F299A7",
     "estado": "Confirma Sigue",
     "promovido": 0
   },
