@@ -2033,6 +2033,15 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
+  "7bc9efe3bf0ec95e3f73286d66bcd62c3c74871428d8e2b46a5c9300450abc85": {
+    "nombre": "",
+    "doc": "1022432329",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-C3CBECCB",
+    "estado": "Sin Confirmar",
+    "promovido": 0
+  },
   "ef20f44641675a7bf3e43aa79cd03af488373221b63611657b5e07913df4cbb2": {
     "nombre": "",
     "doc": "1097128608",

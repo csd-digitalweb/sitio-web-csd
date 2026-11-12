@@ -2528,5 +2528,15 @@
     "doc_acudiente": "",
     "celular": "",
     "estado_pago": "PENDIENTE"
+  },
+  "7bc9efe3bf0ec95e3f73286d66bcd62c3c74871428d8e2b46a5c9300450abc85": {
+    "doc": "1022432329",
+    "nombre": "",
+    "grado_2027": "SIN ASIGNAR",
+    "salon": "SIN ASIGNAR",
+    "acudiente": "Acudiente Registrado",
+    "doc_acudiente": "",
+    "celular": "",
+    "estado_pago": "PENDIENTE"
   }
 }
