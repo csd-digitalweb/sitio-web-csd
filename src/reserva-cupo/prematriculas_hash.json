@@ -503,6 +503,15 @@
     "estado": "Confirma Sigue",
     "promovido": 0
   },
+  "7bc9efe3bf0ec95e3f73286d66bcd62c3c74871428d8e2b46a5c9300450abc85": {
+    "nombre": "Mendez Peña Keynner Andress",
+    "doc": "1022432329",
+    "grado": "TERCERO",
+    "grado_siguiente": "CUARTO",
+    "pin": "312-C3CBECCB",
+    "estado": "Confirma Sigue",
+    "promovido": 0
+  },
   "22e649dfe080561c772d78a46ee7b5bc45ac1bcc007ff6e8c572331f13675ba9": {
     "nombre": "Barraza Carrillo Jarib Jeronimo",
     "doc": "1030197426",
@@ -2264,15 +2273,6 @@
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-EE2BE858",
-    "estado": "Confirma Sigue",
-    "promovido": 0
-  },
-  "7bc9efe3bf0ec95e3f73286d66bcd62c3c74871428d8e2b46a5c9300450abc85": {
-    "nombre": "Mendez Peña Keynner Andress",
-    "doc": "1022432329",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-C3CBECCB",
     "estado": "Confirma Sigue",
     "promovido": 0
   },
