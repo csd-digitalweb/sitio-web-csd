@@ -2069,6 +2069,24 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
+  "105de2b82629a2f75c9607bc59d2b7c34e778ff5fa6b794d4384db5fd06edff5": {
+    "nombre": "",
+    "doc": "1095848193",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-1A1D9B79",
+    "estado": "Sin Confirmar",
+    "promovido": 0
+  },
+  "19a521ceee0df5531ca43f197c5331e35cf61afb21aafa01e708f77b471d20ee": {
+    "nombre": "",
+    "doc": "1234342235",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-AB9B188A",
+    "estado": "Sin Confirmar",
+    "promovido": 0
+  },
   "a3e7f8be2643eafa65dab46a4a2068dba89c5da7f479cc00295a09e6d3cb3a0b": {
     "nombre": "",
     "doc": "1097918121",
