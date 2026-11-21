@@ -653,7 +653,7 @@
     "grado": "QUINTO",
     "grado_siguiente": "SEXTO",
     "pin": "312-F945DC43",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "49efdd669d644d9c40184476eb879418de80ccdd4318a5149538a89349cedc42": {
@@ -1076,7 +1076,7 @@
     "grado": "SEPTIMO",
     "grado_siguiente": "OCTAVO",
     "pin": "312-47C2ACD8",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "3fe11c2985de6b2a0736243f65c8265b900ed876b19b2e6e031be2ef4d456c72": {
@@ -2069,21 +2069,12 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
-  "12cf30061332616e81d6e769ea590440a68d83cb29ac92dc0ba6dc2c35678f98": {
+  "996bdd9a07464d4e50ab52f829b4c9cadd520a42c63fe697a9e3b9a44ac10f6a": {
     "nombre": "",
-    "doc": "7790973",
+    "doc": "63527535",
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-AC0660C4",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "fc10dfb358f05d6aa64732e7667e7b90d6c979c92de05aeb53488ff6b003941a": {
-    "nombre": "",
-    "doc": "1097132047",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-5AA88B4B",
+    "pin": "312-B5E948CB",
     "estado": "Sin Confirmar",
     "promovido": 0
   },
@@ -2132,21 +2123,21 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
+  "12cf30061332616e81d6e769ea590440a68d83cb29ac92dc0ba6dc2c35678f98": {
+    "nombre": "",
+    "doc": "7790973",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-AC0660C4",
+    "estado": "Sin Confirmar",
+    "promovido": 0
+  },
   "88903207ad2ae7fa99ce0f1cf722c5cc8cc155c63b5bfd8f71a762225cfd9cb2": {
     "nombre": "",
     "doc": "1234341981",
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-55652DCE",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "996bdd9a07464d4e50ab52f829b4c9cadd520a42c63fe697a9e3b9a44ac10f6a": {
-    "nombre": "",
-    "doc": "63527535",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-B5E948CB",
     "estado": "Sin Confirmar",
     "promovido": 0
   },
@@ -2237,6 +2228,15 @@
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-B2ACD7C6",
+    "estado": "Confirma Sigue",
+    "promovido": 0
+  },
+  "fc10dfb358f05d6aa64732e7667e7b90d6c979c92de05aeb53488ff6b003941a": {
+    "nombre": "Navarro Hernánd Lauren Gabriell",
+    "doc": "1097132047",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-5AA88B4B",
     "estado": "Confirma Sigue",
     "promovido": 0
   },
