@@ -2069,12 +2069,21 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
-  "12cf30061332616e81d6e769ea590440a68d83cb29ac92dc0ba6dc2c35678f98": {
+  "585d13714c20faccce20c9e0655cc1cde93041d22a2400af565c2e3f4257418a": {
     "nombre": "",
-    "doc": "7790973",
+    "doc": "7790960",
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-AC0660C4",
+    "pin": "312-7E66F82E",
+    "estado": "Sin Confirmar",
+    "promovido": 0
+  },
+  "f324fa67670bf70e0c2709328a8134d552c72ab18acd88126eebb027bcf48e2d": {
+    "nombre": "",
+    "doc": "1185915488",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-1136D8EF",
     "estado": "Sin Confirmar",
     "promovido": 0
   },
@@ -2123,12 +2132,12 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
-  "585d13714c20faccce20c9e0655cc1cde93041d22a2400af565c2e3f4257418a": {
+  "12cf30061332616e81d6e769ea590440a68d83cb29ac92dc0ba6dc2c35678f98": {
     "nombre": "",
-    "doc": "7790960",
+    "doc": "7790973",
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-7E66F82E",
+    "pin": "312-AC0660C4",
     "estado": "Sin Confirmar",
     "promovido": 0
   },

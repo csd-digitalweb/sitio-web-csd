@@ -410,7 +410,8 @@ async function sha256(str) {
 async function consultarPin(e) {
   if (e) e.preventDefault();
   const input = document.getElementById("doc-estudiante");
-  const doc = input.value.trim();
+  const rawInput = input.value.trim();
+  const doc = rawInput.includes('_prom') ? rawInput : rawInput.replace(/[^0-9]/g, '');
 
   if (!doc || doc.length < 5) {
     alert("Por favor ingresa un número de documento válido (mínimo 5 dígitos).");
