@@ -1907,174 +1907,21 @@
     "estado": "Confirma Sigue",
     "promovido": 0
   },
-  "f6aa4dddc4591e952cc910c5eda0812af8253c26b7fedc70bc1f92165dc8b0b2": {
-    "nombre": "Valencia Martinez Melany Sofia",
-    "doc": "1098716733",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-A0A32909",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "06820171f728424e729584d7dd5f6d706d83e066e4751de6a55fd525df9479bc": {
-    "nombre": "Acevedo Manrique Karen Julieth",
-    "doc": "1185713593",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-39D66F9B",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "5f17daba0c05c603c9fd87b50a5269b9624e773174324d174e450fc334cb001e": {
-    "nombre": "Acevedo Rico Jhoan Felipe",
-    "doc": "1095310510",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-DE20838E",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "8bca1626065de15494ec2628572633feffc42daa1181cb3074a06f9cbcefe440": {
-    "nombre": "Castillo Ballesteros Juan Diego",
-    "doc": "1097786010",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-805B8D30",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "fc649f2cd5c60b95e9230cbb9c68549635ece6736bde74774c68cd2ab11ab89a": {
-    "nombre": "Chacon Cadena Carlos Joel",
-    "doc": "1097105300",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-57006092",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "7acdb4d04dceb1d8cb125c03688afdea956c2dcd365a3d43606a01578f7e1950": {
-    "nombre": "Esteban Solano Maria Jose",
-    "doc": "1099743982",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-2F08FFA4",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "475b439964f91a27448157246243a4c84d79de75a12004899ace303951df81ad": {
-    "nombre": "Figueroa Ramirez Angie Catalina",
-    "doc": "1095304639",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-D16B0BEB",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "74bbd9e8b04d89cd6ee299d122a5af54b5d57cfb9c20690f7c3995f86c4ef68a": {
-    "nombre": "Gomez Betancur Valeria",
-    "doc": "1129724527",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-CF05E118",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "e486fcf579e61c6352dccfa0cb0c631345b491bcd6e872b747cc1d69ec2eecb3": {
-    "nombre": "Grimaldos Navarro Samuel Francisco",
-    "doc": "1097788157",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-CA1AE4E0",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "1f9fe0704189773dec3e7f3af53142ef581e0cb4d6cdd434964d055bfcc017d9": {
-    "nombre": "Lozano Nuñez Jose Andres",
-    "doc": "1095808472",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-1621DBD9",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "1deeb3067bfe4bfd6c5deb5b7609b596893b72ec0ca84c8f7bd1719fc1483102": {
-    "nombre": "Merchan Afanador Andrey Stiven",
-    "doc": "1097912751",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-33B8A463",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "d46534f4d225ab4d8fb7daac99090179a2c5877d842a65dadadb8753f82499db": {
-    "nombre": "Osorio Rojas Jhorman Alexis",
-    "doc": "1099741578",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-274FD31F",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "b3de6c730e888f47903e442de6b94ea9c6b9ddcc7392e92e3c478a02f2b5425a": {
-    "nombre": "Quintero Duran Geraldine Tatiana",
-    "doc": "1097498228",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-6BA16575",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "90a10af35b1b6b002895d35bd8315244e2ca8192b634501a038d5786edff7d22": {
-    "nombre": "Rodriguez Salinas Jissel Daniela",
-    "doc": "1095927195",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-4293626E",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "da18e7d863599d1bb0a8344cf197a72a2521a426bb1e9b1354102bc1407f3918": {
-    "nombre": "Rojas Alvarez Sara Valentina",
-    "doc": "1095310157",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-A95FE741",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "2646bf54167b05bac29037b7612fe497384f09e58448e6089e0cbb5e4aa2c574": {
-    "nombre": "Rojas Rueda Arley Daian",
-    "doc": "1185963098",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-2EC7927F",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "63051737b080f19654a278dcf61d3950066f39e1b1ba32716bb3c8c70ddde9ca": {
-    "nombre": "Sanabria Mora Juan Sebastian",
-    "doc": "1097913770",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-C1C95384",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "e59336d034582f39f9bfe988634fb7ae167a3b6cc0b03b25bb5aaece3405075f": {
-    "nombre": "Suarez Paez Juan Steban",
-    "doc": "1142716896",
-    "grado": "UNDECIMO",
-    "grado_siguiente": "EGRESADO",
-    "pin": "312-913D762C",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
   "585d13714c20faccce20c9e0655cc1cde93041d22a2400af565c2e3f4257418a": {
     "nombre": "",
     "doc": "7790960",
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-7E66F82E",
+    "estado": "Sin Confirmar",
+    "promovido": 0
+  },
+  "f27ac98fcfcf640dcfe2f3939462a42932b816b492cdf27f3c2e70733785cb56": {
+    "nombre": "",
+    "doc": "1097145381",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-F7E3A9A4",
     "estado": "Sin Confirmar",
     "promovido": 0
   },
