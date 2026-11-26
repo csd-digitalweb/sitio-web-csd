@@ -2096,15 +2096,6 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
-  "f324fa67670bf70e0c2709328a8134d552c72ab18acd88126eebb027bcf48e2d": {
-    "nombre": "",
-    "doc": "1185915488",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-1136D8EF",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
   "2881a186652cfd4c9a22b513a17c235387ff0f63b87109e552a2a72a91ddf82f": {
     "nombre": "",
     "doc": "1097916633",
@@ -2192,6 +2183,15 @@
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-A73B9E82",
+    "estado": "Confirma Sigue",
+    "promovido": 0
+  },
+  "f324fa67670bf70e0c2709328a8134d552c72ab18acd88126eebb027bcf48e2d": {
+    "nombre": "Arenas Vanegas Linsay Valeria",
+    "doc": "1185915488",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-1136D8EF",
     "estado": "Confirma Sigue",
     "promovido": 0
   },
