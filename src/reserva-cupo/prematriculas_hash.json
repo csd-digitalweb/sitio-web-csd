@@ -764,6 +764,15 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
+  "bd34650e238641e09b3aff69fba16c7b896e36c474962bc70eebc35fb61db3d9": {
+    "nombre": "Garcia Montes 45 Jhoan Esteban",
+    "doc": "1097131839",
+    "grado": "QUINTO",
+    "grado_siguiente": "SEXTO",
+    "pin": "312-756C1E69",
+    "estado": "Confirma Sigue",
+    "promovido": 0
+  },
   "2dd15e6b74a3f9ce13c3289137da24817cf712a9cb136ad12844d49898a09b6c": {
     "nombre": "Villamil Camacho Daniel Felipe",
     "doc": "1097917913",
@@ -2210,15 +2219,6 @@
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-867CD39A",
-    "estado": "Confirma Sigue",
-    "promovido": 0
-  },
-  "bd34650e238641e09b3aff69fba16c7b896e36c474962bc70eebc35fb61db3d9": {
-    "nombre": "Garcia Montes 45 Jhoan Esteban",
-    "doc": "1097131839",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-756C1E69",
     "estado": "Confirma Sigue",
     "promovido": 0
   },
