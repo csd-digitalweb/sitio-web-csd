@@ -134,6 +134,15 @@
     "estado": "Confirma Sigue",
     "promovido": 0
   },
+  "b40fe53d64d5e2dbade35f11435a8258eeeded43d7ab0313e9823a1bad4a7d67": {
+    "nombre": "Aguilar Ariza Narly Sofia",
+    "doc": "1239089786",
+    "grado": "TRANSICION",
+    "grado_siguiente": "PRIMERO",
+    "pin": "312-A73B9E82",
+    "estado": "Confirma Sigue",
+    "promovido": 0
+  },
   "a46c0197e7bc910fd529b38890badf83e52b89988ed68e89b66ce8a1fb9aea5e": {
     "nombre": "Sepulveda Hernandez Nicolas Andres",
     "doc": "1097922547",
@@ -2166,15 +2175,6 @@
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-B5D58F67",
     "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "b40fe53d64d5e2dbade35f11435a8258eeeded43d7ab0313e9823a1bad4a7d67": {
-    "nombre": "Aguilar Ariza Narly Sofia",
-    "doc": "1239089786",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-A73B9E82",
-    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "f324fa67670bf70e0c2709328a8134d552c72ab18acd88126eebb027bcf48e2d": {
