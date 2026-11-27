@@ -1229,7 +1229,7 @@
     "grado": "SEPTIMO",
     "grado_siguiente": "OCTAVO",
     "pin": "312-AB53D7C8",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "50302388b8d611a4b3e6fa9f242d0fe5513de41408f38e387fc8ca1bd0cbc018": {
@@ -1868,7 +1868,7 @@
     "grado": "DECIMO",
     "grado_siguiente": "UNDECIMO",
     "pin": "312-113FCB4D",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "565efd2cc4a9bb0a688b58e6904f6f3c7f49833dd8e0a1bb3a527cf069fa976e": {
