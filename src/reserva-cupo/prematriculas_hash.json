@@ -14,7 +14,7 @@
     "grado": "JARDIN",
     "grado_siguiente": "TRANSICION",
     "pin": "312-D9DE3019",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "bc9d3f3b0ce8a53f54150f21f1b2b4eaa56c847ba6b2fecdb83817f109e6ba16": {
@@ -50,7 +50,7 @@
     "grado": "JARDIN",
     "grado_siguiente": "TRANSICION",
     "pin": "312-613E11ED",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "fca2da6defd0229ab23f2978b2fa957264bfeb1b7a75c50f1969bc27da1002a4": {
@@ -221,7 +221,7 @@
     "grado": "PRIMERO",
     "grado_siguiente": "SEGUNDO",
     "pin": "312-88C9572A",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "b57732da29b19bbafb3e5fd7bd126652ff05fc43e3bf1834dfc73fa189c0b46f": {
@@ -743,7 +743,7 @@
     "grado": "QUINTO",
     "grado_siguiente": "SEXTO",
     "pin": "312-B7034406",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "c5eaad6f3ddfba9739b18f7d315edb55c2509b843458fd6b6bbe0852de841282": {
