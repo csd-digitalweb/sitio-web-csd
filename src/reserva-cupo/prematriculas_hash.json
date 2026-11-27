@@ -437,7 +437,7 @@
     "grado": "TERCERO",
     "grado_siguiente": "CUARTO",
     "pin": "312-26829745",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "f5758dfef3c17530c5904683fe153189623ba582cf45cebd39f696e13b27733f": {
@@ -1202,7 +1202,7 @@
     "grado": "SEPTIMO",
     "grado_siguiente": "OCTAVO",
     "pin": "312-69267E09",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "a22cc9a23bfb7e7537b34d70b82aa815ae76067dcf3829b5a490754fb48292d5": {
