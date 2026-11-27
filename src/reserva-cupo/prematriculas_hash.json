@@ -815,7 +815,7 @@
     "grado": "SEXTO",
     "grado_siguiente": "SEPTIMO",
     "pin": "312-AB327287",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "96addd013d2b4fa5ee8bf1df69d2ff664fbb6e608ab68469ad236627e3d226e2": {
@@ -842,7 +842,7 @@
     "grado": "SEXTO",
     "grado_siguiente": "SEPTIMO",
     "pin": "312-B64A81D3",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "4237ed065f3bfd026e4a920780a769105f979c2c4977236f4abf647c01a646de": {
@@ -1481,7 +1481,7 @@
     "grado": "OCTAVO",
     "grado_siguiente": "NOVENO",
     "pin": "312-B433A3F7",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "9d00758151c1dcd01be47c8044a545bca53d56ff3e482a950b06f52c68ca8e4e": {
@@ -1508,7 +1508,7 @@
     "grado": "OCTAVO",
     "grado_siguiente": "NOVENO",
     "pin": "312-48625DC5",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "9db3713581c9a8fe3b427cdae74e5a3e4468b517b8d26a1bb2f7d7c741947d51": {
