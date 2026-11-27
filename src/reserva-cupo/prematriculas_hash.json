@@ -2132,24 +2132,6 @@
     "estado": "Sin Confirmar",
     "promovido": 0
   },
-  "ef20f44641675a7bf3e43aa79cd03af488373221b63611657b5e07913df4cbb2": {
-    "nombre": "",
-    "doc": "1097128608",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-C33EFE8A",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
-  "96957b17f70d7b7659169f20ed804809ccf554186e751b446ec068df0aee1c6c": {
-    "nombre": "",
-    "doc": "1097121055",
-    "grado": "SIN ASIGNAR",
-    "grado_siguiente": "SIN ASIGNAR",
-    "pin": "312-1FA10A96",
-    "estado": "Sin Confirmar",
-    "promovido": 0
-  },
   "585d13714c20faccce20c9e0655cc1cde93041d22a2400af565c2e3f4257418a": {
     "nombre": "",
     "doc": "7790960",
@@ -2354,6 +2336,24 @@
     "grado": "SIN ASIGNAR",
     "grado_siguiente": "SIN ASIGNAR",
     "pin": "312-EE2BE858",
+    "estado": "Confirma Sigue",
+    "promovido": 0
+  },
+  "ef20f44641675a7bf3e43aa79cd03af488373221b63611657b5e07913df4cbb2": {
+    "nombre": "Herrera Diaz Adrian Matias",
+    "doc": "1097128608",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-C33EFE8A",
+    "estado": "Confirma Sigue",
+    "promovido": 0
+  },
+  "96957b17f70d7b7659169f20ed804809ccf554186e751b446ec068df0aee1c6c": {
+    "nombre": "Herrera Delgado Melany Sofia",
+    "doc": "1097121055",
+    "grado": "SIN ASIGNAR",
+    "grado_siguiente": "SIN ASIGNAR",
+    "pin": "312-1FA10A96",
     "estado": "Confirma Sigue",
     "promovido": 0
   },
