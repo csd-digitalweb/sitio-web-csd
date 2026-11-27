@@ -122,7 +122,7 @@
     "grado": "TRANSICION",
     "grado_siguiente": "PRIMERO",
     "pin": "312-5650C489",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "766842f08f5a3323f93b4b0f0d1a118a920ba71c529451f29618d03c5d41c792": {
@@ -707,7 +707,7 @@
     "grado": "QUINTO",
     "grado_siguiente": "SEXTO",
     "pin": "312-1A8897F6",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "9e820150a52178b3d84d22277dd230855fb4ba50270f2aaf42aab38f9ba3535d": {
@@ -761,7 +761,7 @@
     "grado": "QUINTO",
     "grado_siguiente": "SEXTO",
     "pin": "312-1C24ACF4",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "bd34650e238641e09b3aff69fba16c7b896e36c474962bc70eebc35fb61db3d9": {
