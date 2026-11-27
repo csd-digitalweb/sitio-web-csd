@@ -518,7 +518,7 @@
     "grado": "CUARTO",
     "grado_siguiente": "QUINTO",
     "pin": "312-77C8F766",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "8af74d93e9b7fe5462199aa382bbae545f80f08ad816c97b891049564248707f": {
@@ -671,7 +671,7 @@
     "grado": "QUINTO",
     "grado_siguiente": "SEXTO",
     "pin": "312-EF56FFA3",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "798c6b495882a9ce86a515dc2aa49ca16b376b2c2a9c3607b19d8e175ba58017": {
@@ -698,7 +698,7 @@
     "grado": "QUINTO",
     "grado_siguiente": "SEXTO",
     "pin": "312-B29611CF",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "bc523e0c7ebf0270eb2a3e3f27c664742544e557269c4758d33f8627977d416e": {
