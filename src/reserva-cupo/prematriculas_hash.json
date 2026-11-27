@@ -824,7 +824,7 @@
     "grado": "SEXTO",
     "grado_siguiente": "SEPTIMO",
     "pin": "312-3D7C3900",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "3e4a630a2fffbc59ee6012c082e3d458e68b3a1a795e6a9c55fb4e6ab39e86fd": {
@@ -1400,7 +1400,7 @@
     "grado": "OCTAVO",
     "grado_siguiente": "NOVENO",
     "pin": "312-EE92A3D6",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "f02f7fe5ea244e7ebffdcb2c34e8dae0cf215f42985e112795dce4ac7957570e": {
