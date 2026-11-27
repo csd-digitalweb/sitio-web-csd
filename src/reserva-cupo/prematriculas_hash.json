@@ -41,7 +41,7 @@
     "grado": "JARDIN",
     "grado_siguiente": "TRANSICION",
     "pin": "312-8D644FBD",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "6a97c9ea88a963cb61ba4c97c13b38399234a26a563f44b8320ba76741c6cc84": {
@@ -833,7 +833,7 @@
     "grado": "SEXTO",
     "grado_siguiente": "SEPTIMO",
     "pin": "312-251720C9",
-    "estado": "Sin Confirmar",
+    "estado": "Confirma Sigue",
     "promovido": 0
   },
   "59228d10ad4533648f75bc6eec150bf47612a2c3288714c98e153ffb66b30407": {
